@@ -253,9 +253,9 @@ onMounted(() => {
     height: 100%;
     background: repeating-linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.05) 0,
-        rgba(255, 255, 255, 0.05) 2px,
-        rgba(0, 0, 0, 0.05) 4px
+        rgba(255, 255, 255, 0.1) 0,
+        rgba(255, 255, 255, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
     );
     animation: flicker 0.3s infinite, noise 0.2s infinite;
   }
@@ -382,14 +382,14 @@ onMounted(() => {
   padding: 0 0 1rem;
 }
 
-@media (min-width: 900px) {
-  .app-title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0;
-  }
-}
+//@media (min-width: 900px) {
+//  .app-title {
+//    position: absolute;
+//    left: 50%;
+//    transform: translateX(-50%);
+//    padding: 0;
+//  }
+//}
 
 .right-div {
   display: flex;
