@@ -1,12 +1,12 @@
 <template>
   <v-app>
+    <div class="static-background" ref="staticBackground"></div>
     <div class="app-header">
       <v-container max-width="1200px" fluid class="app-header-container">
         <div class="app-title">
           <Logo />
         </div>
         <div class="app-header-controls right-div">
-
           <!-- Theme switcher -->
           <v-menu offset-y max-width="300px">
             <template #activator="{ props }">
@@ -55,17 +55,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-import { useChordsStore } from "./stores/chordsStore";
+import { ref, onMounted } from "vue";
 import { useTheme } from "vuetify";
 import Logo from "./components/Logo.vue";
 
-// Define theme-related types and logic
-const themes = ["system", "light", "dark"] as const; // Define themes as a constant tuple
-type Theme = (typeof themes)[number]; // Create a type from the tuple: 'system' | 'light' | 'dark'
+// Theme-related logic
+const themes = ["system", "light", "dark"] as const;
+type Theme = (typeof themes)[number];
 
 const theme = useTheme();
-const currentTheme = ref<Theme>("system"); // Ensure currentTheme is typed correctly
+const currentTheme = ref<Theme>("system");
 
 const themeIcons: Record<Theme, string> = {
   light: "mdi-white-balance-sunny",
@@ -104,30 +103,93 @@ const initializeTheme = () => {
 };
 initializeTheme();
 
+// Intermittent flicker and noise animations
+const staticBackground = ref<HTMLElement | null>(null);
 
+const startIntermittentAnimation = () => {
+  const animate = () => {
+    if (staticBackground.value) {
+      staticBackground.value.classList.add("active");
+      setTimeout(() => {
+        staticBackground.value?.classList.remove("active");
+      }, 500 + Math.random() * 1000); // Animation duration between 0.5s and 1.5s
+    }
+
+    const delay = 3000 + Math.random() * 5000; // Delay between 3s and 8s
+    setTimeout(animate, delay);
+  };
+
+  animate();
+};
+
+onMounted(() => {
+  startIntermittentAnimation();
+});
 </script>
 
-<style>
+<style lang="scss">
 
-.open-sans-font {
-  font-family: "Open Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+.v-application {
+  .static-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .static-background.active::before,
+  .static-background.active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1) 0,
+        rgba(255, 255, 255, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
+    );
+    animation: flicker 0.3s infinite, noise 0.2s infinite;
+  }
+
+  .static-background.active::after {
+    background: rgba(255, 255, 255, 0.02);
+    mix-blend-mode: overlay;
+    animation: flicker 0.15s infinite, noise 0.1s infinite;
+  }
+
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes noise {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-10px) translateX(-5px);
+    }
+    50% {
+      transform: translateY(10px) translateX(5px);
+    }
+    75% {
+      transform: translateY(-5px) translateX(-10px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
 }
 
-.londrina-sketch-regular {
-  font-family: "Londrina Sketch", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-.rubik-vinyl-regular {
-  font-family: "Rubik Vinyl", serif;
-  font-weight: 400;
-  font-style: normal;
-}
 
 
 </style>
@@ -135,8 +197,8 @@ initializeTheme();
 <style lang="scss" scoped>
 .app-header-container {
   display: block;
-
 }
+
 @media (min-width: 768px) {
   .app-header-container {
     display: flex;
@@ -144,9 +206,11 @@ initializeTheme();
     justify-content: space-between;
   }
 }
+
 .app-title {
   padding: 0 0 1rem;
 }
+
 @media (min-width: 900px) {
   .app-title {
     position: absolute;
@@ -165,6 +229,4 @@ initializeTheme();
   display: flex;
   align-items: center;
 }
-
-
 </style>

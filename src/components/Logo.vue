@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, nextTick } from 'vue';
+import LogoIcon from "./LogoIcon.vue";
 
 // Letters for the logo
 const lines = [
@@ -61,6 +62,10 @@ onMounted(() => {
 <template>
   <RouterLink to="/" @click="restartAnimation" class="link">
     <div class="logo">
+      <div class="logo-icons">
+        <LogoIcon class="logo-icon-overlay" />
+        <LogoIcon class="logo-icon" />
+      </div>
       <div class="logo-text">
         <div v-for="(line, lineIndex) in lines" :key="lineIndex" class="word" :style="{ animationDelay: `${lineIndex * 0.3}s` }">
           <span
@@ -87,6 +92,17 @@ $green2: #0eaa85;
 $green3: #016a5a;
 $green4: #0dc499;
 
+.v-theme--dark {
+  .logo-text {
+    color: #0e6e66;
+  }
+}
+.v-theme--light {
+  .logo-text {
+    color: #25e0cb;
+  }
+}
+
 .logo {
   display: flex;
   overflow: visible;
@@ -103,6 +119,7 @@ a {
   font-size: 42px;
   line-height: 1;
   display: flex;
+  align-self: flex-start;
   gap: 5px;
   color: #0e6e66;
 
@@ -115,6 +132,7 @@ a {
     }
     &:nth-child(2) {
       animation: flyIn2 1s forwards;
+      animation-delay: .3s;
     }
 
   }
@@ -124,6 +142,37 @@ a {
     opacity: 1; /* Make sure letters are always visible */
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
+  }
+}
+
+.logo-icons {
+  position: relative;
+  padding: 0 4px 0 0;
+}
+
+.logo-icon {
+  animation: dropStatic 1s forwards;
+
+  ::v-deep {
+    svg {
+      opacity: .2;
+      height: 60px;
+      transform: translateY(-7px);
+    }
+  }
+}
+
+.logo-icon-overlay {
+  position: absolute;
+  animation: dropStatic2 1s forwards;
+  animation-delay: .8s;
+
+  ::v-deep {
+    svg {
+      opacity: .3;
+      height: 42px;
+      transform: translateY(2px) translateX(8px);
+    }
   }
 }
 
@@ -274,6 +323,102 @@ a {
     opacity: 1;
   }
 }
+
+@keyframes dropStatic {
+  0% {
+    opacity: 1;
+    transform: translateX(100px);
+  }
+  10% {
+    opacity: 0;
+    transform: translateX(90px);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translateX(30px);
+  }
+  30% {
+    opacity: 0.2;
+    transform: translateX(2px);
+  }
+  40% {
+    opacity: 0.5;
+    transform: translateX(-2px);
+  }
+  50% {
+    opacity: 0.1;
+    transform: translateX(1px);
+  }
+  60% {
+    opacity: 0.7;
+    transform: translateX(-1px);
+  }
+  70% {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  80% {
+    opacity: 0.9;
+    transform: translateX(-1px);
+  }
+  90% {
+    opacity: 0.6;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes dropStatic2 {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  10% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  20% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  30% {
+    opacity: 0.2;
+    transform: translateX(2px);
+  }
+  40% {
+    opacity: 0.5;
+    transform: translateX(-2px);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(1px);
+  }
+  60% {
+    opacity: 0;
+    transform: translateX(-1px);
+  }
+  70% {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+  80% {
+    opacity: 0.1;
+    transform: translateX(-1px);
+  }
+  90% {
+    opacity: 0.6;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: .4;
+    transform: translateX(2px);
+  }
+}
+
 
 // Add animation classes
 .flicker {

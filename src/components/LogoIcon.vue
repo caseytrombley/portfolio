@@ -73,8 +73,7 @@ $fill3: #3A3634;
   overflow: visible;
 
   svg {
-    display: none;
-    height: 50px;
+    height: 48px;
   }
 
   #in {
