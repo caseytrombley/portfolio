@@ -191,15 +191,15 @@ a {
   }
   23% {
     opacity: 1;
-    transform: scale(0.98) rotate(-5deg) translateY(2px);
+    transform: scale(0.98) rotate(-5deg) translateY(0) translateX(-5px);
   }
   30% {
     opacity: 0.9;
-    transform: scale(1) rotate(2deg) translateY(1px);
+    transform: scale(1) rotate(2deg) translateY(0) translateX(-5px);
   }
   38% {
     opacity: 0.9;
-    transform: scale(1.02) rotate(6deg) translateY(-1px);
+    transform: scale(1.02) rotate(6deg) translateY(0) translateX(0);
   }
   45% {
     opacity: 1;
@@ -223,15 +223,15 @@ a {
   }
   83% {
     opacity: 1;
-    transform: scale(1) rotate(3deg) translateY(2px);
+    transform: scale(1) rotate(3deg) translateY(0) translateX(3px);
   }
   90% {
     opacity: 0.2;
-    transform: scale(0.99) rotate(2deg) translateY(-1px);
+    transform: scale(0.99) rotate(2deg) translateY(0) translateX(6px);
   }
   100% {
     opacity: 1;
-    transform: scale(1) rotate(0deg) translateY(0);
+    transform: scale(1) rotate(0deg) translateY(0) translateX(0);
   }
 }
 
