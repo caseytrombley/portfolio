@@ -1,5 +1,7 @@
 <template>
   <v-app>
+    <div class="static-lines" ref="staticLines"></div>
+
     <div class="static-background" ref="staticBackground"></div>
     <div class="app-header">
       <v-container max-width="1200px" fluid class="app-header-container">
@@ -41,7 +43,7 @@
       <RouterView />
     </v-main>
 
-    <v-footer class="bg-grey-darken-4">
+    <v-footer class="footer">
       <v-container max-width="1200px" fluid>
         <div>
           &copy; {{ new Date().getFullYear() }}
@@ -105,31 +107,75 @@ initializeTheme();
 
 // Intermittent flicker and noise animations
 const staticBackground = ref<HTMLElement | null>(null);
+const staticLines = ref<HTMLElement | null>(null);
 
-const startIntermittentAnimation = () => {
-  const animate = () => {
+
+const startStaticAnimation = () => {
+  const animateStatic = () => {
     if (staticBackground.value) {
       staticBackground.value.classList.add("active");
       setTimeout(() => {
         staticBackground.value?.classList.remove("active");
-      }, 500 + Math.random() * 1000); // Animation duration between 0.5s and 1.5s
+      }, 500 + Math.random() * 1000);
     }
 
-    const delay = 3000 + Math.random() * 5000; // Delay between 3s and 8s
-    setTimeout(animate, delay);
+    const delay = 3000 + Math.random() * 5000;
+    setTimeout(animateStatic, delay);
   };
 
-  animate();
+  animateStatic();
+};
+
+const startLineAnimation = () => {
+  const animateLines = () => {
+    if (staticLines.value) {
+      // Random starting position near the top
+      const randomStart = Math.random() * 50; // 0 to 50px
+      staticLines.value.style.setProperty("--start-position", `${randomStart}px`);
+      staticLines.value.classList.add("active");
+
+      setTimeout(() => {
+        staticLines.value?.classList.remove("active");
+      }, 1000); // Match animation duration
+    }
+
+    const delay = 4000 + Math.random() * 6000; // Delay between animations
+    setTimeout(animateLines, delay);
+  };
+
+  animateLines();
 };
 
 onMounted(() => {
-  startIntermittentAnimation();
+  startStaticAnimation();
+  startLineAnimation();
 });
 </script>
 
 <style lang="scss">
 
 .v-application {
+  .static-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .static-lines.active::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #009d90;
+    opacity: .06;
+    animation: move-lines 0.5s ease-in-out infinite;
+    top: calc(var(--start-position, 10px)); /* Randomized start position */
+
+  }
+
   .static-background {
     position: fixed;
     top: 0;
@@ -149,9 +195,9 @@ onMounted(() => {
     height: 100%;
     background: repeating-linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.1) 0,
-        rgba(255, 255, 255, 0.1) 2px,
-        rgba(0, 0, 0, 0.1) 4px
+        rgba(255, 255, 255, 0.05) 0,
+        rgba(255, 255, 255, 0.05) 2px,
+        rgba(0, 0, 0, 0.05) 4px
     );
     animation: flicker 0.3s infinite, noise 0.2s infinite;
   }
@@ -188,6 +234,30 @@ onMounted(() => {
       transform: translateY(0) translateX(0);
     }
   }
+
+  @keyframes move-lines {
+    0% {
+      height: 14px;
+      transform: translateY(-100%);
+    }
+    25% {
+      height: 14px;
+      transform: translateY(-50%);
+    }
+    50% {
+      height: 1px;
+      transform: translateY(75%);
+    }
+    75% {
+      transform: translateY(0);
+      height: 1px;
+    }
+    100% {
+      transform: translateY(75%);
+      height: 11px;
+    }
+  }
+
 }
 
 
@@ -225,8 +295,7 @@ onMounted(() => {
   margin-left: auto;
 }
 
-.v-list-item {
-  display: flex;
-  align-items: center;
+.footer {
+  background-color: transparent;
 }
 </style>
