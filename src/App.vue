@@ -22,32 +22,29 @@
           <Logo />
         </div>
         <div class="app-header-controls right-div">
-          <!-- Theme switcher -->
-          <v-menu offset-y max-width="300px">
-            <template #activator="{ props }">
-              <v-btn icon v-bind="props" elevation="0" variant="plain">
-                <v-icon :icon="currentThemeIcon"></v-icon>
-                <v-tooltip activator="parent" location="end">
-                  <template #default>
-                    <span>{{ themeLabels[currentTheme] }}</span>
-                  </template>
-                </v-tooltip>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item
-                v-for="theme in themes"
-                :key="theme"
-                @click="setTheme(theme)"
-                :class="[{ 'v-list-item--active': currentTheme === theme }, 'd-flex']"
-              >
-                <v-list-item-title>
-                  <v-icon :icon="themeIcons[theme]" class="me-3"></v-icon>
-                  {{ themeLabels[theme] }}
-                </v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
+          <div class="tw-toggle">
+            <input
+              type="radio"
+              name="theme"
+              value="light"
+              id="theme-light"
+              :checked="currentTheme === 'light'"
+              @change="setTheme('light')"
+            />
+            <label for="theme-light"><v-icon :icon="themeIcons.light"></v-icon></label>
+
+            <input
+              type="radio"
+              name="theme"
+              value="dark"
+              id="theme-dark"
+              :checked="currentTheme === 'dark'"
+              @change="setTheme('dark')"
+            />
+            <label for="theme-dark"><v-icon :icon="themeIcons.dark"></v-icon></label>
+
+            <span></span>
+          </div>
         </div>
       </v-container>
     </div>
@@ -75,46 +72,27 @@ import { useTheme } from "vuetify";
 import Logo from "./components/Logo.vue";
 
 // Theme-related logic
-const themes = ["system", "light", "dark"] as const;
+const themes = ["light", "dark"] as const;
 type Theme = (typeof themes)[number];
 
 const theme = useTheme();
-const currentTheme = ref<Theme>("system");
+const currentTheme = ref<Theme>("light");
 
 const themeIcons: Record<Theme, string> = {
   light: "mdi-white-balance-sunny",
   dark: "mdi-moon-waxing-crescent",
-  system: "mdi-monitor",
 };
-
-const themeLabels: Record<Theme, string> = {
-  light: "Light theme",
-  dark: "Dark theme",
-  system: "System theme",
-};
-
-const currentThemeIcon = ref(themeIcons.system);
 
 const setTheme = (newTheme: Theme) => {
   currentTheme.value = newTheme;
-  if (newTheme === "system") {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    theme.global.name.value = prefersDark ? "dark" : "light";
-    currentThemeIcon.value = themeIcons.system;
-  } else {
-    theme.global.name.value = newTheme;
-    currentThemeIcon.value = themeIcons[newTheme];
-  }
+  theme.global.name.value = newTheme;
 };
 
+// Initialize the theme based on the system preference
 const initializeTheme = () => {
-  if (currentTheme.value === "system") {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    theme.global.name.value = prefersDark ? "dark" : "light";
-    currentThemeIcon.value = themeIcons.system;
-  } else {
-    currentThemeIcon.value = themeIcons[currentTheme.value];
-  }
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  currentTheme.value = prefersDark ? "dark" : "light";
+  theme.global.name.value = currentTheme.value;
 };
 initializeTheme();
 
@@ -184,6 +162,63 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+
+.tw-toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px 0 1px;
+  border-radius: 20px;
+  position: relative;
+  border: 2px solid #95a5a6;
+}
+
+.tw-toggle label {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  color: #95a5a6;
+  z-index: 2;
+  margin: 0 0 0 -2px;
+  padding: 0 6px 3px;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tw-toggle input {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tw-toggle span {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 22px;
+  transition: all 0.3s ease-in-out;
+}
+
+.tw-toggle input[value="light"]:checked ~ span {
+  background: #fbc02d;
+  left: 2px;
+}
+
+.tw-toggle input[value="dark"]:checked ~ span {
+  background: #455a64;
+  left: 31px;
+}
+
+.tw-toggle input[value="light"]:checked + label i,
+.tw-toggle input[value="dark"]:checked + label i {
+  color: #fff;
+}
+
 
 .v-application {
   .wavy-line {
@@ -367,14 +402,14 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .app-header-container {
-  display: block;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 359px) {
   .app-header-container {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
+    display: block;
   }
 }
 
