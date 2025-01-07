@@ -1,75 +1,113 @@
 <template>
   <div class="home-view">
-   <div class="static-background"></div>
+    <v-container max-width="1200px" fluid class="container">
+
+      <v-row>
+        <v-col cols="12" md="6">
+          Welcome to my portfolio
+        </v-col>
+        <v-col cols="12" md="6">
+          <svg width="3214" height="1226" viewBox="0 0 3214 1226" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect y="1016" width="188" height="210" rx="19" fill="#D9D9D9"/>
+            <rect x="224" y="1016" width="188" height="210" rx="19" fill="#D9D9D9"/>
+            <rect x="448" y="1016" width="188" height="210" rx="19" fill="#D9D9D9"/>
+            <rect x="2352" y="1016" width="188" height="210" rx="19" fill="#D9D9D9"/>
+            <rect x="2581" y="1122" width="188" height="104" rx="19" fill="#D9D9D9"/>
+            <path d="M2803 1121H2991V1206C2991 1216.49 2982.49 1225 2972 1225H2822C2811.51 1225 2803 1216.49 2803 1206V1121Z" fill="#D9D9D9"/>
+            <path d="M2991 1118L2803 1118L2803 1033C2803 1022.51 2811.51 1014 2822 1014L2972 1014C2982.49 1014 2991 1022.51 2991 1033L2991 1118Z" fill="#D9D9D9"/>
+            <rect x="3024" y="1122" width="188" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="672" y="1016" width="243" height="210" rx="19" fill="#D9D9D9"/>
+            <rect x="951" y="1016" width="1084" height="210" rx="19" fill="#D9D9D9"/>
+            <rect x="2076" y="1016" width="243" height="210" rx="19" fill="#D9D9D9"/>
+            <rect y="796" width="244" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="279" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="503" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="727" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="951" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1175" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1399" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1623" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1847" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2071" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2295" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2519" y="796" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2743" y="796" width="469" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="393" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect y="577" width="356" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="617" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="841" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1065" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1289" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1513" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1737" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1961" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2185" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2409" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2633" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2857" y="577" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect y="359" width="298" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="336" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="560" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="784" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1008" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1232" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1456" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1680" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1904" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2128" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2352" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2576" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2800" y="360" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3050 360C3039.51 360 3031 368.507 3031 379V523C3031 533.493 3039.51 542 3050 542H3057H3065.38H3071C3077.63 542 3083 547.373 3083 554V579C3083 580.036 3082.87 581.041 3082.62 582H3083V736C3083 746.493 3091.51 755 3102 755H3193C3203.49 755 3212 746.493 3212 736V523V471V379C3212 368.507 3203.49 360 3193 360H3050Z" fill="#D9D9D9"/>
+            <rect y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="224" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="448" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="672" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="896" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1120" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1344" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1568" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="1792" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2016" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2240" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2464" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2688" y="141" width="188" height="182" rx="19" fill="#D9D9D9"/>
+            <rect x="2912" y="141" width="302" height="182" rx="19" fill="#D9D9D9"/>
+            <rect width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="232" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="464" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="696" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="928" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="1160" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="1392" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="1624" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="1856" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="2088" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="2320" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="2552" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="2784" width="198" height="104" rx="19" fill="#D9D9D9"/>
+            <rect x="3016" width="198" height="104" rx="19" fill="#D9D9D9"/>
+          </svg>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .home-view {
   position: relative;
-  width: 100vw;
   height: 100vh;
-  overflow: hidden;
-}
+  text-align: left;
 
-.static-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: -1;
-  pointer-events: none;
-}
+  svg {
+    width: 100%;
+    height: auto;
+  }
 
-.static-background::before,
-.static-background::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1) 0,
-      rgba(255, 255, 255, 0.1) 2px,
-      rgba(0, 0, 0, 0.1) 4px
-  );
-  animation: flicker 0.3s forwards, noise 0.2s forwards;
-}
-
-.static-background::after {
-  background: rgba(255, 255, 255, 0.02);
-  mix-blend-mode: overlay;
-  animation: flicker 0.15s infinite, noise 0.1s infinite;
-}
-
-@keyframes flicker {
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes noise {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  25% {
-    transform: translateY(-10px) translateX(-5px);
-  }
-  50% {
-    transform: translateY(10px) translateX(5px);
-  }
-  75% {
-    transform: translateY(-5px) translateX(-10px);
-  }
-  100% {
-    transform: translateY(0) translateX(0);
+  img {
+    background-color: #009d90;
+    width: 100%;
   }
 }
 

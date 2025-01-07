@@ -106,6 +106,7 @@ $green4: #0dc499;
 .logo {
   display: flex;
   overflow: visible;
+  transform: translateX(-14px);
 }
 
 a {
@@ -172,6 +173,35 @@ a {
       opacity: .3;
       height: 42px;
       transform: translateY(2px) translateX(8px);
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  .logo {
+    transform: translateX(-1px);
+  }
+  .logo-text {
+    font-size: 28px;
+  }
+  .logo-icons {
+    padding: 0 6px 0 0;
+  }
+
+  .logo-icon {
+   ::v-deep {
+     svg {
+       height: 28px;
+       transform: translateY(-1px);
+     }
+   }
+  }
+  .logo-icon-overlay {
+    ::v-deep {
+      svg {
+        height: 28px;
+        transform: translateY(1px) translateX(0);
+      }
     }
   }
 }
