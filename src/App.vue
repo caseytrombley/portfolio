@@ -429,6 +429,7 @@ onMounted(() => {
 .right-div {
   display: flex;
   margin-left: auto;
+  justify-content: flex-end;
 }
 
 .footer {
