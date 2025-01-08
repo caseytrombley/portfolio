@@ -54,6 +54,7 @@ section {
   position: relative;
   height: 100vh;
   text-align: left;
+  overflow: hidden;
 
   .container {
     position: relative;
