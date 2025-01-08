@@ -9,27 +9,31 @@
         <AppKeyboard :activeKey="activeKey" />
       </div>
     </v-container>
-<!--    <div class="bottom-div">-->
-<!--      <div v-if="isAnimationComplete" class="animated-arrows">-->
-<!--        <span v-for="arrow in arrows" class="arrow">-->
-<!--          <v-icon icon="mdi-arrow-down"></v-icon>-->
-
-<!--        </span>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div v-if="moveImageDown" class="animated-arrows">
+      <span
+        v-for="(arrow, index) in arrows"
+        :key="index"
+        class="arrow"
+        :style="{ left: `${arrow.x}%`, top: `${arrow.y}%` }"
+      >
+        <v-icon icon="mdi-arrow-down-thick" />
+      </span>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch, nextTick } from 'vue';
+import { gsap } from 'gsap';
 import AppKeyboard from '../components/AppKeyboard.vue';
 import { introText } from '../content/index.ts';
 
 const fullText = introText;
 const displayedText = ref('');
 const activeKey = ref('');
-const isAnimationComplete = ref(false); // Tracks animation completion
-const moveImageDown = ref(false); // Tracks when the image should move and fade
+const isAnimationComplete = ref(false);
+const moveImageDown = ref(false);
+const arrows = ref<Array<{ x: number, y: number }>>([]);
 
 // Function to animate typing
 function typeText() {
@@ -62,8 +66,48 @@ function typeText() {
 
 // Start the typing animation
 typeText();
-</script>
 
+// Initialize random arrows
+function generateRandomArrows() {
+  const numArrows = 10; // Number of arrows
+  for (let i = 0; i < numArrows; i++) {
+    arrows.value.push({
+      x: Math.random() * 100, // Random x position
+      y: Math.random() * 100, // Random y position
+    });
+  }
+}
+
+// Set the floating animation with GSAP
+function animateArrows() {
+  const container = document.querySelector('.animated-arrows');
+  if (container) {
+    const arrowElements = container.querySelectorAll('.arrow');
+    arrowElements.forEach((arrow, index) => {
+      const randomXMovement = (Math.random() - 1) * 20;
+      const randomYMovement = (Math.random() - 2) * 20;
+
+      gsap.to(arrow, {
+        x: `+=${randomXMovement}`,
+        y: `+=${randomYMovement}`,
+        repeat: -1,
+        yoyo: true,
+        duration: Math.random() * 5 + 2,
+        ease: "power1.inOut",
+      });
+    });
+  }
+}
+
+// Watch for changes in isAnimationComplete
+watch(moveImageDown, async (newVal) => {
+  if (newVal) {
+    generateRandomArrows(); // Generate arrows when animation is triggered
+    await nextTick(); // Wait for DOM updates
+    animateArrows(); // Start GSAP animation
+  }
+});
+</script>
 
 
 <style lang="scss" scoped>
@@ -112,6 +156,7 @@ p {
   white-space: pre-wrap;
 }
 
+
 @media (min-width: 600px) {
   p {
     font-size: 1.5rem;
@@ -127,6 +172,38 @@ p {
     margin-top: -20px;
     width: 50%;
     transform: translateX(50%) translateY(0);
+  }
+}
+
+.animated-arrows {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: visible;
+  animation: drop 3s ease-in-out forwards;
+}
+
+.arrow {
+  position: absolute;
+  font-size: 100px;
+  color: rgba(0,0,0,0.1);
+  pointer-events: none;
+}
+
+.v-theme--dark {
+  p {
+    color: #4d847f;
+  }
+  .arrow {
+    color: rgba(0,0,0,0.1);
+  }
+}
+.v-theme--light {
+  p {
+    color: #4dbdb3;
+  }
+  .arrow {
+    color: rgba(0,0,0,0.03);
   }
 }
 
