@@ -122,15 +122,35 @@ const isActiveKey = (keyData: string | string[]) => {
 #keyboard {
   width: 100%;
   height: auto;
-  transform: scale(1.2) skewX(6deg) skewY(1deg);
+}
 
+path {
+  fill: #009d90;
+  opacity: .06;
+  //transition: all .03s;
+
+  &.active {
+    opacity: .7;
+  }
+}
+
+.v-theme--dark {
   path {
-    fill: #009d90;
-    opacity: .1;
+    fill: #f0f;
+    opacity: .06;
 
     &.active {
-      //fill: red;
-      opacity: .3;
+      opacity: .4;
+    }
+  }
+}
+.v-theme--light {
+  path {
+    fill: #cd74f1;
+    opacity: .06;
+
+    &.active {
+      opacity: .4;
     }
   }
 }

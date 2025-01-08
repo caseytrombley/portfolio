@@ -31,7 +31,7 @@ initializeTheme();
 </script>
 
 <template>
-  <div class="tw-toggle">
+  <div class="theme-switch">
     <input
       type="radio"
       name="theme"
@@ -57,7 +57,7 @@ initializeTheme();
 </template>
 
 <style lang="scss" scoped>
-.tw-toggle {
+.theme-switch {
   display: inline-flex;
   align-self: flex-start;
   padding: 4px 0 1px;
@@ -66,7 +66,7 @@ initializeTheme();
   border: 2px solid #95a5a6;
 }
 
-.tw-toggle label {
+.theme-switch label {
   position: relative;
   text-align: center;
   display: inline-block;
@@ -79,14 +79,14 @@ initializeTheme();
   cursor: pointer;
 }
 
-.tw-toggle input {
+.theme-switch input {
   position: absolute;
-  z-index: 3;
+  z-index: 0;
   opacity: 0;
   cursor: pointer;
 }
 
-.tw-toggle span {
+.theme-switch span {
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -98,18 +98,18 @@ initializeTheme();
   transition: all 0.3s ease-in-out;
 }
 
-.tw-toggle input[value="light"]:checked ~ span {
+.theme-switch input[value="light"]:checked ~ span {
   background: #fbc02d;
   left: 2px;
 }
 
-.tw-toggle input[value="dark"]:checked ~ span {
+.theme-switch input[value="dark"]:checked ~ span {
   background: #455a64;
   left: 31px;
 }
 
-.tw-toggle input[value="light"]:checked + label i,
-.tw-toggle input[value="dark"]:checked + label i {
+.theme-switch input[value="light"]:checked + label i,
+.theme-switch input[value="dark"]:checked + label i {
   color: #fff;
 }
 
