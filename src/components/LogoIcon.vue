@@ -33,10 +33,10 @@
     <polygon class="right trans" points="164.7,72.4 192,56 192,167.3 164.7,151.7 "/>
 
     <!--      &lt;!&ndash; Group for the "C" &ndash;&gt;-->
-    <!--      <g id="text-layer">-->
-    <!--        <text x="96" y="130" text-anchor="middle" class="svg-text">-->
+    <!--      <g id="content-layer">-->
+    <!--        <content x="96" y="130" content-anchor="middle" class="svg-content">-->
     <!--          C-->
-    <!--        </text>-->
+    <!--        </content>-->
     <!--      </g>-->
 
 </svg>

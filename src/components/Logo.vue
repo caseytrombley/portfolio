@@ -20,7 +20,7 @@ const restartAnimation = async () => {
   await nextTick();
 
   // Reset word animation (this triggers "falling in" again)
-  const wordElements = document.querySelectorAll('.logo-text .word');
+  const wordElements = document.querySelectorAll('.logo-content .word');
   wordElements.forEach((el, index) => {
     el.style.animation = ''; // Reset the animation
     el.offsetHeight; // Trigger reflow to restart animation
