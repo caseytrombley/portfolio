@@ -3,33 +3,18 @@
     <v-container max-width="1200px" fluid class="container">
       <h2>Experience</h2>
 
-      <div class="item">
+      <div v-for="(item, i) in experience" class="item">
         <div class="box-left">
           <h4>
-            Senior Software Engineer at Explore Learning
+            {{ item.title }} at {{ item.company }}
           </h4>
           <p>
-            Designed and developed javascript apps
+            {{ item.description }}
           </p>
         </div>
         <div class="box-right">
           <p class="label">
-            November 2022 - November 2024
-          </p>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="box-left">
-          <h4>
-            Senior Software Engineer at Explore Learning
-          </h4>
-          <p>Designed and developed javascript apps
-          </p>
-        </div>
-        <div class="box-right">
-          <p class="label">
-            November 2022 - November 2024
+            {{ item.dates }}
           </p>
         </div>
       </div>
@@ -42,6 +27,7 @@
 import { onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { experience } from '../content/index.ts';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -91,6 +77,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 section {
+  padding-bottom: 10rem;
   background-color: rgba(255, 0, 255, 0.1);
 }
 h2 {
