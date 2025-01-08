@@ -1,67 +1,24 @@
 <template>
-  <section class="grad-bottom">
+  <section>
     <v-container max-width="1200px" fluid class="container">
-      <h1>Welcome to my portfolio!</h1>
+      <h2>From concept to creation</h2>
       <div class="text">
-        <p>{{ displayedText }}</p>
+        <p>Once added it will show a timeline of creative process as you scroll down</p>
       </div>
-      <div class="image" :class="{ 'fall': moveImageDown }">
-        <AppKeyboard :activeKey="activeKey" />
+      <div class="image">
+
+        <div class="fault">
+          yekka
+        </div>
+
       </div>
     </v-container>
-    <div class="bottom-div">
-      <div v-if="isAnimationComplete">
-        Please do something
-      </div>
-    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import AppKeyboard from '../components/AppKeyboard.vue';
-import { introText } from '../content/index.ts';
 
-const fullText = introText;
-const displayedText = ref('');
-const activeKey = ref('');
-const isAnimationComplete = ref(false); // Tracks animation completion
-const moveImageDown = ref(false); // Tracks when the image should move and fade
-
-// Function to animate typing
-function typeText() {
-  let index = 0;
-
-  function typeNextChar() {
-    if (index < fullText.length) {
-      const currentChar = fullText[index];
-      displayedText.value += currentChar;
-
-      // Update the activeKey for the keyboard, lowercase the key for matching
-      activeKey.value = currentChar.toLowerCase();
-
-      index++;
-      setTimeout(typeNextChar, 15); // Adjust speed here (100ms per character)
-    } else {
-      // Clear activeKey after typing is complete
-      activeKey.value = '';
-      isAnimationComplete.value = true; // Mark animation as complete
-
-      // Delay the image animation by 1 second
-      setTimeout(() => {
-        moveImageDown.value = true;
-      }, 1000);
-    }
-  }
-
-  typeNextChar();
-}
-
-// Start the typing animation
-typeText();
 </script>
-
-
 
 <style lang="scss" scoped>
 h1 {
@@ -81,15 +38,10 @@ h1 {
 
 .image {
   width: 100%;
+  //transform: translateX(190px);
   opacity: 0;
   animation: imageAnim 0.3s ease-in-out forwards;
   animation-delay: .3s;
-
-  &.fall {
-    //opacity: 1;
-    animation: fall 0.6s ease-in-out forwards;
-    animation-delay: .3s;
-  }
 
   ::v-deep {
     svg {
@@ -114,7 +66,7 @@ p {
 
   .text {
     position: absolute;
-    width: 93%
+    width: 95%
   }
 
   .image {
@@ -165,17 +117,6 @@ p {
   }
 }
 
-@keyframes fall {
-  0% {
-    opacity: 1;
-    transform: translateX(50%) translateY(-20px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(50%) translateY(300%);
-  }
-}
-
 @keyframes imageAnim2 {
   0% {
     transform: scale(1.3) skewX(6deg) skewY(-1deg);
@@ -201,17 +142,6 @@ p {
     100% {
       opacity: 1;
       transform: translateX(20%) translateY(12px);
-    }
-  }
-
-  @keyframes fall {
-    0% {
-      opacity: 1;
-      transform: translateX(20%) translateY(12px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(20%) translateY(300%);
     }
   }
 
