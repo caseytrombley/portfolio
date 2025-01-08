@@ -9,11 +9,14 @@
         <AppKeyboard :activeKey="activeKey" />
       </div>
     </v-container>
-    <div class="bottom-div">
-      <div v-if="isAnimationComplete">
-        Please do something
-      </div>
-    </div>
+<!--    <div class="bottom-div">-->
+<!--      <div v-if="isAnimationComplete" class="animated-arrows">-->
+<!--        <span v-for="arrow in arrows" class="arrow">-->
+<!--          <v-icon icon="mdi-arrow-down"></v-icon>-->
+
+<!--        </span>-->
+<!--      </div>-->
+<!--    </div>-->
   </section>
 </template>
 
@@ -50,7 +53,7 @@ function typeText() {
       // Delay the image animation by 1 second
       setTimeout(() => {
         moveImageDown.value = true;
-      }, 1000);
+      }, 2200);
     }
   }
 
@@ -65,6 +68,7 @@ typeText();
 
 <style lang="scss" scoped>
 h1 {
+  padding: 0 0 12px;
   opacity: 0;
   animation: drop 0.3s ease-in-out forwards;
   animation-delay: .5s;
@@ -81,12 +85,14 @@ h1 {
 
 .image {
   width: 100%;
+  margin-top: 20%;
   opacity: 0;
+  transform: translateX(20%) translateY(0);
   animation: imageAnim 0.3s ease-in-out forwards;
   animation-delay: .3s;
 
   &.fall {
-    //opacity: 1;
+    opacity: 1;
     animation: fall 0.6s ease-in-out forwards;
     animation-delay: .3s;
   }
@@ -118,8 +124,9 @@ p {
   }
 
   .image {
+    margin-top: -20px;
     width: 50%;
-    transform: translateX(50%) translateY(0px);
+    transform: translateX(50%) translateY(0);
   }
 }
 
@@ -153,22 +160,22 @@ p {
 @keyframes imageAnim {
   0% {
     opacity: 0;
-    transform: translateX(300%) translateY(-20px);
+    transform: translateX(300%);
   }
   80% {
     opacity: 1;
-    transform: translateX(55%) translateY(-20px);
+    transform: translateX(55%);
   }
   100% {
     opacity: 1;
-    transform: translateX(50%) translateY(-20px);
+    transform: translateX(50%);
   }
 }
 
 @keyframes fall {
   0% {
     opacity: 1;
-    transform: translateX(50%) translateY(-20px);
+    transform: translateX(50%) translateY(0);
   }
   100% {
     opacity: 0;
@@ -178,13 +185,13 @@ p {
 
 @keyframes imageAnim2 {
   0% {
-    transform: scale(1.3) skewX(6deg) skewY(-1deg);
+    transform: scale(1.4) skewX(6deg) skewY(-1deg);
   }
   50% {
-    transform: scale(1.4) skewX(3deg) skewY(-1deg);
+    transform: scale(1.6) skewX(3deg) skewY(-1deg);
   }
   100% {
-    transform: scale(1.3) skewX(6deg) skewY(-1deg);
+    transform: scale(1.4) skewX(6deg) skewY(-1deg);
   }
 }
 
@@ -192,22 +199,22 @@ p {
   @keyframes imageAnim {
     0% {
       opacity: 0;
-      transform: translateX(300%) translateY(12px);
+      transform: translateX(300%);
     }
     80% {
       opacity: 1;
-      transform: translateX(25%) translateY(12px);
+      transform: translateX(25%);
     }
     100% {
       opacity: 1;
-      transform: translateX(20%) translateY(12px);
+      transform: translateX(20%);
     }
   }
 
   @keyframes fall {
     0% {
       opacity: 1;
-      transform: translateX(20%) translateY(12px);
+      transform: translateX(20%) translateY(0);
     }
     100% {
       opacity: 0;
@@ -220,7 +227,7 @@ p {
       transform: scale(1.5) skewX(6deg) skewY(-1deg);
     }
     50% {
-      transform: scale(1.6) skewX(3deg) skewY(-1deg);
+      transform: scale(1.7) skewX(3deg) skewY(-1deg);
     }
     100% {
       transform: scale(1.5) skewX(6deg) skewY(-1deg);
