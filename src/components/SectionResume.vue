@@ -4,19 +4,22 @@
       <h2>Experience</h2>
 
       <div v-for="(item, i) in experience" class="item">
-        <div class="box-left">
-          <h4>
-            {{ item.title }} at {{ item.company }}
-          </h4>
-          <p>
-            {{ item.description }}
-          </p>
+        <div class="item-row">
+          <div class="box-left">
+            <h4>
+              {{ item.title }} at {{ item.company }}
+            </h4>
+            <p>
+              {{ item.description }}
+            </p>
+          </div>
+          <div class="box-right">
+            <p class="label">
+              {{ item.dates }}
+            </p>
+          </div>
         </div>
-        <div class="box-right">
-          <p class="label">
-            {{ item.dates }}
-          </p>
-        </div>
+        <div class="line"></div>
       </div>
 
     </v-container>
@@ -38,18 +41,19 @@ onMounted(() => {
   items.forEach((item) => {
     const boxLeft = item.querySelector(".box-left");
     const boxRight = item.querySelector(".box-right");
+    const line = item.querySelector(".line");
 
     // GSAP ScrollTrigger animation
     gsap.fromTo(
       boxLeft,
-      { x: "-100%", opacity: 0 },
+      { x: "-33%", opacity: 0 },
       {
         x: "0%",
         opacity: 1,
         scrollTrigger: {
           trigger: item,
           start: "top bottom", // Start animation when the top of item hits the bottom of viewport
-          end: "top center", // End animation when the top of item hits the center of viewport
+          end: "top 70%", // End animation when the top of item hits the center of viewport
           scrub: true, // Sync animation to scroll
         },
       }
@@ -57,10 +61,32 @@ onMounted(() => {
 
     gsap.fromTo(
       boxRight,
-      { x: "100%", opacity: 0 },
+      { x: "33%", opacity: 0 },
       {
         x: "0%",
         opacity: 1,
+        scrollTrigger: {
+          trigger: item,
+          start: "top bottom",
+          end: "top 70%",
+          scrub: true,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      line,
+      {
+        y: "-100px",
+        opacity: 0,
+        height: "10px",
+        width: "0"
+      },
+      {
+        y: "0px",
+        opacity: 1,
+        height: "3px",
+        width: "100%",
         scrollTrigger: {
           trigger: item,
           start: "top bottom",
@@ -77,18 +103,26 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 section {
-  padding-bottom: 10rem;
+  padding-bottom: 3rem;
   background-color: rgba(255, 0, 255, 0.1);
 }
 h2 {
 
 }
 
-.item {
+.item-row {
   display: flex;
   justify-content: space-between;
   padding: 3rem 0;
-  border-bottom: 3px solid #cccccc;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #cccccc;
+  border-radius: 15px;
+  text-align: center;
 }
 
 h4 {
@@ -114,10 +148,16 @@ h4 {
   .item {
     border-color: rgba(255,255,255,0.05);
   }
+  .line {
+    background-color: rgba(255,255,255,0.05);
+  }
 }
 .v-theme--light {
   .item {
     border-color: rgba(0,0,0,0.05);
+  }
+  .line {
+    background-color: rgba(0,0,0,0.05);
   }
 }
 

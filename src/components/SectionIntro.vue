@@ -8,6 +8,9 @@
       <div class="image" :class="{ 'fall': moveImageDown }">
         <AppKeyboard :activeKey="activeKey" />
       </div>
+      <div class="background">
+
+      </div>
     </v-container>
     <div v-if="moveImageDown" class="animated-arrows">
       <span

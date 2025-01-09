@@ -14,7 +14,7 @@
   </div>
   <div class="static-lines" ref="staticLines"></div>
 
-  <div class="static-background" ref="staticBackground"></div>
+<!--  <div class="static-background" ref="staticBackground"></div>-->
 </template>
 
 <script setup lang="ts">
