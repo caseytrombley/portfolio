@@ -1,11 +1,11 @@
 <template>
   <section>
     <v-container max-width="1200px" fluid class="container">
-      <h2>Experience</h2>
+      <h2 class="heading">Work Experience</h2>
 
       <div v-for="(item, i) in experience" class="item">
         <div class="item-row">
-          <div class="box-left">
+          <div class="box box-left">
             <h4>
               {{ item.title }} at {{ item.company }}
             </h4>
@@ -13,7 +13,7 @@
               {{ item.description }}
             </p>
           </div>
-          <div class="box-right">
+          <div class="box box-right">
             <p class="label">
               {{ item.dates }}
             </p>
@@ -36,7 +36,27 @@ import { experience } from '../content/index.ts';
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
+  const heading = document.querySelector(".heading");
   const items = document.querySelectorAll(".item");
+
+  if (heading) {
+    gsap.fromTo(
+      heading,
+      { opacity: 0, y: "-300%" },
+      {
+        opacity: 1,
+        y: "0",
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: heading,
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
+  }
 
   items.forEach((item) => {
     const boxLeft = item.querySelector(".box-left");
@@ -106,14 +126,25 @@ section {
   padding-bottom: 3rem;
   background-color: rgba(255, 0, 255, 0.1);
 }
-h2 {
-
-}
 
 .item-row {
-  display: flex;
-  justify-content: space-between;
+  display: block;
   padding: 3rem 0;
+}
+
+.box + .box {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 0;
+  }
+  .box + .box {
+    margin: 0;
+  }
 }
 
 .line {
@@ -123,19 +154,6 @@ h2 {
   background-color: #cccccc;
   border-radius: 15px;
   text-align: center;
-}
-
-h4 {
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1.2;
-}
-
-.label {
-  font-size: 1.1rem;
-  font-weight: 400;
-  line-height: 1.1;
-  opacity: 0.4;
 }
 
 .box-left,
