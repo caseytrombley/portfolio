@@ -20,14 +20,28 @@
         <v-icon icon="mdi-arrow-down-thick" />
       </span>
     </div>
-<!--    <div class="bottom-div">-->
-<!--      <div class="avatar">-->
-<!--        <Avatar />-->
-<!--      </div>-->
-<!--      <div class="desc">-->
-<!--        More words here-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="bottom-div">
+      <v-container max-width="1200px" fluid class="container">
+        <div class="more">
+          <div class="avatar">
+            <img src="/avatar.png" alt="">
+          </div>
+          <div class="desc">
+            <div class="title">
+              Some of my best skills include:
+            </div>
+            <div class="desc-items">
+              <ul>
+                <li>Typescript / Ecmascript</li>
+                <li>Vue</li>
+                <li>CSS (Sass)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </v-container>
+
+    </div>
 <!--    <div class="background">-->
 <!--      <Avatar />-->
 <!--    </div>-->
@@ -162,10 +176,66 @@ h1 {
   }
 }
 
+.bottom-div {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 5rem 3rem;
+
+}
+@media (min-width: 768px) {
+  .bottom-div {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 114px;
+    padding: 7rem 3rem;
+  }
+}
+
+.more {
+  display: block;
+  margin: 0 auto;
+}
+
 .avatar {
-  width: 300px;
-  height: 300px;
-  transform: scale(1);
+  margin: 0 auto;
+  max-width: 300px;
+
+  img {
+    width: 100%;
+  }
+}
+.desc {
+  text-align: left;
+  font-size: 1.5rem;
+  background: rgba(255,255,255,0.02);
+  padding: 3rem;
+  border-radius: 15px;
+  transform: rotate(-2deg);
+
+  .items {
+    ul {
+      text-align: left;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .more {
+    display: flex;
+    margin: 0 auto;
+  }
+  .avatar {
+    margin: 0 2rem 0 0;
+    max-width: 300px;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .background {

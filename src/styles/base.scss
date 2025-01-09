@@ -154,19 +154,7 @@ section {
   position: relative;
 }
 
-.bottom-div {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
 
-  margin-bottom: 114px;
-
-  //background-color: rgba(255, 0, 255, 0.1);
-  padding: 7rem 3rem;
-  //box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: shadow effect */
-  //font-size: 1rem;
-}
 .grad-bottom {
   background: linear-gradient(
                   to bottom,
