@@ -8,9 +8,7 @@
       <div class="image" :class="{ 'fall': moveImageDown }">
         <AppKeyboard :activeKey="activeKey" />
       </div>
-      <div class="background">
 
-      </div>
     </v-container>
     <div v-if="moveImageDown" class="animated-arrows">
       <span
@@ -22,6 +20,17 @@
         <v-icon icon="mdi-arrow-down-thick" />
       </span>
     </div>
+<!--    <div class="bottom-div">-->
+<!--      <div class="avatar">-->
+<!--        <Avatar />-->
+<!--      </div>-->
+<!--      <div class="desc">-->
+<!--        More words here-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="background">-->
+<!--      <Avatar />-->
+<!--    </div>-->
   </section>
 </template>
 
@@ -151,6 +160,22 @@ h1 {
       animation-delay: .5s;
     }
   }
+}
+
+.avatar {
+  width: 300px;
+  height: 300px;
+  transform: scale(1);
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 p {

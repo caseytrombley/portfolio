@@ -141,6 +141,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     .container {
