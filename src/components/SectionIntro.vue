@@ -20,7 +20,7 @@
         <v-icon icon="mdi-arrow-down-thick" />
       </span>
     </div>
-    <div class="bottom-div">
+    <div v-if="moveImageDown" class="bottom-div">
       <v-container max-width="1200px" fluid class="container">
         <div class="more">
           <div class="avatar">
@@ -176,21 +176,31 @@ h1 {
   }
 }
 
+.avatar {
+  animation: drop 0.3s ease-in-out forwards;
+}
+
+.desc {
+  animation: drop 0.3s ease-in-out forwards;
+  //animation-delay: .3s;
+}
+
 .bottom-div {
   position: absolute;
-  bottom: 0;
+  bottom: -20px;
   width: 100%;
   text-align: center;
   margin-bottom: 0;
   padding: 5rem 3rem;
 
 }
+@media (min-width: 400px) {
+  .bottom-div {
+    bottom: 0;
+  }
+}
 @media (min-width: 768px) {
   .bottom-div {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
     margin-bottom: 114px;
     padding: 7rem 3rem;
   }
