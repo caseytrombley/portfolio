@@ -1,13 +1,13 @@
 <template>
-  <section class="grad-bottom">
-    <v-container max-width="1200px" fluid class="welcome container">
-      <div class="welcome-text">
+  <section class="intro grad-bottom">
+    <v-container max-width="1200px" fluid class="container">
+      <div class="intro-text">
         <h1>Welcome to my portfolio!</h1>
-        <div class="text">
+        <div class="paragraph">
           <p>{{ displayedText }}</p>
         </div>
       </div>
-      <div class="image" :class="{ 'fall': moveImageDown }">
+      <div class="intro-image" :class="{ 'fall': moveImageDown }">
         <AppKeyboard :activeKey="activeKey" />
       </div>
 
@@ -212,27 +212,46 @@ typeText();
 
 
 <style lang="scss" scoped>
+.intro {
+  .container {
+    position: relative;
+    z-index: 3;
+    min-height: 30vh;
+    @media (min-width: 960px) {
+      min-height: auto;
+    }
+  }
+}
+.intro-text {
+  position: absolute;
+  width: 93%;
+}
 h1 {
   padding: 0 0 12px;
   opacity: 0;
   animation: drop 0.3s ease-in-out forwards;
   animation-delay: .5s;
 }
-
-.text {
-  position: absolute;
+.paragraph {
+  z-index: 3;
   padding: 0 15px 0 2px;
   opacity: 0;
   transform: rotate(-1deg);
   animation: textAnim 0.3s ease-in-out forwards;
   animation-delay: .6s;
 }
-
-.image {
+p {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  white-space: pre-wrap;
+}
+.intro-image {
+  position: absolute;
+  z-index: 0;
   width: 100%;
-  margin-top: 20%;
+  top: 35%;
   opacity: 0;
-  transform: translateX(20%) translateY(0);
+  transform: translateX(0) translateY(0);
   animation: imageAnim 0.3s ease-in-out forwards;
   animation-delay: .3s;
 
@@ -250,21 +269,28 @@ h1 {
     }
   }
 }
+@media (min-width: 600px) {
+  p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 
+  .intro-image {
+    width: 50%;
+    top: 27px;
+    left: -2%;
+    transform: translateX(50%) translateY(0);
+  }
+}
 .bottom-div {
-  position: absolute;
-  top: 20%;
-  bottom: 0;
+  position: relative;
   width: 100%;
   text-align: center;
   margin-bottom: 0;
   padding: 5rem 0;
-
 }
-
 @media (min-width: 768px) {
   .bottom-div {
-    margin-bottom: 114px;
     padding: 7rem 0;
   }
 }
@@ -273,20 +299,16 @@ h1 {
   display: block;
   margin: 0 auto;
 }
-
 .avatar, .desc {
   opacity: 0;
 }
-
 .avatar {
   margin: 0 auto;
-  max-width: 300px;
-
+  max-width: 250px;
   img {
     width: 100%;
   }
 }
-
 .desc {
   text-align: left;
   font-size: 1.5rem;
@@ -294,8 +316,7 @@ h1 {
   padding: 3rem;
   margin: -12px;
   border-radius: 15px;
-  transform: rotate(-2deg);
-
+  transform: rotate(-1deg);
   .items {
     ul {
       text-align: left;
@@ -317,54 +338,20 @@ h1 {
   }
 }
 
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-}
-
-p {
-  font-size: 1.2rem;
-  line-height: 1.2;
-  white-space: pre-wrap;
-}
-
-
-@media (min-width: 600px) {
-  p {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .text {
-    position: absolute;
-    width: 93%
-  }
-
-  .image {
-    margin-top: -20px;
-    width: 50%;
-    transform: translateX(50%) translateY(0);
-  }
-}
-
 .animated-arrows {
-  position: relative;
+  position: absolute;
+  z-index: 1;
   width: 100%;
   height: 400px;
   overflow: visible;
   animation: drop 3s ease-in-out forwards;
-}
-
-.arrow {
-  position: absolute;
-  font-size: 100px;
-  color: rgba(0,0,0,0.1);
-  pointer-events: none;
+  .arrow {
+    position: absolute;
+    z-index: 1;
+    font-size: 100px;
+    color: rgba(0,0,0,0.1);
+    pointer-events: none;
+  }
 }
 
 .v-theme--dark {
@@ -457,22 +444,22 @@ p {
     }
     80% {
       opacity: 1;
-      transform: translateX(25%);
+      transform: translateX(-5%);
     }
     100% {
       opacity: 1;
-      transform: translateX(20%);
+      transform: translateX(0);
     }
   }
 
   @keyframes fall {
     0% {
       opacity: 1;
-      transform: translateX(20%) translateY(0);
+      transform: translateX(0) translateY(0);
     }
     100% {
       opacity: 0;
-      transform: translateX(20%) translateY(300%);
+      transform: translateX(0) translateY(300%);
     }
   }
 
