@@ -1,9 +1,11 @@
 <template>
   <section class="grad-bottom">
-    <v-container max-width="1200px" fluid class="container">
-      <h1>Welcome to my portfolio!</h1>
-      <div class="text">
-        <p>{{ displayedText }}</p>
+    <v-container max-width="1200px" fluid class="welcome container">
+      <div class="welcome-text">
+        <h1>Welcome to my portfolio!</h1>
+        <div class="text">
+          <p>{{ displayedText }}</p>
+        </div>
       </div>
       <div class="image" :class="{ 'fall': moveImageDown }">
         <AppKeyboard :activeKey="activeKey" />
@@ -15,51 +17,81 @@
         v-for="(arrow, index) in arrows"
         :key="index"
         class="arrow"
-        :style="{ left: `${arrow.x}%`, top: `${arrow.y}%` }"
+        :style="{ left: `${arrow.x}%`, top: `${arrow.y}%`}"
       >
-        <v-icon icon="mdi-arrow-down-thick" />
+        <v-icon :style="{fontSize: '200px'}" icon="mdi-arrow-down-thick" />
       </span>
     </div>
-    <div v-if="moveImageDown" class="bottom-div">
+    <div class="bottom-div">
       <v-container max-width="1200px" fluid class="container">
-        <div class="more">
-          <div class="avatar">
-            <img src="/avatar.png" alt="">
-          </div>
-          <div class="desc">
-            <div class="title">
-              Some of my best skills include:
+        <v-row class="skills">
+          <v-col cols="12" md="4">
+            <div class="avatar">
+              <img src="/avatar.png" alt="">
             </div>
-            <div class="desc-items">
-              <ul>
-                <li>Typescript / Ecmascript</li>
-                <li>Vue</li>
-                <li>CSS (Sass)</li>
-              </ul>
+          </v-col>
+          <v-col cols="12" md="8">
+            <div class="desc">
+              <h4 class="title">
+                My top skills
+              </h4>
+              <div class="desc-items">
+                <v-container fluid>
+                  <v-row>
+                    <v-col cols="12" md="6">
+                      <v-list dense>
+                        <v-list-item>
+                          <v-icon start>mdi-language-javascript</v-icon>
+                          <v-list-item-title>JavaScript</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item>
+                          <v-icon start>mdi-language-css3</v-icon>
+                          <v-list-item-title>CSS (Sass)</v-list-item-title>
+                        </v-list-item>
+                      </v-list>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <v-list dense>
+                        <v-list-item>
+                          <v-icon start>mdi-vuejs</v-icon>
+                          <v-list-item-title>Vue</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item>
+                          <v-icon start>mdi-react</v-icon>
+                          <v-list-item-title>React</v-list-item-title>
+                        </v-list-item>
+                      </v-list>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </div>
+
             </div>
-          </div>
-        </div>
+          </v-col>
+        </v-row>
       </v-container>
 
     </div>
-<!--    <div class="background">-->
-<!--      <Avatar />-->
-<!--    </div>-->
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { gsap } from 'gsap';
 import AppKeyboard from '../components/AppKeyboard.vue';
 import { introText } from '../content/index.ts';
+
 
 const fullText = introText;
 const displayedText = ref('');
 const activeKey = ref('');
 const isAnimationComplete = ref(false);
 const moveImageDown = ref(false);
-const arrows = ref<Array<{ x: number, y: number }>>([]);
+const arrows = ref<Array<{ x: number; y: number }>>([]);
+const animateTriggered = ref(false);
+
 
 // Function to animate typing
 function typeText() {
@@ -69,18 +101,19 @@ function typeText() {
     if (index < fullText.length) {
       const currentChar = fullText[index];
       displayedText.value += currentChar;
-
-      // Update the activeKey for the keyboard, lowercase the key for matching
       activeKey.value = currentChar.toLowerCase();
-
       index++;
-      setTimeout(typeNextChar, 15); // Adjust speed here (100ms per character)
+      setTimeout(typeNextChar, 15);
     } else {
-      // Clear activeKey after typing is complete
       activeKey.value = '';
-      isAnimationComplete.value = true; // Mark animation as complete
+      isAnimationComplete.value = true;
 
-      // Delay the image animation by 1 second
+      // trigger some other anims
+      setTimeout(() => {
+        animateSkills();
+        animateTriggered.value = true;
+      }, 1200);
+
       setTimeout(() => {
         moveImageDown.value = true;
       }, 2200);
@@ -90,16 +123,13 @@ function typeText() {
   typeNextChar();
 }
 
-// Start the typing animation
-typeText();
-
 // Initialize random arrows
 function generateRandomArrows() {
-  const numArrows = 10; // Number of arrows
+  const numArrows = 13;
   for (let i = 0; i < numArrows; i++) {
     arrows.value.push({
-      x: Math.random() * 100, // Random x position
-      y: Math.random() * 100, // Random y position
+      x: Math.random() * 100,
+      y: Math.random() * 100,
     });
   }
 }
@@ -109,7 +139,7 @@ function animateArrows() {
   const container = document.querySelector('.animated-arrows');
   if (container) {
     const arrowElements = container.querySelectorAll('.arrow');
-    arrowElements.forEach((arrow, index) => {
+    arrowElements.forEach((arrow) => {
       const randomXMovement = (Math.random() - 1) * 20;
       const randomYMovement = (Math.random() - 2) * 20;
 
@@ -119,20 +149,65 @@ function animateArrows() {
         repeat: -1,
         yoyo: true,
         duration: Math.random() * 5 + 2,
-        ease: "power1.inOut",
+        ease: 'power1.inOut',
       });
     });
   }
 }
 
-// Watch for changes in isAnimationComplete
+// GSAP animations for avatar and description
+function animateSkills() {
+  if (animateTriggered.value) return;
+
+  const avatar = document.querySelector('.avatar');
+  const desc = document.querySelector('.desc');
+
+  if (avatar) {
+    gsap.fromTo(
+      avatar,
+      { opacity: 0, y: -50 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
+    );
+  }
+
+  if (desc) {
+    gsap.fromTo(
+      desc,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1, delay: 0.5, ease: 'power2.out' }
+    );
+  }
+}
+
+// Start animations when scrolling
+onMounted(() => {
+  const handleScroll = () => {
+    if (!animateTriggered.value) {
+      animateSkills();
+      animateTriggered.value = true;
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+  });
+});
+
+// Watch for moveImageDown
 watch(moveImageDown, async (newVal) => {
   if (newVal) {
-    generateRandomArrows(); // Generate arrows when animation is triggered
-    await nextTick(); // Wait for DOM updates
-    animateArrows(); // Start GSAP animation
+    generateRandomArrows();
+    await nextTick();
+    animateArrows();
+
   }
 });
+
+// Start the typing animation
+typeText();
+
 </script>
 
 
@@ -176,39 +251,31 @@ h1 {
   }
 }
 
-.avatar {
-  animation: drop 0.3s ease-in-out forwards;
-}
-
-.desc {
-  animation: drop 0.3s ease-in-out forwards;
-  //animation-delay: .3s;
-}
-
 .bottom-div {
   position: absolute;
-  bottom: -20px;
+  top: 20%;
+  bottom: 0;
   width: 100%;
   text-align: center;
   margin-bottom: 0;
-  padding: 5rem 3rem;
+  padding: 5rem 0;
 
 }
-@media (min-width: 400px) {
-  .bottom-div {
-    bottom: 0;
-  }
-}
+
 @media (min-width: 768px) {
   .bottom-div {
     margin-bottom: 114px;
-    padding: 7rem 3rem;
+    padding: 7rem 0;
   }
 }
 
-.more {
+.skills {
   display: block;
   margin: 0 auto;
+}
+
+.avatar, .desc {
+  opacity: 0;
 }
 
 .avatar {
@@ -219,11 +286,13 @@ h1 {
     width: 100%;
   }
 }
+
 .desc {
   text-align: left;
   font-size: 1.5rem;
   background: rgba(255,255,255,0.02);
   padding: 3rem;
+  margin: -12px;
   border-radius: 15px;
   transform: rotate(-2deg);
 
@@ -234,7 +303,7 @@ h1 {
   }
 }
 @media (min-width: 768px) {
-  .more {
+  .skills {
     display: flex;
     margin: 0 auto;
   }
