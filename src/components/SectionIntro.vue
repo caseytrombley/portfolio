@@ -35,37 +35,63 @@
               <h4 class="title">
                 My top skills
               </h4>
+              <div class="label">Languages<v-icon icon="mdi-arrow-down-right" class="icon" /></div>
+
               <div class="desc-items">
-                <v-container fluid>
-                  <v-row>
-                    <v-col cols="12" md="6">
-                      <v-list dense>
-                        <v-list-item>
-                          <v-icon start>mdi-language-javascript</v-icon>
-                          <v-list-item-title>JavaScript</v-list-item-title>
-                        </v-list-item>
+                <div class="grid">
+                  <div class="grid-item">
+                    <v-icon start>mdi-language-javascript</v-icon>
+                    <span>JavaScript</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-language-typescript</v-icon>
+                    <span>TypeScript</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-language-css3</v-icon>
+                    <span>CSS</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-language-html5</v-icon>
+                    <span>HTML</span>
+                  </div>
+                </div>
+              </div>
 
-                        <v-list-item>
-                          <v-icon start>mdi-language-css3</v-icon>
-                          <v-list-item-title>CSS (Sass)</v-list-item-title>
-                        </v-list-item>
-                      </v-list>
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <v-list dense>
-                        <v-list-item>
-                          <v-icon start>mdi-vuejs</v-icon>
-                          <v-list-item-title>Vue</v-list-item-title>
-                        </v-list-item>
+              <div class="label">Frameworks<v-icon icon="mdi-arrow-down-right" class="icon" /></div>
 
-                        <v-list-item>
-                          <v-icon start>mdi-react</v-icon>
-                          <v-list-item-title>React</v-list-item-title>
-                        </v-list-item>
-                      </v-list>
-                    </v-col>
-                  </v-row>
-                </v-container>
+              <div class="desc-items">
+                <div class="grid">
+
+                  <div class="grid-item">
+                    <v-icon start>mdi-vuejs</v-icon>
+                    <span>Vue</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-react</v-icon>
+                    <span>React</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-code-block-braces</v-icon>
+                    <span>Nuxt</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-fire-circle</v-icon>
+                    <span>Firebase</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-code-braces</v-icon>
+                    <span>Bootstrap</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-alpha-v</v-icon>
+                    <span>Vuetify</span>
+                  </div>
+                  <div class="grid-item">
+                    <v-icon start>mdi-alpha-t</v-icon>
+                    <span>Tailwind</span>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -298,6 +324,24 @@ p {
 .skills {
   display: block;
   margin: 0 auto;
+
+  h4 {
+    margin: 0 0 1rem;
+    font-size: 1.125rem;
+  }
+  .label {
+    @include font-written;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin: 2rem 0 1rem;
+    text-align: left;
+
+    .icon {
+      font-size: .75em;
+      top: 4px;
+      right: -6px;
+    }
+  }
 }
 .avatar, .desc {
   opacity: 0;
@@ -311,18 +355,37 @@ p {
 }
 .desc {
   text-align: left;
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   background: rgba(255,255,255,0.02);
-  padding: 3rem;
+  padding: 2rem;
   margin: -12px;
   border-radius: 15px;
   transform: rotate(-1deg);
-  .items {
-    ul {
-      text-align: left;
-    }
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.grid-item {
+  flex: 1 1 calc(50% - 16px);
+  display: flex;
+  align-items: center;
+  //justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+@media (min-width: 960px) {
+  .grid-item {
+    flex: 1 1 calc(33.333% - 16px);
   }
 }
+
 @media (min-width: 768px) {
   .skills {
     display: flex;
@@ -336,7 +399,12 @@ p {
       width: 100%;
     }
   }
+  .desc {
+    font-size: 1.5rem;
+    padding: 3rem;
+  }
 }
+
 
 .animated-arrows {
   position: absolute;
