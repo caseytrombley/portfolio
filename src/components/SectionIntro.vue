@@ -464,16 +464,16 @@ p {
   opacity: 0;
 }
 .avatar-block {
-  //display: block;
   width: 100%;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
+  animation: scaleUpDown 5s ease-in-out infinite;
   img {
     width: 60%;
   }
 }
 .avatar {
-  position: absolute;  /* or 'fixed' if you want it to stay fixed while scrolling */
+  position: absolute;
   margin: 0 auto;
   max-width: 250px;
   overflow: hidden;
