@@ -11,6 +11,9 @@ import SectionResume from "../components/SectionResume.vue";
 import SectionArtwork from "../components/SectionArtwork.vue";
 </script>
 <style lang="scss" scoped>
-
+.home-view {
+  position: relative;
+  overflow: visible;
+}
 </style>
 

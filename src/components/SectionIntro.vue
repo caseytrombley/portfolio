@@ -24,13 +24,18 @@
     </div>
     <div class="bottom-div">
       <v-container max-width="1200px" fluid class="container">
-        <v-row class="skills">
-          <v-col cols="12" md="4">
-            <div class="avatar" ref="avatarRef">
-              <img src="/avatar.png" alt="">
+        <div class="skills">
+          <div v-if="isMobile">
+            <div class="avatar-block" ref="avatarBlockRef">
+              <img src="/avatar.png" alt="Avatar">
             </div>
-          </v-col>
-          <v-col cols="12" md="8">
+          </div>
+          <div v-else class="col1">
+            <div class="avatar" ref="avatarRef">
+              <img src="/avatar.png" alt="Avatar">
+            </div>
+          </div>
+          <div class="col2">
             <div class="desc" ref="descRef">
               <h4 class="title">
                 My top skills
@@ -95,8 +100,8 @@
               </div>
 
             </div>
-          </v-col>
-        </v-row>
+          </div>
+        </div>
       </v-container>
 
     </div>
@@ -104,7 +109,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { ref, reactive, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import AppKeyboard from '../components/AppKeyboard.vue';
@@ -112,6 +117,7 @@ import { introText } from '../content/index.ts';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const avatarBlockRef = ref(null);
 const avatarRef = ref(null);
 const descRef = ref(null);
 const fullText = introText;
@@ -121,6 +127,12 @@ const isAnimationComplete = ref(false);
 const moveImageDown = ref(false);
 const arrows = ref<Array<{ x: number; y: number }>>([]);
 const animateTriggered = ref(false);
+
+const isMobile = ref(false);
+
+function updateIsMobile() {
+  isMobile.value = window.innerWidth <= 768; // Mobile size breakpoint
+}
 
 // Declare scrollTriggerInstance here
 let scrollTriggerInstance: any = null;
@@ -192,7 +204,16 @@ function animateSkills() {
   if (animateTriggered.value) return;
 
   const avatar = avatarRef.value;
+  const avatarBlock = avatarBlockRef.value;
   const desc = descRef.value;
+
+  if (avatarBlock) {
+    gsap.fromTo(
+      avatarBlock,
+      { opacity: 0, y: -50 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
+    );
+  }
 
   if (avatar) {
     gsap.fromTo(
@@ -230,7 +251,7 @@ onMounted(() => {
       // Create new ScrollTrigger
       scrollTriggerInstance = ScrollTrigger.create({
         trigger: desc,
-        start: 'top top',  // Start the animation when the top of desc reaches the top of the screen
+        start: 'top 30%',  // Start the animation when the top of desc reaches the top of the screen
         end: 'bottom top', // End the animation when the bottom of desc reaches the top of the screen
         scrub: true,  // Smooth scroll effect
         markers: false,  // Remove markers
@@ -286,6 +307,15 @@ onMounted(() => {
   });
 });
 
+onMounted(() => {
+  updateIsMobile();
+  window.addEventListener('resize', updateIsMobile);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateIsMobile);
+});
+
 
 // Watch for moveImageDown
 watch(moveImageDown, async (newVal) => {
@@ -306,6 +336,9 @@ watch(moveImageDown, async (newVal) => {
     position: relative;
     z-index: 3;
     min-height: 30vh;
+    @media (min-width: 768px) {
+      min-height: 240px;
+    }
     @media (min-width: 960px) {
       min-height: 300px;
     }
@@ -386,7 +419,28 @@ p {
 
 .skills {
   display: block;
+  padding: 0 12px;
   margin: 0 auto;
+
+  .col1, .col2 {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .skills {
+      display: flex;
+      padding: 0;
+    }
+    .col1 {
+      flex: 0 0 33.3333333333%;
+      max-width: 33.3333333333%;
+    }
+
+    .col2 {
+      flex: 0 0 66.6666666667%;
+      max-width: 66.6666666667%;
+    }
+  }
 
   h4 {
     margin: 0 0 1rem;
@@ -406,39 +460,27 @@ p {
     }
   }
 }
-.avatar, .desc {
+.avatar-block, .avatar, .desc {
   opacity: 0;
+}
+.avatar-block {
+  //display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  img {
+    width: 60%;
+  }
 }
 .avatar {
   position: absolute;  /* or 'fixed' if you want it to stay fixed while scrolling */
-  top: 0;
-  height: 250px;
-
   margin: 0 auto;
   max-width: 250px;
+  overflow: hidden;
   img {
+    display: block;
     width: 100%;
-  }
-  //&.fixed {
-  //  position: fixed;
-  //  top: 0;
-  //  left: auto;
-  //  right: auto;
-  //  z-index: 10;
-  //}
-
-  &.fixed {
-    position: fixed;
-    top: 0;
-    //left: 50%;
-    //transform: translateX(-50%);
-    //z-index: 10;
-  }
-
-  &.stopped {
-    position: absolute;
-    top: auto;
-    bottom: 0;
+    height: auto;
   }
 }
 .desc {
@@ -481,7 +523,7 @@ p {
   }
   .avatar {
     margin: 0 2rem 0 0;
-    max-width: 300px;
+    max-width: 240px;
 
     img {
       width: 100%;
@@ -492,7 +534,16 @@ p {
     padding: 3rem;
   }
 }
+@media (min-width: 960px) {
+  .avatar {
+    margin: 0 2rem 0 0;
+    max-width: 300px;
 
+    img {
+      width: 100%;
+    }
+  }
+}
 
 .animated-arrows {
   position: absolute;

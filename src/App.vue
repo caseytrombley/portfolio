@@ -36,7 +36,17 @@ import ScreenEffect from "./components/ScreenEffect.vue";
 
 </script>
 
+<style lang="scss">
+html, body {
+  overflow-x: hidden;
+}
+main {
+  overflow: visible;
+}
+</style>
+
 <style lang="scss" scoped>
+
 .app-header-container {
   display: flex;
   position: relative;
