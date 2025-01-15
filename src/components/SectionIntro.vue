@@ -26,12 +26,12 @@
       <v-container max-width="1200px" fluid class="container">
         <v-row class="skills">
           <v-col cols="12" md="4">
-            <div class="avatar">
+            <div class="avatar" ref="avatarRef">
               <img src="/avatar.png" alt="">
             </div>
           </v-col>
           <v-col cols="12" md="8">
-            <div class="desc">
+            <div class="desc" ref="descRef">
               <h4 class="title">
                 My top skills
               </h4>
@@ -106,10 +106,14 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import AppKeyboard from '../components/AppKeyboard.vue';
 import { introText } from '../content/index.ts';
 
+gsap.registerPlugin(ScrollTrigger);
 
+const avatarRef = ref(null);
+const descRef = ref(null);
 const fullText = introText;
 const displayedText = ref('');
 const activeKey = ref('');
@@ -118,6 +122,8 @@ const moveImageDown = ref(false);
 const arrows = ref<Array<{ x: number; y: number }>>([]);
 const animateTriggered = ref(false);
 
+// Declare scrollTriggerInstance here
+let scrollTriggerInstance: any = null;
 
 // Function to animate typing
 function typeText() {
@@ -185,8 +191,8 @@ function animateArrows() {
 function animateSkills() {
   if (animateTriggered.value) return;
 
-  const avatar = document.querySelector('.avatar');
-  const desc = document.querySelector('.desc');
+  const avatar = avatarRef.value;
+  const desc = descRef.value;
 
   if (avatar) {
     gsap.fromTo(
@@ -200,26 +206,86 @@ function animateSkills() {
     gsap.fromTo(
       desc,
       { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, delay: 0.5, ease: 'power2.out' }
+      { opacity: 1, y: 0, duration: 1, delay: 0.1, ease: 'power2.out' }
     );
   }
 }
 
-// Start animations when scrolling
 onMounted(() => {
   const handleScroll = () => {
     if (!animateTriggered.value) {
       animateSkills();
       animateTriggered.value = true;
     }
+
+    const avatar = avatarRef.value;
+    const desc = descRef.value;
+
+    if (avatar && desc) {
+      // Ensure ScrollTrigger is only created once
+      if (scrollTriggerInstance) {
+        scrollTriggerInstance.kill(); // Kill any existing instance first
+      }
+
+      // Create new ScrollTrigger
+      scrollTriggerInstance = ScrollTrigger.create({
+        trigger: desc,
+        start: 'top top',  // Start the animation when the top of desc reaches the top of the screen
+        end: 'bottom top', // End the animation when the bottom of desc reaches the top of the screen
+        scrub: true,  // Smooth scroll effect
+        markers: false,  // Remove markers
+        onUpdate: (self) => {
+          const progress = self.progress;
+
+
+          // Get the height of the avatar and desc
+          const avatarHeight = avatar.offsetHeight;
+          const descHeight = desc.offsetHeight;
+
+          // Calculate the position of the avatar relative to the desc element
+          let avatarOffset = (descHeight - avatarHeight) * progress;
+
+          console.log('avatarheight', avatarHeight);
+          console.log('descheight', descHeight);
+          console.log('avatarOffset', avatarOffset);
+          console.log('progress', progress);
+
+          // Ensure avatar stays within bounds of the .desc div
+          avatarOffset = Math.min(avatarOffset, descHeight - avatarHeight);
+          avatarOffset = Math.max(avatarOffset, 0);
+
+          // Apply animation to align avatar to the bottom of the desc
+          gsap.to(avatar, {
+            y: avatarOffset, // Move the avatar up and down based on scroll
+            ease: 'power1.out', // Smooth easing for better animation feel
+          });
+        },
+        onLeave: () => {
+          // Make sure the avatar stays in its final position once the animation completes
+          gsap.to(avatar, {
+            y: 0,  // Reset the avatar to its starting position
+            ease: 'power1.out',
+          });
+        },
+      });
+    }
   };
 
+  // Add the scroll event listener
   window.addEventListener('scroll', handleScroll);
 
+  // Start the typing animation
+  typeText();
+
+  // Clean up event listener on unmount
   onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
+    if (scrollTriggerInstance) {
+      scrollTriggerInstance.kill();
+    }
   });
 });
+
 
 // Watch for moveImageDown
 watch(moveImageDown, async (newVal) => {
@@ -227,14 +293,11 @@ watch(moveImageDown, async (newVal) => {
     generateRandomArrows();
     await nextTick();
     animateArrows();
-
   }
 });
 
-// Start the typing animation
-typeText();
-
 </script>
+
 
 
 <style lang="scss" scoped>
@@ -244,7 +307,7 @@ typeText();
     z-index: 3;
     min-height: 30vh;
     @media (min-width: 960px) {
-      min-height: auto;
+      min-height: 300px;
     }
   }
 }
@@ -347,10 +410,35 @@ p {
   opacity: 0;
 }
 .avatar {
+  position: absolute;  /* or 'fixed' if you want it to stay fixed while scrolling */
+  top: 0;
+  height: 250px;
+
   margin: 0 auto;
   max-width: 250px;
   img {
     width: 100%;
+  }
+  //&.fixed {
+  //  position: fixed;
+  //  top: 0;
+  //  left: auto;
+  //  right: auto;
+  //  z-index: 10;
+  //}
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    //left: 50%;
+    //transform: translateX(-50%);
+    //z-index: 10;
+  }
+
+  &.stopped {
+    position: absolute;
+    top: auto;
+    bottom: 0;
   }
 }
 .desc {
