@@ -1,5 +1,6 @@
 <template>
   <div class="home-view">
+    <SectionArtwork />
     <SectionIntro />
     <SectionResume />
     <SectionArtwork />
