@@ -1,12 +1,20 @@
 <template>
   <section>
     <v-container max-width="1200px" fluid class="container">
-      <DrawBox :size="[100, 100]" />
-      <DrawBox :size="[300, 100]" />
+      <div class="scene">
+        <div class="layer layer1">
+          <DrawBox :size="[300, 400]" />
 
-      <DrawBox :size="[100, 50]" />
+          <div class="layer layer2">
+            <DrawBox :size="[270, 50]" />
+          </div>
 
-      <DrawBox :size="[300, 100]" />
+          <div class="layer layer3">
+            <DrawBox :size="[270, 80]" />
+          </div>
+        </div>
+
+      </div>
     </v-container>
   </section>
 </template>
@@ -27,6 +35,23 @@ export default {
   align-items: center;
   height: 100vh;
 }
+.scene {
+  transform: rotate(-10deg);
+}
+.layer {
+  position: absolute;
+}
+.layer1 {
+  top: 0;
 
+  .layer2 {
+    top: 20px;
+    left: 15px;
+  }
+  .layer3 {
+    top: 40px;
+    left: 15px;
+  }
+}
 </style>
 

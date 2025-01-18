@@ -86,7 +86,6 @@ onMounted(() => {
 .drawing-container {
   position: relative;
   display: inline-block;
-  margin: 10px;
 }
 
 .pencil {
