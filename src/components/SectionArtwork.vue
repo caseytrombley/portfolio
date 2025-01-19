@@ -2,7 +2,8 @@
   <section>
     <v-container max-width="1200px" fluid class="container">
       <div class="scene">
-        <DrawBox :size="[300, 400]" />
+<!--        <DrawBox :size="[300, 400]" />-->
+        <DrawSomething />
 <!--        <div class="layer layer1">-->
 <!--          <DrawBox :size="[300, 400]" />-->
 
@@ -22,9 +23,10 @@
 
 <script lang="ts">
 import DrawBox from "./DrawBox.vue";
+import DrawSomething from "./DrawSomething.vue";
 
 export default {
-  components: {DrawBox}
+  components: {DrawSomething, DrawBox}
 }
 </script>
 
