@@ -1,22 +1,49 @@
 <template>
-  <div class="drawing-container" :style="{ width: size[0] + 'px', height: size[1] + 'px' }">
-    <img ref="pencil" class="pencil" src="/pencil.png" alt="Pencil" />
-    <svg
-      class="box"
-      :viewBox="`0 0 ${size[0]} ${size[1]}`"
-      xmlns="http://www.w3.org/2000/svg"
-      :width="size[0]"
-      :height="size[1]"
-    >
-      <path
-        ref="path"
-        class="drawing-path"
-        :d="`M20 20 H${size[0] - 20} V${size[1] - 20} H20 Z`"
-        fill="none"
-        stroke="#cccccc"
-        stroke-width="2"
-      />
-    </svg>
+  <div class="drawing-container">
+    <!-- First Box -->
+    <div class="box-wrapper box-1">
+      <img ref="pencil1" class="pencil" src="/pencil.png" alt="Pencil" />
+      <svg class="box">
+        <path
+          ref="path1"
+          class="drawing-path"
+          d="M20 20 H280 V280 H20 Z"
+          fill="none"
+          stroke="#cccccc"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
+
+    <!-- Second Box (nested inside first box) -->
+    <div class="box-wrapper box-2">
+      <img ref="pencil2" class="pencil" src="/pencil.png" alt="Pencil" />
+      <svg class="box">
+        <path
+          ref="path2"
+          class="drawing-path"
+          d="M10 10 H140 V140 H10 Z"
+          fill="none"
+          stroke="#cccccc"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
+
+    <!-- Third Box (nested inside first box) -->
+    <div class="box-wrapper box-3">
+      <img ref="pencil3" class="pencil" src="/pencil.png" alt="Pencil" />
+      <svg class="box">
+        <path
+          ref="path3"
+          class="drawing-path"
+          d="M10 10 H140 V140 H10 Z"
+          fill="none"
+          stroke="#cccccc"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -27,39 +54,35 @@ import MotionPathPlugin from "gsap/MotionPathPlugin";
 
 gsap.registerPlugin(MotionPathPlugin);
 
-defineProps({
-  size: {
-    type: Array as () => [number, number],
-    required: true,
-  },
-});
-
-// Refs for the path and pencil
-const path = ref<SVGPathElement | null>(null);
-const pencil = ref<HTMLElement | null>(null);
+// Refs for all paths and pencils
+const path1 = ref<SVGPathElement | null>(null);
+const pencil1 = ref<HTMLElement | null>(null);
+const path2 = ref<SVGPathElement | null>(null);
+const pencil2 = ref<HTMLElement | null>(null);
+const path3 = ref<SVGPathElement | null>(null);
+const pencil3 = ref<HTMLElement | null>(null);
 
 onMounted(() => {
-  if (path.value && pencil.value) {
-    // Get the total length of the path
-    const pathLength = path.value.getTotalLength();
+  const animateDrawing = (path: SVGPathElement, pencil: HTMLElement, delay: number) => {
+    const pathLength = path.getTotalLength();
 
-    // Set up initial states
-    gsap.set(path.value, { strokeDashoffset: pathLength, strokeDasharray: pathLength });
-    gsap.set(pencil.value, { rotation: 35, transformOrigin: "50% 100%" });
+    // Set initial state for path and pencil
+    gsap.set(path, { strokeDashoffset: pathLength, strokeDasharray: pathLength });
+    gsap.set(pencil, { y: -40, opacity: 0, rotation: 35, transformOrigin: "50% 100%" });
 
-    // Animate the drawing
-    gsap.timeline()
-      .to(path.value, {
+    return gsap.timeline({ delay })
+      .to(pencil, { opacity: 1, duration: 0.1 }) // Make pencil visible
+      .to(path, {
         strokeDashoffset: 0,
         duration: 2,
         ease: "power1.inOut",
       })
       .to(
-        pencil.value,
+        pencil,
         {
           motionPath: {
-            path: path.value,
-            align: path.value,
+            path: path,
+            align: path,
             alignOrigin: [0.5, 1],
           },
           duration: 2,
@@ -68,7 +91,7 @@ onMounted(() => {
         "<"
       )
       .to(
-        pencil.value,
+        pencil,
         {
           scale: 1.25,
           x: 50,
@@ -78,6 +101,13 @@ onMounted(() => {
           ease: "power1.out",
         }
       );
+  };
+
+  if (path1.value && pencil1.value && path2.value && pencil2.value && path3.value && pencil3.value) {
+    const timeline = gsap.timeline();
+    timeline.add(animateDrawing(path1.value, pencil1.value, 0));
+    timeline.add(animateDrawing(path2.value, pencil2.value, 0), ">"); // Start after previous ends
+    timeline.add(animateDrawing(path3.value, pencil3.value, 0), ">"); // Start after the second ends
   }
 });
 </script>
@@ -85,7 +115,32 @@ onMounted(() => {
 <style lang="scss" scoped>
 .drawing-container {
   position: relative;
-  display: inline-block;
+  width: 300px;
+  height: 300px;
+  //border: 1px solid #ccc;
+}
+
+.box-wrapper {
+  position: absolute;
+
+  &.box-1 {
+    width: 300px;
+    height: 300px;
+  }
+
+  &.box-2 {
+    width: 150px;
+    height: 150px;
+    top: 50px;
+    left: 50px;
+  }
+
+  &.box-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 50px;
+    right: 50px;
+  }
 }
 
 .pencil {
@@ -94,6 +149,8 @@ onMounted(() => {
 }
 
 .box {
-  stroke: #cccccc;
+  width: 100%;
+  height: 100%;
+  stroke: #959595;
 }
 </style>

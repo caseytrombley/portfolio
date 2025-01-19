@@ -2,17 +2,18 @@
   <section>
     <v-container max-width="1200px" fluid class="container">
       <div class="scene">
-        <div class="layer layer1">
-          <DrawBox :size="[300, 400]" />
+        <DrawBox :size="[300, 400]" />
+<!--        <div class="layer layer1">-->
+<!--          <DrawBox :size="[300, 400]" />-->
 
-          <div class="layer layer2">
-            <DrawBox :size="[270, 50]" />
-          </div>
+<!--          <div class="layer layer2">-->
+<!--            <DrawBox :size="[270, 50]" />-->
+<!--          </div>-->
 
-          <div class="layer layer3">
-            <DrawBox :size="[270, 80]" />
-          </div>
-        </div>
+<!--          <div class="layer layer3">-->
+<!--            <DrawBox :size="[270, 80]" />-->
+<!--          </div>-->
+<!--        </div>-->
 
       </div>
     </v-container>
