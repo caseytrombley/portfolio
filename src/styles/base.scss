@@ -29,47 +29,6 @@
   font-weight: normal;
   font-style: normal;
 }
-//.heading {
-//  border-radius: 15px;
-//  padding: 1rem;
-//  text-align: center;
-//  &::before, &::after {
-//    font-family: 'Veneer', sans-serif;
-//    position: relative;
-//    font-size: 3em;
-//    font-weight: 400;
-//    line-height: 0;
-//    top: 0.25em;
-//  }
-//  &::before {
-//    content: "(";
-//    margin-right: 1rem;
-//  }
-//  &::after {
-//    content: ")";
-//    margin-left: 1rem;
-//  }
-//}
-//.heading {
-//  border-radius: 15px;
-//  padding: 1rem;
-//  text-align: center;
-//  &::before, &::after {
-//    font-family: 'Ornaments', sans-serif;
-//    position: relative;
-//    font-size: 1.125em;
-//    font-weight: 400;
-//    line-height: 0;
-//  }
-//  &::before {
-//    content: "U";
-//    margin-right: 1rem;
-//  }
-//  &::after {
-//    content: "V";
-//    margin-left: 1rem;
-//  }
-//}
 
 .heading {
   border-radius: 15px;
@@ -140,10 +99,11 @@ section {
   position: relative;
   z-index: 1;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   overflow-y: visible;
+
+  &.spaced {
+    padding: 5rem 0 3rem;
+  }
 
   @media (min-width: 768px) {
     .container {

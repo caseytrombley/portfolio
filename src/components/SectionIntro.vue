@@ -408,7 +408,7 @@ p {
   position: relative;
   width: 100%;
   text-align: center;
-  margin-bottom: 0;
+  //margin-bottom: 0;
   padding: 5rem 0;
 }
 @media (min-width: 768px) {
