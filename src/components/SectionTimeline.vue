@@ -6,7 +6,7 @@
       <!-- Slider connected to activeTimeline -->
       <v-slider
         v-model="activeTimeline"
-        :max="4"
+        :max="3"
         :ticks="tickLabels"
         show-ticks="always"
         step="1"
@@ -34,15 +34,24 @@
             }"
           >
             <div class="timeline-body">
-              <h4 class="timeline-title">
-                {{ item.title }}
-              </h4>
               <v-row>
                 <v-col cols="12" md="6">
-                  <p>{{ item.description }}</p>
+                  <div class="text">
+                    <h4 class="timeline-title">
+                      {{ item.title }}
+                    </h4>
+                    <p>{{ item.description }}</p>
+                  </div>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <Griddy :key="activeTimeline" />
+                  <div class="composition">
+                    <div class="front-layer">
+                      this is a content layer I will use to position images
+                    </div>
+                    <div class="background-layer">
+                      <Griddy :key="activeTimeline" />
+                    </div>
+                  </div>
                 </v-col>
               </v-row>
             </div>
@@ -87,11 +96,47 @@ $timeline-body-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
       background: rgb(248 29 81 / 32%);
     }
   }
+  .v-slider-track__tick-label {
+
+    @media (max-width: 599px) {
+      font-size: .75em;
+    }
+  }
 }
 
 .container {
   display: block;
   height: 100vh;
+}
+
+.text {
+  padding: 2rem;
+  background: $timeline-body-bg;
+  border-radius: $timeline-body-round;
+
+  p {
+    font-size: 1.125rem;
+  }
+}
+
+.composition {
+  position: relative;
+}
+
+.front-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.background-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 0;
 }
 
 .timeline-slider {
@@ -101,7 +146,6 @@ $timeline-body-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
 .timeline {
   position: relative;
   overflow: hidden;
-  color: white;
 
   .timeline-inner {
     display: flex;
@@ -113,56 +157,6 @@ $timeline-body-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
     width: 100%;
     flex-shrink: 0;
     display: block;
-
-    .timeline-icon {
-      position: relative;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 2rem;
-      background: $secondary;
-    }
-
-    .timeline-body {
-      background: $timeline-body-bg;
-      border-radius: $timeline-body-round;
-      padding: 2rem 2rem 3rem;
-      //box-shadow: $timeline-body-shadow;
-    }
-
-    .badge {
-      background: $secondary;
-      padding: 4px 8px;
-      border-radius: 3px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    &.primary .badge,
-    &.primary .timeline-icon {
-      background: $primary;
-    }
-
-    &.danger .badge,
-    &.danger .timeline-icon {
-      background: $danger;
-    }
-
-    &.success .badge,
-    &.success .timeline-icon {
-      background: $success;
-    }
-
-    &.warning .badge,
-    &.warning .timeline-icon {
-      background: $warning;
-    }
-
-    &.info .badge,
-    &.info .timeline-icon {
-      background: $info;
-    }
   }
 }
 </style>

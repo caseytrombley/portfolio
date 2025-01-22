@@ -15,11 +15,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 
-const gridSize = 9;
+const gridRows = 9;
+const gridColumns = 18;
 const gridCells = ref<any[]>([]);
 
 onMounted(() => {
-  for (let i = 0; i < gridSize * gridSize; i++) {
+  const totalCells = gridRows * gridColumns;
+  for (let i = 0; i < totalCells; i++) {
     gridCells.value.push({
       scale: (Math.random() * 1.4 - 0.2).toFixed(2),
       delay: (Math.random() * 5).toFixed(2),
@@ -28,10 +30,11 @@ onMounted(() => {
 });
 </script>
 
+
 <style scoped lang="scss">
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(18, 1fr); /* 18 columns */
   gap: 10px;
   width: 100%;
   height: 100%;
@@ -74,3 +77,4 @@ onMounted(() => {
   }
 }
 </style>
+

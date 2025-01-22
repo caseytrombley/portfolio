@@ -160,7 +160,13 @@ section {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
+.box-left {
+  padding: 0 2rem 0 0;
 
+  p {
+    max-width: 600px;
+  }
+}
 .v-theme--dark {
   .item {
     border-color: rgba(255,255,255,0.05);
