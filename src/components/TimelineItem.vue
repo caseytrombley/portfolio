@@ -1,62 +1,70 @@
 <template>
-  <div v-if="item === 0" class="text">
-    <h4 class="timeline-title">
-      The early days: 1990s - 2000s
-    </h4>
-    <p>
-      Ah, the 1990s—a time when grunge was king, cassettes and floppy disks ruled supreme, and the internet was still wearing diapers. I spent my days in school, eventually making my way to college as the decade wrapped up, and my nights were filled with a deep love for graphic arts. Inspired by the vibrant worlds of Nintendo games and comic books, I dove headfirst into Photoshop and Illustrator, crafting questionable logos, chaotic gradients, and enough clip art to crash a printer.
-      <img src="./avatar.svg" alt="" class="float-right">
-    </p>
-    <p>
-      Then, one day, I stumbled upon the internet—this dazzling, pixelated frontier that felt like crossing an event horizon into the future. Suddenly, graphic design wasn’t enough. Enter Macromedia Studio: Dreamweaver, Flash, and Fireworks became my new tools of the trade. I built websites with spinning logos, animated buttons, and marquee text that screamed, “Welcome to 1999!” Flash was my muse—I was convinced it could make any website a masterpiece, as long as visitors didn’t mind waiting five minutes for it to load.
-      <img src="./avatar.svg" alt="" class="float-left">
-    </p>
-  </div>
-
-  <div v-if="item === 1" class="text">
-    <h4 class="timeline-title">
-      My Early 2000s to 2010s Adventure: A Web Developer’s Tale
-    </h4>
-    <p>
-      Ah, the 1990s—a time when grunge was king, cassettes and floppy disks ruled supreme, and the internet was still wearing diapers. I spent my days in school, eventually making my way to college as the decade wrapped up, and my nights were filled with a deep love for graphic arts. Inspired by the vibrant worlds of Nintendo games and comic books, I dove headfirst into Photoshop and Illustrator, crafting questionable logos, chaotic gradients, and enough clip art to crash a printer.
-      <img src="./avatar.svg" alt="" class="float-right">
-    </p>
-    <p>
-      Then, one day, I stumbled upon the internet—this dazzling, pixelated frontier that felt like crossing an event horizon into the future. Suddenly, graphic design wasn’t enough. Enter Macromedia Studio: Dreamweaver, Flash, and Fireworks became my new tools of the trade. I built websites with spinning logos, animated buttons, and marquee text that screamed, “Welcome to 1999!” Flash was my muse—I was convinced it could make any website a masterpiece, as long as visitors didn’t mind waiting five minutes for it to load.
-      <img src="./avatar.svg" alt="" class="float-left">
-    </p>
+  <div class="timeline-item">
+    <h4 class="timeline-title">{{ item.title }}</h4>
+    <div v-html="formattedDescription"></div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { defineProps, computed } from "vue";
 
 const props = defineProps({
   item: {
-    type: Object,
+    type: Object as () => { title: string; description: string },
     required: true,
   },
 });
+
+// Compute the formatted description to handle rich text or Markdown
+const formattedDescription = computed(() => {
+  // Here you can use a Markdown library like `marked` to render Markdown or process HTML
+  return props.item.description; // Assuming the description is already HTML or pre-formatted
+});
 </script>
 
-
 <style scoped lang="scss">
-p {
-  font-size: 1rem;
+.timeline-item {
+  padding: 2rem;
 }
 
-img {
-  width: 100px;
-  height: 100px;
-
-}
-.float-right {
-  float: right;
-  margin: 0 0 1rem 2rem;
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.float-left {
-  float: right;
-  margin: 0 2rem 1rem;
+.timeline-item {
+  ::v-deep {
+    .body {
+      display: flex;
+    }
+    p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin: 0 0 1rem;
+      width: 85%;
+    }
+
+    .image {
+      width: 14%;
+      margin: 0 2rem 0 0;
+
+    }
+
+    p + .image {
+      margin: 0 0 0 1rem;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .float-right {
+      float: right;
+    }
+    .float-left {
+      float: left;
+    }
+  }
 }
+
 </style>
-

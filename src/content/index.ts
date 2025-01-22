@@ -53,10 +53,18 @@ const tickLabels = {
 const timelineData = [
   {
     title: "The early days: 1990s - 2000s",
-    description:
-      "Ah, the 1990s—a time when grunge was king, cassettes and floppy disks ruled supreme, and the internet was still wearing diapers. I spent my days in school, eventually making my way to college as the decade wrapped up, and my nights were filled with a deep love for graphic arts. Inspired by the vibrant worlds of Nintendo games and comic books, I dove headfirst into Photoshop and Illustrator, crafting questionable logos, chaotic gradients, and enough clip art to crash a printer.\n" +
-      "Then, one day, I stumbled upon the internet—this dazzling, pixelated frontier that felt like crossing an event horizon into the future. Suddenly, graphic design wasn’t enough. Enter Macromedia Studio: Dreamweaver, Flash, and Fireworks became my new tools of the trade. I built websites with spinning logos, animated buttons, and marquee text that screamed, “Welcome to 1999!” Flash was my muse—I was convinced it could make any website a masterpiece, as long as visitors didn’t mind waiting five minutes for it to load.\n" +
-      "It was an era where the web felt like the Wild West, and I was a pixel cowboy, wielding tools and GIFs to create a world that felt impossibly futuristic. It wasn’t perfect, but it was mine—a chaotic mix of digital dreams inspired by the video games that first sparked my creative passion."
+    description: `
+    <div class="body">
+      <p>Ah, the 1990s—a time when grunge was king, cassettes and floppy disks ruled supreme, and the internet was still wearing diapers. I spent my days in school, eventually making my way to college as the decade wrapped up, and my nights were filled with a deep love for graphic arts. Inspired by the vibrant worlds of Nintendo games and comic books, I dove headfirst into Photoshop and Illustrator, crafting questionable logos, chaotic gradients, and enough clip art to crash a printer.</p>
+      <div class="image"><img src='/avatar.png' alt='image' /></div>
+    </div>
+
+    <div class="body">
+      <div class="image"><img src='/avatar.png' alt='image' /></div>
+      <p>Then, one day, I stumbled upon the internet—this dazzling, pixelated frontier that felt like crossing an event horizon into the future. Suddenly, graphic design wasn’t enough. Enter Macromedia Studio: Dreamweaver, Flash, and Fireworks became my new tools of the trade. I built websites with spinning logos, animated buttons, and marquee text that screamed, “Welcome to 1999!” Flash was my muse—I was convinced it could make any website a masterpiece, as long as visitors didn’t mind waiting five minutes for it to load.</p>
+
+    </div>
+    <p>It was an era where the web felt like the Wild West, and I was a pixel cowboy, wielding tools and GIFs to create a world that felt impossibly futuristic. It wasn’t perfect, but it was mine—a chaotic mix of digital dreams inspired by the video games that first sparked my creative passion.</p>`
   },
   {
     title: "My Early 2000s to 2010s Adventure: From CSS Chaos to Modern Web",

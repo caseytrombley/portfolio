@@ -56,7 +56,7 @@ onMounted(() => {
 }
 
 .v-theme--light .grid-cell {
-  background-color: rgba(var(--v-theme-primary), 0.2);
+  background-color: rgba(var(--v-theme-primary), 0.3);
 }
 
 @keyframes scaleAnimation {

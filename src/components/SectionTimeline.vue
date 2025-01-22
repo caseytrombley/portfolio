@@ -35,29 +35,38 @@
           >
             <div class="timeline-body">
               <div class="front-layer">
-                <v-row>
-                  <v-col cols="12" md="6">
-                    <div class="text">
-                      <h4 class="timeline-title">
-                        {{ item.title }}
-                      </h4>
-                      <p>{{ item.description }}</p>
-                    </div>
-                  </v-col>
-                  <v-col cols="12" md="6">
-                    <div class="composition">
-                      this is a content layer I will use to position images
 
-                    </div>
-                  </v-col>
-                </v-row>
+                <TimelineItem :item="item" />
+
+
+<!--                <v-row>-->
+<!--                  <v-col cols="12" md="6">-->
+<!--                    <div class="text">-->
+<!--                      <h4 class="timeline-title">-->
+<!--                        {{ item.title }}-->
+<!--                      </h4>-->
+<!--                      <p>{{ item.description }}</p>-->
+<!--                    </div>-->
+<!--                  </v-col>-->
+<!--                  <v-col cols="12" md="6">-->
+<!--                    <div class="composition">-->
+<!--                      this is a content layer I will use to position images-->
+
+<!--                    </div>-->
+<!--                  </v-col>-->
+<!--                </v-row>-->
               </div>
 
-              <div class="background-layer">
-                <Griddy :key="activeTimeline" />
-              </div>
+
             </div>
           </div>
+
+
+        </div>
+
+        <div class="background-layer">
+          <div class="overlay"></div>
+          <Griddy />
         </div>
       </div>
     </v-container>
@@ -68,6 +77,7 @@
 import { ref } from "vue";
 import { tickLabels, timelineData } from "../content/index";
 import Griddy from "./Griddy.vue";
+import TimelineItem from "./TimelineItem.vue";
 
 const activeTimeline = ref(0);
 </script>
@@ -94,7 +104,16 @@ const activeTimeline = ref(0);
     }
   }
 }
-
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, #121212 0%, transparent 200px);
+  background-repeat: no-repeat;
+}
 .container {
   display: block;
   height: 100vh;
@@ -138,14 +157,17 @@ const activeTimeline = ref(0);
   overflow: hidden;
 }
 .timeline-inner {
+  position: relative;
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
+  z-index: 1;
 }
 .timeline-container {
   width: 100%;
   flex-shrink: 0;
   display: block;
+  z-index: 2;
 }
 .timeline-body {
   position: relative;
