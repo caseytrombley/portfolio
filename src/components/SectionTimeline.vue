@@ -34,26 +34,28 @@
             }"
           >
             <div class="timeline-body">
-              <v-row>
-                <v-col cols="12" md="6">
-                  <div class="text">
-                    <h4 class="timeline-title">
-                      {{ item.title }}
-                    </h4>
-                    <p>{{ item.description }}</p>
-                  </div>
-                </v-col>
-                <v-col cols="12" md="6">
-                  <div class="composition">
-                    <div class="front-layer">
+              <div class="front-layer">
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <div class="text">
+                      <h4 class="timeline-title">
+                        {{ item.title }}
+                      </h4>
+                      <p>{{ item.description }}</p>
+                    </div>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <div class="composition">
                       this is a content layer I will use to position images
+
                     </div>
-                    <div class="background-layer">
-                      <Griddy :key="activeTimeline" />
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
+                  </v-col>
+                </v-row>
+              </div>
+
+              <div class="background-layer">
+                <Griddy :key="activeTimeline" />
+              </div>
             </div>
           </div>
         </div>
@@ -71,17 +73,6 @@ const activeTimeline = ref(0);
 </script>
 
 <style lang="scss" scoped>
-/* CSS Variables */
-$primary: #1d8cf8;
-$secondary: #4f537b;
-$info: #11cdef;
-$success: #00bf9a;
-$warning: #ff8d72;
-$danger: #fd5d93;
-
-$timeline-body-bg: #27293d;
-$timeline-body-round: 3px;
-$timeline-body-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
 
 ::v-deep {
   .v-slider-thumb {
@@ -110,9 +101,9 @@ $timeline-body-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
 }
 
 .text {
-  padding: 2rem;
-  background: $timeline-body-bg;
-  border-radius: $timeline-body-round;
+  padding: 3rem 3rem;
+  //background: #27293d;
+  //border-radius: 5px;
 
   p {
     font-size: 1.125rem;
@@ -142,21 +133,22 @@ $timeline-body-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
 .timeline-slider {
   padding: 3rem 0;
 }
-
 .timeline {
   position: relative;
   overflow: hidden;
-
-  .timeline-inner {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 100%;
-  }
-
-  .timeline-container {
-    width: 100%;
-    flex-shrink: 0;
-    display: block;
-  }
 }
+.timeline-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+.timeline-container {
+  width: 100%;
+  flex-shrink: 0;
+  display: block;
+}
+.timeline-body {
+  position: relative;
+}
+
 </style>

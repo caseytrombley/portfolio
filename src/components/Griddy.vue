@@ -52,11 +52,11 @@ onMounted(() => {
 }
 
 .v-theme--dark .grid-cell {
-  background-color: rgba(var(--v-theme-primary), 0.2);
+  background-color: rgba(var(--v-theme-primary), 0.1);
 }
 
 .v-theme--light .grid-cell {
-  background-color: rgba(var(--v-theme-primary), 0.3);
+  background-color: rgba(var(--v-theme-primary), 0.2);
 }
 
 @keyframes scaleAnimation {
