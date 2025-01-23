@@ -36,33 +36,44 @@ const formattedDescription = computed(() => {
   ::v-deep {
     .body {
       display: flex;
+      flex-direction: column;
     }
     p {
-      font-size: 1.125rem;
-      line-height: 1.6;
+      order: 1;
+      font-size: 1rem;
       margin: 0 0 1rem;
-      width: 85%;
     }
 
     .image {
-      width: 14%;
-      margin: 0 2rem 0 0;
-
-    }
-
-    p + .image {
-      margin: 0 0 0 1rem;
+      order: 2;
+      width: 60%;
+      margin: 1rem auto;
     }
 
     img {
       width: 100%;
     }
 
-    .float-right {
-      float: right;
-    }
-    .float-left {
-      float: left;
+    @media (min-width: 768px) {
+      .body {
+        flex-direction: row;
+      }
+      p {
+        order: unset;
+        font-size: 1.25rem;
+        line-height: 1.6;
+        width: 75%;
+      }
+
+      .image {
+        order: unset;
+        width: 25%;
+        margin: 0 2rem 0 0;
+      }
+
+      p + .image {
+        margin: 0 0 0 1rem;
+      }
     }
   }
 }

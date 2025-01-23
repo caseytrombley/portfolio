@@ -6,7 +6,7 @@
 
     <SectionResume />
     <SectionTimeline />
-    <SectionArtwork />
+<!--    <SectionArtwork />-->
   </div>
 </template>
 <script setup lang="ts">

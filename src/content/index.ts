@@ -56,7 +56,7 @@ const timelineData = [
     description: `
     <div class="body">
       <p>Ah, the 1990s—a time when grunge was king, cassettes and floppy disks ruled supreme, and the internet was still wearing diapers. I spent my days in school, eventually making my way to college as the decade wrapped up, and my nights were filled with a deep love for graphic arts. Inspired by the vibrant worlds of Nintendo games and comic books, I dove headfirst into Photoshop and Illustrator, crafting questionable logos, chaotic gradients, and enough clip art to crash a printer.</p>
-      <div class="image"><img src='/avatar.png' alt='image' /></div>
+      <div class="image"><img src='/90s-1.png' alt='image' /></div>
     </div>
 
     <div class="body">

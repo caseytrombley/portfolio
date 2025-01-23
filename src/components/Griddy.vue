@@ -16,7 +16,7 @@
 import { ref, onMounted } from "vue";
 
 const gridRows = 9;
-const gridColumns = 18;
+const gridColumns = 12;
 const gridCells = ref<any[]>([]);
 
 onMounted(() => {
@@ -34,7 +34,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(18, 1fr); /* 18 columns */
+  grid-template-columns: repeat(12, 1fr); /* 18 columns */
   gap: 10px;
   width: 100%;
   height: 100%;
@@ -42,7 +42,7 @@ onMounted(() => {
 
 .grid-cell {
   background-color: rgba(var(--v-theme-primary), 0.1);
-  border-radius: 3px;
+  border-radius: 15px;
   aspect-ratio: 1 / 1;
   opacity: 0;
   animation: scaleAnimation 3s infinite ease-in-out;
@@ -51,28 +51,32 @@ onMounted(() => {
   will-change: transform, opacity;
 }
 
-.v-theme--dark .grid-cell {
-  background-color: rgba(var(--v-theme-primary), 0.1);
+.v-theme--dark {
+  .grid-cell {
+    background-color: rgba(var(--v-theme-primary), 0.08);
+  }
 }
 
-.v-theme--light .grid-cell {
-  background-color: rgba(var(--v-theme-primary), 0.3);
+.v-theme--light {
+  .grid-cell {
+    background-color: rgba(var(--v-theme-primary), 0.08);
+  }
 }
 
 @keyframes scaleAnimation {
   0% {
-    transform: scale(0.8);
+    transform: scale(0.7);
     opacity: 0;
   }
   25% {
     opacity: 1;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
     opacity: 1;
   }
   100% {
-    transform: scale(0.8);
+    transform: scale(0.7);
     opacity: 0;
   }
 }

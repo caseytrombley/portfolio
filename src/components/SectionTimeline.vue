@@ -111,9 +111,23 @@ const activeTimeline = ref(0);
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, #121212 0%, transparent 200px);
-  background-repeat: no-repeat;
 }
+
+
+.v-theme--dark {
+  .overlay {
+    background: linear-gradient(to top, #121212 0%, transparent 200px);
+    background-repeat: no-repeat;
+  }
+}
+
+.v-theme--light {
+  .overlay {
+    background: linear-gradient(to top, #f5fefc 0%, transparent 200px);
+    background-repeat: no-repeat;
+  }
+}
+
 .container {
   display: block;
   height: 100vh;
