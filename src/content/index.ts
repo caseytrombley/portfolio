@@ -60,11 +60,11 @@ const timelineData = [
     </div>
 
     <div class="body">
-      <div class="image"><img src='/avatar.png' alt='image' /></div>
+      <div class="image"><img src='/90s-2.png' alt='image' /></div>
       <p>Then, one day, I stumbled upon the internet—this dazzling, pixelated frontier that felt like crossing an event horizon into the future. Suddenly, graphic design wasn’t enough. Enter Macromedia Studio: Dreamweaver, Flash, and Fireworks became my new tools of the trade. I built websites with spinning logos, animated buttons, and marquee text that screamed, “Welcome to 1999!” Flash was my muse—I was convinced it could make any website a masterpiece, as long as visitors didn’t mind waiting five minutes for it to load.</p>
 
     </div>
-    <p>It was an era where the web felt like the Wild West, and I was a pixel cowboy, wielding tools and GIFs to create a world that felt impossibly futuristic. It wasn’t perfect, but it was mine—a chaotic mix of digital dreams inspired by the video games that first sparked my creative passion.</p>`
+    <p>The web during that era felt like an uncharted frontier, full of untamed possibilities. I used every tool at my disposal to craft a digital world that felt impossibly futuristic. It wasn’t perfect, but it was mine—a vibrant mix of digital dreams inspired by the video games that first ignited my creative passion.</p>`
   },
   {
     title: "My Early 2000s to 2010s Adventure: From CSS Chaos to Modern Web",

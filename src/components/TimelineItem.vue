@@ -62,12 +62,12 @@ const formattedDescription = computed(() => {
         order: unset;
         font-size: 1.25rem;
         line-height: 1.6;
-        width: 75%;
+        width: 80%;
       }
 
       .image {
         order: unset;
-        width: 25%;
+        width: 20%;
         margin: 0 2rem 0 0;
       }
 
