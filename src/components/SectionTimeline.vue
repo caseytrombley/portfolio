@@ -130,13 +130,10 @@ const activeTimeline = ref(0);
 
 .container {
   display: block;
-  height: 100vh;
 }
 
 .text {
   padding: 3rem 3rem;
-  //background: #27293d;
-  //border-radius: 5px;
 
   p {
     font-size: 1.125rem;
