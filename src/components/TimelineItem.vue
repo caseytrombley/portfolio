@@ -28,6 +28,7 @@ const formattedDescription = computed(() => {
 }
 
 .timeline-title {
+  margin: 0 0 1rem;
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -37,6 +38,10 @@ const formattedDescription = computed(() => {
     .body {
       display: flex;
       flex-direction: column;
+
+      + .body {
+        margin-top: 1rem;
+      }
     }
     p {
       order: 1;
@@ -48,6 +53,10 @@ const formattedDescription = computed(() => {
       order: 2;
       width: 60%;
       margin: 1rem auto;
+    }
+
+    iframe {
+      max-width: 300px;
     }
 
     img {
@@ -62,17 +71,19 @@ const formattedDescription = computed(() => {
         order: unset;
         font-size: 1.25rem;
         line-height: 1.6;
-        width: 80%;
+        &:last-child {
+          margin: 0;
+        }
       }
 
       .image {
         order: unset;
-        width: 20%;
+        min-width: 235px;
         margin: 0 2rem 0 0;
       }
 
       p + .image {
-        margin: 0 0 0 1rem;
+        margin: 0 0 0 2rem;
       }
     }
   }

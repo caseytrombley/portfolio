@@ -1,7 +1,7 @@
 <template>
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
-      <h2 class="heading">My Timeline</h2>
+      <h2 class="heading">My Journey</h2>
 
       <!-- Slider connected to activeTimeline -->
       <v-slider
