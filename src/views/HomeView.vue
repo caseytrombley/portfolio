@@ -2,6 +2,7 @@
   <div class="home-view">
 
 <!--    <SectionArtwork />-->
+    <SectionProjects />
     <SectionIntro />
 
     <SectionResume />
@@ -14,6 +15,8 @@ import SectionIntro from "../components/SectionIntro.vue";
 import SectionResume from "../components/SectionResume.vue";
 import SectionTimeline from "../components/SectionTimeline.vue";
 import SectionArtwork from "../components/SectionArtwork.vue";
+import SectionProjects from "../components/SectionProjects.vue";
+
 </script>
 <style lang="scss" scoped>
 .home-view {

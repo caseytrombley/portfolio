@@ -16,7 +16,7 @@
 import { ref, onMounted } from "vue";
 
 const gridRows = 9;
-const gridColumns = 5;
+const gridColumns = 6;
 const gridCells = ref<any[]>([]);
 
 onMounted(() => {
