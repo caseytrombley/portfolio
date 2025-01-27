@@ -49,11 +49,12 @@ watch(
       const markdown = await fetchMarkdown(newID);
       content.value = marked(markdown);  // Convert markdown to HTML
     }
-  }
+  },
+  { immediate: true }
 );
 
 const emitClose = () => {
-  emit('update:modelValue', false);
+  emit('update:modelValue', false); // Close the modal when the close button is clicked
 };
 
 const fetchMarkdown = async (id: string) => {
@@ -61,7 +62,7 @@ const fetchMarkdown = async (id: string) => {
     const response = await fetch(`/case-studies/${id}.md`);  // Path should be relative to the public folder
     if (!response.ok) throw new Error('Error loading case study');
     const markdownText = await response.text();
-    console.log('Markdown loaded:', markdownText); // Debugging output
+    //console.log('Markdown loaded:', markdownText); // Debugging output
     return markdownText;
   } catch (error) {
     console.error(error);
@@ -71,8 +72,9 @@ const fetchMarkdown = async (id: string) => {
 
 const getCaseStudyTitle = (id: string) => {
   const titles: Record<string, string> = {
-    'classroom-competitions': 'Driving Engagement Through Interactive Classroom Competitions',
-    // Add more case studies here as needed
+    'case-study-competitions': 'Driving Engagement Through Interactive Classroom Competitions',
+    'case-study-liberty': 'Transforming a Legacy Insurance Quoting System with Modern Technologies',
+    'case-study-algaecal': 'Modernizing a Large-Scale E-Commerce Site and Blog for AlgaeCal',
   };
   return titles[id] || 'Case Study';
 };
@@ -93,7 +95,6 @@ const getCaseStudyTitle = (id: string) => {
     }
     p {
       margin: 0 0 1rem;
-
     }
     ul {
       margin-left: 2rem;

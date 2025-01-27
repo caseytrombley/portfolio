@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,12 +8,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-    }
+    },
+    {
+      path: '/:caseStudyID',
+      name: 'case-study',
+      component: HomeView, // Reuse the HomeView and open the modal dynamically
+    },
   ],
-  scrollBehavior() {
-    // Always scroll to the top when navigating
-    return { top: 0 };
-  }
-})
+  // scrollBehavior() {
+  //   return { top: 0 }; // Always scroll to the top when navigating
+  // },
+});
 
-export default router
+export default router;

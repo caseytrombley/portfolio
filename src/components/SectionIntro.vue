@@ -266,10 +266,10 @@ onMounted(() => {
           // Calculate the position of the avatar relative to the desc element
           let avatarOffset = (descHeight - avatarHeight) * progress;
 
-          console.log('avatarheight', avatarHeight);
-          console.log('descheight', descHeight);
-          console.log('avatarOffset', avatarOffset);
-          console.log('progress', progress);
+          // console.log('avatarheight', avatarHeight);
+          // console.log('descheight', descHeight);
+          // console.log('avatarOffset', avatarOffset);
+          // console.log('progress', progress);
 
           // Ensure avatar stays within bounds of the .desc div
           avatarOffset = Math.min(avatarOffset, descHeight - avatarHeight);

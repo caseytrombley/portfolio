@@ -38,6 +38,7 @@ import ScreenEffect from "./components/ScreenEffect.vue";
 
 <style lang="scss">
 html, body {
+  font-size: 18px;
   overflow-x: hidden;
 }
 main {

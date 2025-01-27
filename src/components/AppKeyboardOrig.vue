@@ -94,16 +94,16 @@
 
 </template>
 
-<script setup lang="ts">
-import { ref, onMounted } from 'vue';
+<!--<script setup lang="ts">-->
+<!--import { ref, onMounted } from 'vue';-->
 
-const keyboard = ref<HTMLElement | null>(null);
+<!--const keyboard = ref<HTMLElement | null>(null);-->
 
-onMounted(() => {
-  console.log('key', keyboard)
-})
+<!--onMounted(() => {-->
+<!--  console.log('key', keyboard)-->
+<!--})-->
 
-</script>
+<!--</script>-->
 
 <style lang="scss" scoped>
 

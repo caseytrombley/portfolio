@@ -3,24 +3,26 @@
     <v-container max-width="1200px" fluid class="container">
       <h2 class="heading">Work Experience</h2>
 
-      <div v-for="(item, i) in experience" class="item">
-        <div class="item-row">
-          <div class="box box-left">
-            <h4>
-              {{ item.title }} at {{ item.company }}
-            </h4>
-            <p>
-              {{ item.description }}
-            </p>
+      <ul class="experience-list">
+        <li v-for="(item, i) in experience" :key="i" class="item">
+          <div class="item-row">
+            <div class="box box-left">
+              <h4>
+                {{ item.title }} at {{ item.company }}
+              </h4>
+              <p>
+                {{ item.description }}
+              </p>
+            </div>
+            <div class="box box-right">
+              <p class="label">
+                {{ item.dates }}
+              </p>
+            </div>
           </div>
-          <div class="box box-right">
-            <p class="label">
-              {{ item.dates }}
-            </p>
-          </div>
-        </div>
-        <div class="line"></div>
-      </div>
+          <div class="line"></div>
+        </li>
+      </ul>
 
     </v-container>
   </section>
@@ -118,12 +120,20 @@ onMounted(() => {
 });
 </script>
 
-
-
 <style lang="scss" scoped>
 section {
   padding-bottom: 3rem;
   background-color: rgba(255, 0, 255, 0.1);
+}
+
+.experience-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  .item {
+    margin-bottom: 2rem;
+  }
 }
 
 .item-row {
@@ -194,7 +204,5 @@ section {
     font-weight: 400;
     line-height: 1.2;
   }
-
 }
-
 </style>

@@ -2,10 +2,10 @@
   <div class="home-view">
 
 <!--    <SectionArtwork />-->
-    <SectionProjects />
-    <SectionIntro />
 
+    <SectionIntro />
     <SectionResume />
+    <SectionProjects />
     <SectionTimeline />
 <!--    <SectionArtwork />-->
   </div>
