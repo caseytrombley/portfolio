@@ -58,7 +58,7 @@ const emitClose = () => {
 
 const fetchMarkdown = async (id: string) => {
   try {
-    const response = await fetch(`/content/${id}.md`);  // Path should be relative to the public folder
+    const response = await fetch(`/case-studies/${id}.md`);  // Path should be relative to the public folder
     if (!response.ok) throw new Error('Error loading case study');
     const markdownText = await response.text();
     console.log('Markdown loaded:', markdownText); // Debugging output
@@ -78,9 +78,26 @@ const getCaseStudyTitle = (id: string) => {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .case-study-content {
   white-space: normal;
   word-wrap: break-word;
+  font-size: 1.25rem;
+
+  ::v-deep {
+    h1 {
+      margin: 0 0 2rem;
+    }
+    h3 {
+      margin: 2rem 0 1rem;
+    }
+    p {
+      margin: 0 0 1rem;
+
+    }
+    ul {
+      margin-left: 2rem;
+    }
+  }
 }
 </style>
