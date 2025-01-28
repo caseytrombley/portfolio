@@ -1,69 +1,71 @@
 <template>
-  <section class="spaced">
+  <section class="section">
     <v-container max-width="1200px" fluid class="container">
-      <h2 class="heading">Case Studies</h2>
-      <div class="intro">
-        <p>
-          Over the past 20+ years, I’ve specialized in developing SaaS applications and paid software for diverse industries.
-          While I can’t share specific client projects due to confidentiality, I’m happy to discuss my process and contributions in detail.
-        </p>
-      </div>
 
-      <ul class="case-study-links">
-        <li>
-          <router-link
-            class="link"
-            :to="{ name: 'case-study', params: { caseStudyID: 'case-study-competitions' } }"
-          >
-            <strong>Case Study:</strong> Driving Engagement Through Interactive Classroom Competitions
-          </router-link>
-        </li>
-        <li>
-          <router-link
-            class="link"
-            :to="{ name: 'case-study', params: { caseStudyID: 'case-study-liberty' } }"
-          >
-            <strong>Case Study:</strong> Transforming a Legacy Insurance Quoting System with Modern Technologies
-          </router-link>
-        </li>
-        <li>
-          <router-link
-            class="link"
-            :to="{ name: 'case-study', params: { caseStudyID: 'case-study-algaecal' } }"
-          >
-            <strong>Case Study:</strong> Modernizing a Large-Scale E-Commerce Site and Blog for AlgaeCal
-          </router-link>
-        </li>
-      </ul>
+      <h2 class="heading">Recent Projects</h2>
 
-      <CaseStudyModal
+      <TerminalWindow>
+        <ul class="project-links">
+          <li>
+<!--            <router-link-->
+<!--              class="link"-->
+<!--              :to="{ name: 'project', params: { projectID: 'project-key-and-chord' } }"-->
+<!--            >-->
+<!--              <img src="/project-image-key-and-chord.jpg" alt="Key and Chord">-->
+<!--            </router-link>-->
+            <a
+              href="https://www.keyandchord.com"
+              target="_blank"
+              class="link"
+            >
+              <img src="/project-image-key-and-chord.jpg" alt="Key and Chord">
+            </a>
+            <div class="description">
+              An interactive piano chord dictionary built with Vue for the front end and Firebase for the backend API. It features dynamic chord diagrams, a virtual piano, and Firestore integration for real-time access to chords and inversions across all keys.
+            </div>
+          </li>
+
+        </ul>
+      </TerminalWindow>
+
+
+<!--      <p class="intro">-->
+<!--        Over the past 20+ years, I’ve specialized in developing SaaS applications and paid software for diverse industries.-->
+<!--        While I can’t share specific client projects due to confidentiality, I’m happy to discuss my process and contributions in detail.-->
+<!--      </p>-->
+
+
+
+      <ProjectModal
         v-model="isModalOpen"
-        :caseStudyID="currentCaseStudyID"
+        :projectID="currentProjectID"
       />
     </v-container>
+
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import CaseStudyModal from '../components/CaseStudyModal.vue';
+import ProjectModal from '../components/ProjectModal.vue';
+import TerminalWindow from "./TerminalWindow.vue";
 
-const currentCaseStudyID = ref<string | null>(null);
+const currentProjectID = ref<string | null>(null);
 const isModalOpen = ref(false);
 
 const route = useRoute();
 const router = useRouter();
 
-// Watch the route for caseStudyID
+// Watch the route for projectID
 watch(
-  () => route.params.caseStudyID,
-  (caseStudyID) => {
-    if (caseStudyID) {
-      currentCaseStudyID.value = caseStudyID as string;
+  () => route.params.projectID,
+  (projectID) => {
+    if (projectID) {
+      currentProjectID.value = projectID as string;
       isModalOpen.value = true;
     } else {
-      currentCaseStudyID.value = null;
+      currentProjectID.value = null;
       isModalOpen.value = false;
     }
   },
@@ -76,82 +78,74 @@ watch(isModalOpen, (isOpen) => {
     router.push({ name: 'home' }); // Reset URL when modal is closed
   }
 });
+
 </script>
 
 <style lang="scss" scoped>
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+  background-color: #272727;
+}
+.heading {
+  margin: 0 0 2rem;
+  color: #ffffff;
+}
+
 .intro {
   padding: 1rem 0;
 }
 
-/* List structure styling */
-.case-study-links {
-  list-style-type: none;  /* Removes the default bullets */
+.project-links {
+  list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 2rem 0;
 
   li {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
     margin-bottom: 1rem;
   }
 }
 
-/* Styling for the links */
 .link {
   position: relative;
   display: inline-block;
-  width: 100%;
-  padding: 2rem;
-  margin: 1rem 0;
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: initial;
+  min-width: 180px;
+  height: 180px;
+  color: #0e6e66;
   text-decoration: none;
-  letter-spacing: .25px;
+  //border: 2px solid #25e0cb;
+  border: 6px solid #0e6e66;
+  border-radius: 3px;
   background-color: transparent;
-  overflow: visible;
   transition: all 0.3s ease;
-  z-index: 0;
 
-  /* Front text color */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  img {
     width: 100%;
     height: 100%;
-    background-color: rgba(var(--v-theme-secondary), 0.5);
-    z-index: -1;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    border-radius: 8px;
-  }
-
-  &:hover {
-    color: white;
-
-    &::after {
-      transform: translate(-50%, -50%);
-      opacity: 1;
-    }
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) translate(5px, 10px);
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--v-theme-primary), 0.05);
-    z-index: -2;
-    transition: transform 0.4s ease-out, background-color 0.4s ease-out;
-    border-radius: 8px;
-  }
-
-  &:hover::before {
-    transform: translate(-50%, -50%) translate(0, 0);
-    background-color: rgba(var(--v-theme-secondary), 1);
   }
 }
+
+.description {
+  font-family: "Syne Mono", serif, monospace;
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #ffffff;
+}
+
+//.v-theme--dark {
+//  .section {
+//    background-color: #0e6e66;
+//  }
+//}
+//.v-theme--light {
+//  .section {
+//    background-color: rgba(var(--v-theme-primary), 1);
+//  }
+//}
 </style>

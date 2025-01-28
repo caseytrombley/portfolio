@@ -44,6 +44,12 @@ html, body {
 main {
   overflow: visible;
 }
+
+.v-theme--light {
+  .dialog-content-body {
+    background-color: #ffffff;
+  }
+}
 </style>
 
 <style lang="scss" scoped>
@@ -73,4 +79,5 @@ main {
 .footer {
   background-color: transparent;
 }
+
 </style>

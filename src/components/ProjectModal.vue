@@ -8,10 +8,10 @@
         <v-btn icon @click="emitClose">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title class="font-weight-bold">Case Study</v-toolbar-title>
+        <v-toolbar-title class="bg">Project</v-toolbar-title>
       </v-toolbar>
       <v-card-text>
-        <div v-html="content" class="case-study-content"></div>
+        <div v-html="content" class="project-content"></div>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -22,7 +22,7 @@ import { ref, watch, computed } from 'vue';
 import { marked } from 'marked';
 
 interface Props {
-  caseStudyID: string | null;
+  projectID: string | null;
   modelValue: boolean;
 }
 
@@ -40,7 +40,7 @@ const dialogProps = computed(() => ({
 }));
 
 watch(
-  () => props.caseStudyID,
+  () => props.projectID,
   async (newID) => {
     if (newID) {
       const markdown = await fetchMarkdown(newID);
@@ -56,21 +56,21 @@ const emitClose = () => {
 
 const fetchMarkdown = async (id: string) => {
   try {
-    const response = await fetch(`/case-studies/${id}.md`);  // Path should be relative to the public folder
-    if (!response.ok) throw new Error('Error loading case study');
+    const response = await fetch(`/projects/${id}.md`);  // Path should be relative to the public folder
+    if (!response.ok) throw new Error('Error loading project');
     const markdownText = await response.text();
     //console.log('Markdown loaded:', markdownText); // Debugging output
     return markdownText;
   } catch (error) {
     console.error(error);
-    return 'Unable to load the case study.';
+    return 'Unable to load the project.';
   }
 };
 
 </script>
 
 <style lang="scss" scoped>
-.case-study-content {
+.project-content {
   white-space: normal;
   word-wrap: break-word;
   font-size: 1.25rem;

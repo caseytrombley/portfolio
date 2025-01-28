@@ -14,6 +14,11 @@ const router = createRouter({
       name: 'case-study',
       component: HomeView, // Reuse the HomeView and open the modal dynamically
     },
+    {
+      path: '/:projectID',
+      name: 'project',
+      component: HomeView, // Reuse the HomeView and open the modal dynamically
+    },
   ],
   // scrollBehavior() {
   //   return { top: 0 }; // Always scroll to the top when navigating
