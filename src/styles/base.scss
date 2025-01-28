@@ -102,7 +102,13 @@ section {
   overflow-y: visible;
 
   &.spaced {
-    padding: 5rem 0 3rem;
+    padding: 2rem 1rem;
+  }
+
+  @media (min-width: 600px) {
+    &.spaced {
+      padding: 5rem 0 3rem;
+    }
   }
 
   @media (min-width: 768px) {

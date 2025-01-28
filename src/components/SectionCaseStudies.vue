@@ -13,7 +13,7 @@
             class="link"
             :to="{ name: 'case-study', params: { caseStudyID: 'case-study-competitions' } }"
           >
-            <strong>Case Study:</strong> Driving Engagement Through Interactive Classroom Competitions
+            <v-icon start>mdi-button-pointer</v-icon><strong>Case Study:</strong> Driving Engagement Through Interactive Classroom Competitions
           </router-link>
         </li>
         <li>
@@ -21,7 +21,7 @@
             class="link"
             :to="{ name: 'case-study', params: { caseStudyID: 'case-study-liberty' } }"
           >
-            <strong>Case Study:</strong> Transforming a Legacy Insurance Quoting System with Modern Technologies
+            <v-icon start>mdi-button-pointer</v-icon><strong>Case Study:</strong> Transforming a Legacy Insurance Quoting System with Modern Technologies
           </router-link>
         </li>
         <li>
@@ -29,7 +29,7 @@
             class="link"
             :to="{ name: 'case-study', params: { caseStudyID: 'case-study-algaecal' } }"
           >
-            <strong>Case Study:</strong> Modernizing a Large-Scale E-Commerce Site and Blog for AlgaeCal
+            <v-icon start>mdi-button-pointer</v-icon><strong>Case Study:</strong> Modernizing a Large-Scale E-Commerce Site and Blog for AlgaeCal
           </router-link>
         </li>
       </ul>
@@ -78,7 +78,7 @@ watch(isModalOpen, (isOpen) => {
 
 <style lang="scss" scoped>
 .intro {
-  padding: 1rem 0;
+  padding: 1rem 0 2rem;
 }
 
 .case-study-links {
@@ -87,7 +87,9 @@ watch(isModalOpen, (isOpen) => {
   padding: 0;
 
   li {
-    margin-bottom: 1rem;
+    + li {
+      margin-top: 1.5rem;
+    }
   }
 }
 
@@ -95,9 +97,9 @@ watch(isModalOpen, (isOpen) => {
   position: relative;
   display: inline-block;
   width: 100%;
-  padding: 2rem;
-  margin: 1rem 0;
-  font-size: 1.35rem;
+
+  padding: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 400;
   color: initial;
   text-decoration: none;
@@ -148,5 +150,21 @@ watch(isModalOpen, (isOpen) => {
     transform: translate(-50%, -50%) translate(0, 0);
     background-color: rgba(var(--v-theme-secondary), 1);
   }
+}
+
+@media (min-width: 600px) {
+
+  li {
+    + li {
+      margin-top: 1rem;
+    }
+  }
+
+  .link {
+    padding: 2rem;
+    font-size: 1.35rem;
+
+  }
+
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
 
       <h2 class="heading">Recent Projects</h2>
@@ -83,10 +83,9 @@ watch(isModalOpen, (isOpen) => {
 
 <style lang="scss" scoped>
 
-.section {
+section {
   position: relative;
   overflow: hidden;
-  padding: 4rem 0;
   background-color: #272727;
 }
 .heading {
@@ -105,24 +104,24 @@ watch(isModalOpen, (isOpen) => {
 
   li {
     display: flex;
-    flex-direction: row;
     gap: 1rem;
-    margin-bottom: 1rem;
   }
 }
 
 .link {
   position: relative;
-  display: inline-block;
-  min-width: 180px;
-  height: 180px;
+  min-width: 130px;
+  height: 130px;
   color: #0e6e66;
   text-decoration: none;
-  //border: 2px solid #25e0cb;
-  border: 6px solid #0e6e66;
+  border: 6px solid #25e0cb;
   border-radius: 3px;
   background-color: transparent;
   transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #0e6e66;
+  }
 
   img {
     width: 100%;
@@ -133,10 +132,31 @@ watch(isModalOpen, (isOpen) => {
 .description {
   font-family: "Syne Mono", serif, monospace;
   font-weight: 800;
-  font-size: 1.25rem;
-  line-height: 1;
-  color: #ffffff;
+  font-size: 1.125rem;
+  line-height: 1.1;
+  color: #25e0cb;
 }
+
+@media (min-width: 600px) {
+
+  .link {
+    position: relative;
+    min-width: 160px;
+    height: 160px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .description {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+}
+
+
 
 //.v-theme--dark {
 //  .section {
