@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { fileURLToPath, URL } from 'node:url';
 
 import { defineConfig } from 'vite';
@@ -6,10 +7,10 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  plugins: [vue(), vueDevTools(), sentryVitePlugin({
+    org: "caseytrombley",
+    project: "javascript-vue"
+  })],
   css: {
     preprocessorOptions: {
       scss: {
@@ -28,6 +29,8 @@ export default defineConfig({
         main: fileURLToPath(new URL('./index.html', import.meta.url)), // Ensure proper entry file
       },
     },
+
+    sourcemap: true
   },
   publicDir: 'public', // Vite will copy everything in 'public' to the 'dist' folder
 });

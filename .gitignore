@@ -32,3 +32,5 @@ coverage
 
 *.tsbuildinfo
 firebase-admin-key.json
+# Sentry Config File
+.env.sentry-build-plugin
