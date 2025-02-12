@@ -25,6 +25,20 @@
             </div>
           </li>
 
+          <li>
+
+            <a
+              href="https://caseys-app-design-hadithi.netlify.app"
+              target="_blank"
+              class="link"
+            >
+              <img src="/project-image-hadithi.jpg" alt="Hadithi">
+            </a>
+            <div class="description">
+              Website design for an Arts and Culture publication. This is the front end development site only. I have designed everything and built it with javascript, Vue, and CSS.
+            </div>
+          </li>
+
         </ul>
       </TerminalWindow>
 
@@ -105,6 +119,10 @@ section {
   li {
     display: flex;
     gap: 1rem;
+
+    + li {
+      margin-top: 1rem;
+    }
   }
 }
 
