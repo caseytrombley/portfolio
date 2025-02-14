@@ -24,6 +24,12 @@
         </li>
       </ul>
 
+      <div class="actions">
+        <a href="/Trombley_Res_2025.pdf" download class="btn">
+          <v-icon>mdi-download</v-icon> Download resume
+        </a>
+      </div>
+
     </v-container>
   </section>
 </template>
@@ -143,6 +149,24 @@ section {
 
 .box + .box {
   margin-top: 1rem;
+}
+
+.actions {
+  .btn {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: inherit;
+    background: #562755;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 400;
+    text-decoration: none;
+    margin: 0 auto;
+  }
+  i {
+    margin: 0 10px 0 0;
+  }
 }
 
 @media (min-width: 768px) {

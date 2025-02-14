@@ -24,15 +24,18 @@
     </div>
     <div class="bottom-div">
       <v-container max-width="1200px" fluid class="container">
+
         <div class="skills">
           <div v-if="isMobile">
             <div class="avatar-block" ref="avatarBlockRef">
               <img src="/avatar.png" alt="Avatar">
+              <ContactMe />
             </div>
           </div>
           <div v-else class="col1">
             <div class="avatar" ref="avatarRef">
               <img src="/avatar.png" alt="Avatar">
+              <ContactMe />
             </div>
           </div>
           <div class="col2">
@@ -114,6 +117,7 @@ import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import AppKeyboard from '../components/AppKeyboard.vue';
 import { introText } from '../content/index.ts';
+import ContactMe from "@/components/ContactMe.vue";
 
 gsap.registerPlugin(ScrollTrigger);
 
