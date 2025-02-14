@@ -2,25 +2,22 @@
   <v-footer dark height="auto" class="footer indigo lighten-1">
     <v-container max-width="1200px" fluid>
       <v-card flat tile class="white--text text-xs-center">
-        <v-card-text>
-          <!-- Your existing footer text can remain here -->
-        </v-card-text>
 
-        <v-card-text class="white--text pt-0">
-          The code we write, the code betrays,
-          Tomorrow rewrites yesterday’s ways.
 
-          A shifting tide, a moving goal,
-          Foundations bend, we must be bold.
 
-          Patterns break and tools expire,
-          We must adapt, we must aspire.
-        </v-card-text>
+        <div class="footer-top">
+          <img src="/casey-image.jpg" alt="Casey">
+          <div>
+            <p>
+              <b>Casey Trombley</b> is a professional web developer, artist, and musician from the Boston area of Massachusetts.
+              His specialty is front-end design and development with javascript and css. He has a bachelors degree in advanced web design from Salem State University.
+            </p>
+          </div>
+        </div>
 
-        <v-divider></v-divider>
 
         <div class="d-flex">
-          <v-card-text class="white--text">
+          <v-card-text>
             &copy;{{ new Date().getFullYear() }} — <strong>Casey Trombley</strong>
           </v-card-text>
 
@@ -48,6 +45,21 @@ const openLinkedIn = () => {
 
 
 <style lang="scss" scoped>
+.footer-top {
+  display: flex;
+  gap: 1rem;
+  padding: 0 0 1rem;
+
+  img {
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  p {
+    font-size: 1.4rem;
+    opacity: .3;
+  }
+}
 .actions {
   display: flex;
   justify-items: flex-end;
