@@ -38,7 +38,6 @@ const openLinkedIn = () => {
 <style lang="scss" scoped>
 .contact-me {
   padding: 1rem;
-  margin: .5rem 0;
 
   .open-sign {
     display: block;
