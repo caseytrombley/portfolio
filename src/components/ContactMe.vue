@@ -43,8 +43,7 @@ const openLinkedIn = () => {
   .open-sign {
     display: block;
     position: relative;
-    top: -7px;
-    //transform: rotate(-1deg);
+    top: -4px;
     transform-origin: top center;
     width: min-content;
     padding: 4px 5px 2px;
@@ -54,7 +53,6 @@ const openLinkedIn = () => {
     background: linear-gradient(41deg, rgba(17,142,66,1) 0%, rgba(16,160,73,1) 100%);
     border: 3px solid #ffffff;
     border-radius:18px;
-    //transform: scale(.8);
     animation: sway 5s ease-out infinite;
 
     .top, .bottom {
