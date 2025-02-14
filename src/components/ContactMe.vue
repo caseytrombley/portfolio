@@ -7,7 +7,7 @@
       Let's talk!
     </div>
 
-    <div class="d-flex">
+    <div class="contact-info">
       <div class="open-sign">
         <div class="top">I'm</div>
         <div class="open">open</div>
@@ -29,11 +29,11 @@
 </template>
 
 <script setup lang="ts">
+
 const openLinkedIn = () => {
   window.open("https://www.linkedin.com/in/casey-trombley", "_blank");
 };
 </script>
-
 
 <style lang="scss" scoped>
 .contact-me {
@@ -44,7 +44,8 @@ const openLinkedIn = () => {
     display: block;
     position: relative;
     top: -7px;
-    transform: rotate(-1deg);
+    //transform: rotate(-1deg);
+    transform-origin: top center;
     width: min-content;
     padding: 4px 5px 2px;
     color: #ffffff;
@@ -53,6 +54,8 @@ const openLinkedIn = () => {
     background: linear-gradient(41deg, rgba(17,142,66,1) 0%, rgba(16,160,73,1) 100%);
     border: 3px solid #ffffff;
     border-radius:18px;
+    //transform: scale(.8);
+    animation: sway 5s ease-out infinite;
 
     .top, .bottom {
       position: relative;
@@ -94,41 +97,42 @@ const openLinkedIn = () => {
     margin: .125rem 0 1rem;
   }
 
-  .d-flex {
+  .contact-info {
     display: flex;
+    justify-content: center;
     position: relative;
-    top: -5px;
+    top: -4px;
     gap: 1rem;
   }
 
   .actions {
     display: flex;
+    position: relative;
     gap: .5rem;
-    padding: 5px 0 0;
+    top: 15px;
   }
 
   .btn {
-    padding: 5px;
-    text-align: center;
-    transition: all .2s ease-in-out;
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    color: inherit;
-
-    i {
-      font-size: 44px;
-    }
-
-    img {
-      position: relative;
-      top: 3px;
-      width: 40px;
-
-    }
+    height: 36px;
 
     &:hover {
-      animation: shake 150ms 2 linear;
+      animation: flicker 150ms 2 linear;
+    }
+  }
+
+  .email {
+
+    color: #ffffff;
+    background-color: #d91717;
+    border-radius: 5px;
+    padding: 2px;
+    i {
+      font-size: 32px;
+    }
+  }
+  .linkedin {
+    img {
+      height: 36px;
     }
   }
 }

@@ -53,6 +53,9 @@ const openLinkedIn = () => {
   justify-items: flex-end;
   align-items: flex-start;
 }
+.btn {
+  height: 36px;
+}
 .email {
   color: #ffffff;
   background-color: #d91717;
