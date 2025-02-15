@@ -156,7 +156,7 @@ section {
     display: flex;
     align-items: center;
     font-size: 1.5rem;
-    color: inherit;
+    color: #ffffff;
     background: #562755;
     padding: 1rem 1.5rem;
     border-radius: 10px;
