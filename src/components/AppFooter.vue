@@ -9,7 +9,7 @@
           <img src="/casey-image.jpg" alt="Casey">
           <div>
             <p>
-              <b>Casey Trombley</b> is a professional web developer, artist, and musician from the Boston area of Massachusetts.
+              <b>Casey Trombley</b> is a professional web developer and artist from the Boston area of Massachusetts.
               His specialty is front-end design and development with javascript and css. He has a bachelors degree in advanced web design from Salem State University.
             </p>
           </div>
