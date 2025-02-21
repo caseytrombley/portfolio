@@ -39,6 +39,20 @@
             </div>
           </li>
 
+          <li>
+
+            <a
+              href="https://crypto-keepr.netlify.app/"
+              target="_blank"
+              class="link"
+            >
+              <img src="/project-image-crypto.jpg" alt="Crypto Tracker">
+            </a>
+            <div class="description">
+              Information site for cryptocurrencies. This is an ongoing side project in development. It leverages some open source API's for the data along with Chart.js for the visualizations.
+            </div>
+          </li>
+
         </ul>
       </TerminalWindow>
 
