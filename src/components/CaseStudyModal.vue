@@ -2,13 +2,16 @@
   <v-dialog
     v-bind="dialogProps"
     transition="dialog-bottom-transition"
+    max-width="800px"
   >
     <v-card class="dialog-content-body">
-      <v-toolbar flat>
+      <v-toolbar flat color="transparent">
+
+<!--        <v-toolbar-title class="font-weight-bold">Case Study</v-toolbar-title>-->
+        <v-spacer></v-spacer>
         <v-btn icon @click="emitClose">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title class="font-weight-bold">Case Study</v-toolbar-title>
       </v-toolbar>
       <v-card-text>
         <div v-html="content" class="case-study-content"></div>
