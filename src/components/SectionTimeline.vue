@@ -64,20 +64,22 @@
 
         </div>
 
-        <div class="background-layer">
-          <div class="overlay"></div>
-          <Griddy />
-        </div>
+
       </div>
     </v-container>
+    <div class="background-layer">
+      <div class="overlay"></div>
+      <VideoBackground />
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { tickLabels, timelineData } from "../content/index";
-import Griddy from "./Griddy.vue";
+//import Griddy from "./Griddy.vue";
 import TimelineItem from "./TimelineItem.vue";
+import VideoBackground from "@/components/VideoBackground.vue";
 
 const activeTimeline = ref(0);
 </script>
@@ -130,6 +132,7 @@ const activeTimeline = ref(0);
 
 .container {
   display: block;
+  z-index: 1;
 }
 
 .text {

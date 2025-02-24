@@ -48,7 +48,13 @@ const openLinkedIn = () => {
 .footer-top {
   display: flex;
   gap: 1rem;
-  padding: 0 0 1rem;
+  margin: 0 auto 1rem;
+  padding: 2rem;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: rgba(255,255,255,0.03);
 
   img {
     height: 100px;
@@ -56,7 +62,7 @@ const openLinkedIn = () => {
   }
 
   p {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     opacity: .3;
   }
 }
@@ -80,6 +86,17 @@ const openLinkedIn = () => {
 .linkedin {
   img {
     height: 36px;
+  }
+}
+
+.v-theme--dark {
+  .footer-top {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+.v-theme--light {
+  .footer-top {
+    background: rgb(120, 231, 220, 0.09);
   }
 }
 </style>
