@@ -2,23 +2,20 @@
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
 
-      <h2 class="heading">Recent Projects</h2>
+      <h2 class="heading">Current Projects</h2>
 
       <TerminalWindow>
         <ul class="project-links">
           <li>
-<!--            <router-link-->
-<!--              class="link"-->
-<!--              :to="{ name: 'project', params: { projectID: 'project-key-and-chord' } }"-->
-<!--            >-->
-<!--              <img src="/project-image-key-and-chord.jpg" alt="Key and Chord">-->
-<!--            </router-link>-->
             <a
               href="https://www.keyandchord.com"
               target="_blank"
               class="link"
             >
               <img src="/project-image-key-and-chord.jpg" alt="Key and Chord">
+              <div class="overlay">
+                <v-icon>mdi-open-in-new</v-icon>
+              </div>
             </a>
             <div class="description">
               An interactive piano chord dictionary built with Vue for the front end and Firebase for the backend API. It features dynamic chord diagrams, a virtual piano, and Firestore integration for real-time access to chords and inversions across all keys.
@@ -26,13 +23,15 @@
           </li>
 
           <li>
-
             <a
               href="https://caseys-app-design-hadithi.netlify.app"
               target="_blank"
               class="link"
             >
               <img src="/project-image-hadithi.jpg" alt="Hadithi">
+              <div class="overlay">
+                <v-icon>mdi-open-in-new</v-icon>
+              </div>
             </a>
             <div class="description">
               Website design for an Arts and Culture publication. This is the front end development site only. I have designed everything and built it with javascript, Vue, and CSS.
@@ -40,13 +39,15 @@
           </li>
 
           <li>
-
             <a
               href="https://crypto-keepr.netlify.app/"
               target="_blank"
               class="link"
             >
               <img src="/project-image-crypto.jpg" alt="Crypto Tracker">
+              <div class="overlay">
+                <v-icon>mdi-open-in-new</v-icon>
+              </div>
             </a>
             <div class="description">
               Information site for cryptocurrencies. This is an ongoing side project in development. It leverages some open source API's for the data along with Chart.js for the visualizations.
@@ -56,20 +57,11 @@
         </ul>
       </TerminalWindow>
 
-
-<!--      <p class="intro">-->
-<!--        Over the past 20+ years, I’ve specialized in developing SaaS applications and paid software for diverse industries.-->
-<!--        While I can’t share specific client projects due to confidentiality, I’m happy to discuss my process and contributions in detail.-->
-<!--      </p>-->
-
-
-
       <ProjectModal
         v-model="isModalOpen"
         :projectID="currentProjectID"
       />
     </v-container>
-
   </section>
 </template>
 
@@ -106,7 +98,6 @@ watch(isModalOpen, (isOpen) => {
     router.push({ name: 'home' }); // Reset URL when modal is closed
   }
 });
-
 </script>
 
 <style lang="scss" scoped>
@@ -116,6 +107,7 @@ section {
   overflow: hidden;
   background-color: #272727;
 }
+
 .heading {
   margin: 0 0 2rem;
   color: #ffffff;
@@ -159,6 +151,29 @@ section {
     width: 100%;
     height: 100%;
   }
+
+  .overlay {
+    position: absolute;
+    top: 10px;
+    //left: 0;
+    right: 10px;
+    //bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    //justify-content: center;
+    //align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+
+  .v-icon {
+    font-size: 2rem;
+    color: #25e0cb;
+  }
 }
 
 .description {
@@ -188,16 +203,4 @@ section {
   }
 }
 
-
-
-//.v-theme--dark {
-//  .section {
-//    background-color: #0e6e66;
-//  }
-//}
-//.v-theme--light {
-//  .section {
-//    background-color: rgba(var(--v-theme-primary), 1);
-//  }
-//}
 </style>

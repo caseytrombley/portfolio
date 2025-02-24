@@ -2,10 +2,10 @@
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
       <h2 class="heading">Case Studies</h2>
-      <p class="intro">
+      <h3 class="intro">
         Over the past 20+ years, I’ve specialized in developing SaaS applications and paid software for diverse industries.
         While I can’t share specific client projects due to confidentiality, I’m happy to discuss my process and contributions in detail.
-      </p>
+      </h3>
 
       <ul class="case-study-links">
         <li

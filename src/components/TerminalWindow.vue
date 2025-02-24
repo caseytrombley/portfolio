@@ -11,7 +11,7 @@
       <!--    <p class="line3">&nbsp;&nbsp;“Let's work together!”&nbsp;]<span class="cursor3">_</span></p>-->
       <!--    <p class="line4">&gt;<span class="cursor4">_</span></p>-->
 
-      <p class="line1">Recent Projects<span class="cursor1">_</span></p>
+      <p class="line1">Current Projects<span class="cursor1">_</span></p>
 
       <div class="content">
         <slot />
