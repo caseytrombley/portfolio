@@ -350,8 +350,10 @@ watch(moveImageDown, async (newVal) => {
 }
 .intro-text {
   position: absolute;
-  width: 93%;
+  padding: 0 40px;
 }
+
+
 h1 {
   padding: 0 0 12px;
   opacity: 0;
@@ -359,6 +361,7 @@ h1 {
   animation-delay: .5s;
 }
 .paragraph {
+  text-align: left;
   z-index: 3;
   padding: 0 15px 0 2px;
   opacity: 0;
@@ -395,12 +398,14 @@ p {
     }
   }
 }
-@media (min-width: 600px) {
+@media (min-width: 480px) {
   p {
     font-size: 1.5rem;
     line-height: 2rem;
   }
+}
 
+@media (min-width: 600px) {
   .intro-image {
     width: 50%;
     top: 27px;
@@ -416,6 +421,9 @@ p {
   padding: 5rem 0;
 }
 @media (min-width: 768px) {
+  .intro-text {
+    width: 93%;
+  }
   .bottom-div {
     padding: 7rem 0;
   }
