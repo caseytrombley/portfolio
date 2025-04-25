@@ -6,12 +6,16 @@
 
 
         <div class="footer-top">
-          <img src="/casey-image.jpg" alt="Casey">
+          <img src="/logo.svg" alt="Casey">
           <div>
-            <p>
-              <b>Casey Trombley</b> is a professional web developer and artist from the Boston area of Massachusetts.
-              His specialty is front-end design and development with javascript and css. He has a bachelors degree in advanced web design from Salem State University.
+            <p class="text-sm-body-1">
+              <b>Casey Trombley</b> is a software engineer and creative artist.
+              He specializes in front-end design and development, with a focus on JavaScript and CSS.
+              He’s also a graphic artist and music composer, blending visual and audio creativity into his work.
+              Rumor has it that he builds perfect mobile responsive apps while beating VS Code in a staring contest.
             </p>
+
+
           </div>
         </div>
 
@@ -58,7 +62,7 @@ const openLinkedIn = () => {
 
   img {
     height: 100px;
-    border-radius: 50%;
+    //border-radius: 50%;
   }
 
   p {

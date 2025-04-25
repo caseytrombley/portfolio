@@ -41,6 +41,15 @@
       </template>
     </Suspense>
 
+    <Suspense>
+      <template #default>
+        <SectionBlog />
+      </template>
+      <template #fallback>
+        <div>Loading Case Studies...</div>
+      </template>
+    </Suspense>
+
   </div>
 </template>
 
@@ -55,6 +64,7 @@ const SectionCaseStudies = defineAsyncComponent(() => import('../components/Sect
 const SectionProjects = defineAsyncComponent(() => import('../components/SectionProjects.vue'));
 const SectionDesigns = defineAsyncComponent(() => import('@/components/SectionDesigns.vue'));
 const SectionTimeline = defineAsyncComponent(() => import('../components/SectionTimeline.vue'));
+const SectionBlog = defineAsyncComponent(() => import('../components/SectionBlog.vue'));
 </script>
 
 <style lang="scss" scoped>

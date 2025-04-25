@@ -1,11 +1,9 @@
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { fileURLToPath, URL } from 'node:url';
-
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [vue(), vueDevTools(), sentryVitePlugin({
     org: "caseytrombley",
@@ -26,11 +24,19 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: fileURLToPath(new URL('./index.html', import.meta.url)), // Ensure proper entry file
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
       },
     },
-
     sourcemap: true
   },
-  publicDir: 'public', // Vite will copy everything in 'public' to the 'dist' folder
+  publicDir: 'public',
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://www.blog.caseytrombley.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  }
 });
