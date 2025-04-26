@@ -84,6 +84,9 @@ const updateFormDialog = (value: boolean) => {
 }
 .btn {
   height: 36px;
+  &:hover {
+    animation: flicker 150ms 2 linear;
+  }
 }
 .email {
   color: #ffffff;

@@ -26,14 +26,14 @@
       </div>
     </div>
 
-    <!-- Contact Form Dialog -->
-    <ContactFormDialog v-model="dialog" />
+    <!-- Contact Form -->
+    <ContactForm v-model="dialog" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import ContactFormDialog from './ContactForm.vue'
+import ContactForm from './ContactForm.vue'
 
 const dialog = ref(false)
 
@@ -141,5 +141,3 @@ const openLinkedIn = () => {
   }
 }
 </style>
-<script setup lang="ts">
-</script>
