@@ -20,34 +20,7 @@
               sm="6"
               md="4"
             >
-              <v-card
-                :to="`/blog/${post.slug}`"
-                class="mx-auto"
-                max-width="400"
-                elevation="0"
-              >
-                <v-card-title>
-                  <div class="blackout">
-                    {{ post.title.rendered }}
-                  </div>
-                </v-card-title>
-
-                <v-card-subtitle class="pt-4">
-                  <v-chip color="primary">
-                    {{ getCategory(post.class_list) }}
-                  </v-chip>
-                </v-card-subtitle>
-
-                <v-card-text>
-                  <div v-html="post.excerpt.rendered" />
-                </v-card-text>
-
-                <v-card-actions>
-                  <router-link :to="`/blog/${post.slug}`" class="text-orange">
-                    Read more
-                  </router-link>
-                </v-card-actions>
-              </v-card>
+              <BlogPostCard :post="post" />
             </v-col>
           </v-row>
 
@@ -68,6 +41,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useBlogStore } from '@/stores/blog'
+import BlogPostCard from "@/components/BlogPostCard.vue";
 
 const blog = useBlogStore()
 const currentPage = ref(1)

@@ -1,7 +1,7 @@
 <template>
-  <v-footer dark height="auto" class="footer indigo lighten-1">
+  <v-footer height="auto" class="footer bg-transparent">
     <v-container max-width="1200px" fluid>
-      <v-card flat tile class="white--text text-xs-center">
+      <v-card flat tile class="white--text text-xs-center bg-transparent">
         <div class="footer-top">
           <img src="/logo.svg" alt="Casey" />
           <div>
@@ -57,6 +57,9 @@ const updateFormDialog = (value: boolean) => {
 
 
 <style lang="scss" scoped>
+.footer {
+  background: none;
+}
 .footer-top {
   display: flex;
   gap: 1rem;
@@ -74,7 +77,7 @@ const updateFormDialog = (value: boolean) => {
 
   p {
     font-size: 1.25rem;
-    opacity: .3;
+    color: #666666;
   }
 }
 .actions {

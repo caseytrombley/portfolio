@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-container max-width="1200px" fluid class="container">
-      <h2 class="heading">Work Experience</h2>
+      <AppHeading title="Work Experience" />
 
       <ul class="experience-list">
         <li v-for="(item, i) in experience" :key="i" class="item">
@@ -39,6 +39,7 @@ import { onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { experience } from '../content/index.ts';
+import AppHeading from "@/components/AppHeading.vue";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);

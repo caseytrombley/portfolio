@@ -1,8 +1,11 @@
 <template>
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
-
-      <h2 class="heading">Current Projects</h2>
+      <AppHeading
+        color="light"
+        title="Current Projects"
+        subtitle="Let’s just say these projects are under construction... and always will be."
+      />
 
       <TerminalWindow>
         <ul class="project-links">
@@ -70,6 +73,7 @@ import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import ProjectModal from '../components/ProjectModal.vue';
 import TerminalWindow from "./TerminalWindow.vue";
+import AppHeading from "@/components/AppHeading.vue";
 
 const currentProjectID = ref<string | null>(null);
 const isModalOpen = ref(false);
@@ -109,12 +113,7 @@ section {
 }
 
 .heading {
-  margin: 0 0 2rem;
   color: #ffffff;
-}
-
-.intro {
-  padding: 1rem 0;
 }
 
 .project-links {

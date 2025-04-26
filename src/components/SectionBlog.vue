@@ -3,10 +3,11 @@
     <v-container max-width="1200px" fluid class="container">
 
       <div class="blog">
-        <h2 class="heading">My Recent Posts</h2>
-        <h3 class="intro">
-          Prepare for insightful ramblings and some questionable decisions. You’re welcome.
-        </h3>
+
+        <AppHeading
+          title="My Recent Posts"
+          subtitle="Prepare for insightful ramblings and some questionable decisions. You’re welcome."
+        />
         <div v-if="loading">Loading...</div>
         <v-row v-else>
           <v-col
@@ -16,19 +17,7 @@
             sm="6"
             md="4"
           >
-            <v-card class="blog-post" :to="`/blog/${post.slug}`" elevation="2">
-              <v-card-title>
-                <h3 v-html="post.title.rendered" class="headline" />
-              </v-card-title>
-              <v-card-subtitle>
-                <div v-html="post.excerpt.rendered" />
-              </v-card-subtitle>
-              <v-card-actions>
-                <router-link :to="`/blog/${post.slug}`" class="text-primary">
-                  Read more
-                </router-link>
-              </v-card-actions>
-            </v-card>
+            <BlogPostCard :post="post" />
           </v-col>
         </v-row>
       </div>
@@ -39,6 +28,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import BlogPostCard from "@/components/BlogPostCard.vue";
+import AppHeading from "@/components/AppHeading.vue";
 
 const posts = ref([])
 const loading = ref(true)

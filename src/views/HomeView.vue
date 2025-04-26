@@ -10,7 +10,7 @@
         <SectionCaseStudies />
       </template>
       <template #fallback>
-        <div>Loading Case Studies...</div>
+        <SectionSkeleton name="Case Studies" />
       </template>
     </Suspense>
 
@@ -19,7 +19,7 @@
         <SectionProjects />
       </template>
       <template #fallback>
-        <div>Loading Projects...</div>
+        <SectionSkeleton name="Current Projects" />
       </template>
     </Suspense>
 
@@ -28,16 +28,7 @@
         <SectionDesigns />
       </template>
       <template #fallback>
-        <div>Loading Designs...</div>
-      </template>
-    </Suspense>
-
-    <Suspense>
-      <template #default>
-        <SectionTimeline />
-      </template>
-      <template #fallback>
-        <div>Loading Timeline...</div>
+        <SectionSkeleton name="Past Projects" />
       </template>
     </Suspense>
 
@@ -46,9 +37,22 @@
         <SectionBlog />
       </template>
       <template #fallback>
-        <div>Loading Case Studies...</div>
+        <SectionSkeleton name="My Recent Posts" />
       </template>
     </Suspense>
+
+
+
+    <!--    <Suspense>-->
+<!--      <template #default>-->
+<!--        <SectionTimeline />-->
+<!--      </template>-->
+<!--      <template #fallback>-->
+<!--        <div>Loading Timeline...</div>-->
+<!--      </template>-->
+<!--    </Suspense>-->
+
+
 
   </div>
 </template>
@@ -58,6 +62,7 @@ import { defineAsyncComponent } from 'vue';
 
 import SectionIntro from "../components/SectionIntro.vue";
 import SectionResume from "../components/SectionResume.vue";
+import SectionSkeleton from "@/components/SectionSkeleton.vue";
 
 // Lazy-load these sections
 const SectionCaseStudies = defineAsyncComponent(() => import('../components/SectionCaseStudies.vue'));

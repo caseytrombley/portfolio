@@ -70,7 +70,7 @@
 <script setup lang="ts">
 import { ref, reactive, defineProps, defineEmits } from 'vue'
 
-const props = defineProps({
+defineProps({
   modelValue: {
     type: Boolean,
     required: true
