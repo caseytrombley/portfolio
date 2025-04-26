@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.4.47",
+    "@netlify/functions": "^3.1.2",
     "@sentry/vite-plugin": "^3.1.1",
     "@sentry/vue": "^8.53.0",
     "firebase": "^11.0.2",

@@ -24,34 +24,37 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useBlogStore } from '@/stores/blog'
 
 const route = useRoute()
-const slug = route.params.slug
+const slug = route.params.slug as string
 
-const post = ref(null)
+const blogStore = useBlogStore()
 const loading = ref(true)
 const error = ref(false)
 
-onMounted(async () => {
-  try {
-    const res = await fetch(`/api/wp-json/wp/v2/posts?slug=${slug}`)
-    const data = await res.json()
+const post = computed(() => blogStore.posts.find(p => p.slug === slug))
 
-    if (data.length > 0) {
-      post.value = data[0]
-    } else {
+onMounted(async () => {
+  if (!blogStore.posts.length) {
+    try {
+      await blogStore.fetchPosts()
+    } catch (err) {
+      console.error(err)
       error.value = true
     }
-  } catch (err) {
-    console.error(err)
-    error.value = true
-  } finally {
-    loading.value = false
   }
+
+  if (!post.value) {
+    error.value = true
+  }
+
+  loading.value = false
 })
 </script>
+
 
 <style lang="scss" scoped>
 .blog-post-view {
