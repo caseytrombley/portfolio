@@ -14,10 +14,10 @@
         <div class="bottom">for work</div>
       </div>
       <div class="actions">
-        <!-- Email Button -->
-        <a :href="'mailto:caseytrombley@gmail.com?subject=Portfolio%20Inquiry'" target="_blank" class="btn email">
+        <!-- Contact Form Button -->
+        <button class="btn email" @click="dialog = true">
           <v-icon>mdi-email</v-icon>
-        </a>
+        </button>
 
         <!-- LinkedIn Button -->
         <button class="btn linkedin" @click="openLinkedIn">
@@ -25,14 +25,21 @@
         </button>
       </div>
     </div>
+
+    <!-- Contact Form Dialog -->
+    <ContactFormDialog v-model="dialog" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import ContactFormDialog from './ContactForm.vue'
+
+const dialog = ref(false)
 
 const openLinkedIn = () => {
-  window.open("https://www.linkedin.com/in/casey-trombley", "_blank");
-};
+  window.open("https://www.linkedin.com/in/casey-trombley", "_blank")
+}
 </script>
 
 <style lang="scss" scoped>
