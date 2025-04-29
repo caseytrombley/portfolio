@@ -6,7 +6,7 @@
         <AppHeading title="Blog" />
 
         <v-row v-if="blog.loading" class="mt-4">
-          <v-col v-for="n in 5" :key="n" cols="12" sm="6" md="4">
+          <v-col v-for="n in 6" :key="n" cols="12" sm="6" md="4">
             <v-skeleton-loader type="card" class="blog-post" />
           </v-col>
         </v-row>
@@ -28,7 +28,7 @@
             v-if="blog.totalPages > 1"
             v-model="currentPage"
             :length="blog.totalPages"
-            :total-visible="5"
+            :total-visible="6"
             class="mt-4"
             @update:modelValue="handlePageChange"
           />
@@ -47,7 +47,7 @@ import AppHeading from "@/components/AppHeading.vue";
 const blog = useBlogStore()
 const currentPage = ref(1)
 
-const perPage = 5
+const perPage = 6
 
 const handlePageChange = (newPage: number) => {
   currentPage.value = newPage

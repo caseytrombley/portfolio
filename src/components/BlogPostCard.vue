@@ -74,12 +74,12 @@ const category = computed(() => {
 }
 
 .blackout {
-  width: 100%;
-  background: rgba(14,110,102, .1);
   padding: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  width: 100%;
+  white-space: normal;
+  //background: rgba(14,110,102, .1);
+  //overflow: hidden;
+  //text-overflow: ellipsis;
 }
 .v-card-title {
   padding: 0 0 .5rem 0;

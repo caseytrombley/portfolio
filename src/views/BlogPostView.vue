@@ -4,7 +4,7 @@
     <v-container max-width="1200px" fluid class="container">
 
       <div class="back-button">
-        <router-link to="/blog" class="v-btn v-btn--outlined">← Back to Blog</router-link>
+        <router-link to="/blog" class="v-btn v-btn--outlined"><v-icon>mdi-arrow-left-thin</v-icon>Back to Blog</router-link>
       </div>
       <div class="blog-post-view">
         <div v-if="loading" class="loading">Loading...</div>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="back-button">
-        <router-link to="/blog" class="v-btn v-btn--outlined">← Back to Blog</router-link>
+        <router-link to="/blog" class="v-btn v-btn--outlined"><v-icon>mdi-arrow-left-thin</v-icon> Back to Blog</router-link>
       </div>
     </v-container>
   </section>
@@ -80,9 +80,15 @@ onMounted(async () => {
   margin-bottom: 1rem;
 }
 
-.content :deep(p) {
-  line-height: 1.7;
-  margin-bottom: 1rem;
+.content {
+  :deep(p) {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  :deep(ul) {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
 }
 
 .loading,
