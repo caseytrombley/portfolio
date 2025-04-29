@@ -24,9 +24,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { useBlogStore } from '@/stores/blog'
+
+import Prism from 'prismjs/prism.js';
+import 'prismjs/themes/prism-okaidia.css'; // Use the desired theme (e.g., prism-okaidia.css)
+import 'prismjs/components/prism-css'; // Language support for CSS
+
+onMounted(() => {
+  Prism.highlightAll();
+});
 
 const route = useRoute()
 const slug = route.params.slug as string
@@ -54,6 +62,10 @@ onMounted(async () => {
   }
 
   loading.value = false
+
+  // Ensure DOM is updated before highlighting
+  await nextTick()
+  Prism.highlightAll()
 })
 </script>
 
