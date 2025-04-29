@@ -7,7 +7,9 @@ import App from './App.vue';
 import router from './router';
 
 import vuetify from './plugins/vuetify'; // Import from the new file
-
+// import 'prismjs'
+// import 'prismjs/themes/prism.css'
+// import 'prismjs/themes/prism-dark.css'
 import * as Sentry from "@sentry/vue";
 
 

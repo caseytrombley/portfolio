@@ -1,50 +1,65 @@
 <template>
-  <v-footer dark height="auto" class="footer indigo lighten-1">
+  <v-footer height="auto" class="footer bg-transparent">
     <v-container max-width="1200px" fluid>
-      <v-card flat tile class="white--text text-xs-center">
-
-
-
+      <v-card flat tile class="white--text text-xs-center bg-transparent">
         <div class="footer-top">
-          <img src="/casey-image.jpg" alt="Casey">
+          <img src="/logo.svg" alt="Casey" />
           <div>
-            <p>
-              <b>Casey Trombley</b> is a professional web developer and artist from the Boston area of Massachusetts.
-              His specialty is front-end design and development with javascript and css. He has a bachelors degree in advanced web design from Salem State University.
+            <p class="text-sm-body-1">
+              <b>Casey Trombley</b> is a software engineer and creative artist.
+              He specializes in front-end design and development, with a focus on JavaScript and CSS.
+              He’s also a graphic artist and music composer, blending visual and audio creativity into his work.
+              Rumor has it that he builds perfect mobile responsive apps while beating VS Code in a staring contest.
             </p>
           </div>
         </div>
-
 
         <div class="d-flex">
           <v-card-text>
             &copy;{{ new Date().getFullYear() }} — <strong>Casey Trombley</strong>
           </v-card-text>
 
-          <!-- Action Buttons: Email & LinkedIn -->
           <v-card-actions class="actions d-flex justify-end">
-            <a :href="'mailto:caseytrombley@gmail.com?subject=Portfolio%20Inquiry'" target="_blank" class="btn email">
+            <button class="btn email" @click="openFormDialog">
               <v-icon>mdi-email</v-icon>
-            </a>
-
+            </button>
             <button class="btn linkedin" @click="openLinkedIn">
-              <img src="/icon-linkedin.png" alt="LinkedIn">
+              <img src="/icon-linkedin.png" alt="LinkedIn" />
             </button>
           </v-card-actions>
         </div>
       </v-card>
     </v-container>
+
+    <!-- Contact Form Component -->
+    <ContactForm :modelValue="formDialog" @update:modelValue="updateFormDialog" />
   </v-footer>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import ContactForm from './ContactForm.vue'
+
+const formDialog = ref(false)
+
 const openLinkedIn = () => {
-  window.open("https://www.linkedin.com/in/casey-trombley", "_blank");
-};
+  window.open("https://www.linkedin.com/in/casey-trombley", "_blank")
+}
+
+const openFormDialog = () => {
+  formDialog.value = true
+}
+
+const updateFormDialog = (value: boolean) => {
+  formDialog.value = value
+}
 </script>
 
 
 <style lang="scss" scoped>
+.footer {
+  background: none;
+}
 .footer-top {
   display: flex;
   gap: 1rem;
@@ -58,12 +73,11 @@ const openLinkedIn = () => {
 
   img {
     height: 100px;
-    border-radius: 50%;
   }
 
   p {
     font-size: 1.25rem;
-    opacity: .3;
+    color: #666666;
   }
 }
 .actions {
@@ -73,15 +87,15 @@ const openLinkedIn = () => {
 }
 .btn {
   height: 36px;
+  &:hover {
+    animation: flicker 150ms 2 linear;
+  }
 }
 .email {
   color: #ffffff;
   background-color: #d91717;
   border-radius: 5px;
   padding: 2px;
-  i {
-    font-size: 32px;
-  }
 }
 .linkedin {
   img {
@@ -100,4 +114,3 @@ const openLinkedIn = () => {
   }
 }
 </style>
-

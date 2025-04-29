@@ -35,5 +35,4 @@ firebase-admin-key.json
 # Sentry Config File
 .env.sentry-build-plugin
 
-# Local Netlify folder
-.netlify
+

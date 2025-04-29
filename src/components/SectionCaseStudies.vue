@@ -1,11 +1,10 @@
 <template>
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
-      <h2 class="heading">Case Studies</h2>
-      <h3 class="intro">
-        Over the past 20+ years, I’ve specialized in developing SaaS applications and paid software for diverse industries.
-        While I can’t share specific client projects due to confidentiality, I’m happy to discuss my process and contributions in detail.
-      </h3>
+      <AppHeading
+        title="Case Studies"
+        subtitle="A career full of NDA-protected magic. Ask me about it!"
+      />
 
       <ul class="case-study-links">
         <li
@@ -37,6 +36,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CaseStudyModal from '../components/CaseStudyModal.vue';
+import AppHeading from "@/components/AppHeading.vue";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,10 +108,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.intro {
-  padding: 1rem 0 2rem;
-}
-
 .case-study-links {
   list-style-type: none;
   margin: 0;

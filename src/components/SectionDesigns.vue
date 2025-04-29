@@ -1,11 +1,11 @@
 <template>
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
-      <h2 class="heading">Past Projects</h2>
-
-      <h3 class="intro">
-        Some early examples of my design work.
-      </h3>
+      <AppHeading
+        title="Past Projects"
+        subtitle="Built with ambition, duct tape, and a dream."
+        color="light"
+      />
 
       <div class="projects-grid">
         <div
@@ -27,6 +27,7 @@
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import ProjectModal from '../components/ProjectModal.vue';
+import AppHeading from "@/components/AppHeading.vue";
 
 const currentProjectID = ref<string | null>(null);
 const isModalOpen = ref(false);
@@ -91,7 +92,7 @@ section {
   padding: 2rem 0;
 
   @media (max-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

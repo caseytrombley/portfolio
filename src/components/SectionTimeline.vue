@@ -1,7 +1,11 @@
 <template>
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
-      <h2 class="heading">My Journey</h2>
+
+      <AppHeading
+        title="My Journey"
+        subtitle="Learning, building, and occasionally breaking things (on purpose)."
+      />
 
       <!-- Slider connected to activeTimeline -->
       <v-slider
@@ -80,6 +84,7 @@ import { tickLabels, timelineData } from "../content/index";
 //import Griddy from "./Griddy.vue";
 import TimelineItem from "./TimelineItem.vue";
 import VideoBackground from "@/components/VideoBackground.vue";
+import AppHeading from "@/components/AppHeading.vue";
 
 const activeTimeline = ref(0);
 </script>

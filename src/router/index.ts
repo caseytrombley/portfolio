@@ -10,6 +10,16 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/blog',
+      name: 'Blog',
+      component: () => import('../views/BlogView.vue'),
+    },
+    {
+      path: '/blog/:slug',
+      name: 'BlogPost',
+      component: () => import('../views/BlogPostView.vue'),
+    },
+    {
       path: '/:caseStudyID',
       name: 'case-study',
       component: HomeView, // Reuse the HomeView and open the modal dynamically
