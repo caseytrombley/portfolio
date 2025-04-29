@@ -7,7 +7,7 @@
   >
     <v-card-title>
       <div class="blackout">
-        {{ post.title.rendered }}
+        <div v-html="post.title.rendered"></div>
       </div>
     </v-card-title>
 

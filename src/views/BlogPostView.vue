@@ -37,6 +37,8 @@ const error = ref(false)
 
 const post = computed(() => blogStore.posts.find(p => p.slug === slug))
 
+console.log(post)
+
 onMounted(async () => {
   if (!blogStore.posts.length) {
     try {
@@ -58,8 +60,6 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .blog-post-view {
-  //max-width: 700px;
-  //margin: 2rem auto;
   padding: 2rem 0;
 }
 
