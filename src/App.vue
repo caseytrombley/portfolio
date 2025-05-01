@@ -19,6 +19,14 @@
     <AppFooter />
 
   </v-app>
+  <!-- Dummy Netlify form for static detection -->
+  <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact" />
+    <input type="text" name="name" />
+    <input type="text" name="phone" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+  </form>
 </template>
 
 <script setup lang="ts">
@@ -27,9 +35,7 @@ import ThemeSwitch from "./components/ThemeSwitch.vue";
 import ScreenEffect from "./components/ScreenEffect.vue";
 import AppFooter from "@/components/AppFooter.vue";
 
-const openLinkedIn = () => {
-  window.open("https://www.linkedin.com/in/casey-trombley", "_blank");
-};
+
 </script>
 
 <style lang="scss">
