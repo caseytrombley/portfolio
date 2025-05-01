@@ -1,4 +1,12 @@
 <template>
+  <!-- Hidden form for Netlify to detect -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="text" name="phone" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+  </form>
+
   <!-- Form Dialog -->
   <v-dialog
     :model-value="modelValue && !sent"
@@ -94,7 +102,7 @@ const handleSubmit = async () => {
   const isValid = await formRef.value?.validate()
   if (!isValid) return
 
-  const formData = new FormData()
+  const formData = new URLSearchParams()
   formData.append('form-name', 'contact')
   formData.append('name', form.name)
   formData.append('email', form.email)
@@ -105,7 +113,7 @@ const handleSubmit = async () => {
     await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData as any).toString()
+      body: formData.toString()
     })
 
     sent.value = true

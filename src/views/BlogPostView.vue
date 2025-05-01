@@ -29,8 +29,10 @@ import { useRoute } from 'vue-router'
 import { useBlogStore } from '@/stores/blog'
 
 import Prism from 'prismjs/prism.js';
-import 'prismjs/themes/prism-okaidia.css'; // Use the desired theme (e.g., prism-okaidia.css)
-import 'prismjs/components/prism-css'; // Language support for CSS
+import 'prismjs/themes/prism-okaidia.css';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-markup';
 
 onMounted(() => {
   Prism.highlightAll();
