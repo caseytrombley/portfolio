@@ -30,9 +30,14 @@ const router = createRouter({
       component: HomeView, // Reuse the HomeView and open the modal dynamically
     },
   ],
-  // scrollBehavior() {
-  //   return { top: 0 }; // Always scroll to the top when navigating
-  // },
+  scrollBehavior(to, from, savedPosition) {
+    if (to.name === 'BlogPost') {
+      return { top: 0 }
+    }
+
+    return savedPosition || false
+  }
+
 });
 
 export default router;

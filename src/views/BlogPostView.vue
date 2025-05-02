@@ -10,8 +10,9 @@
         <div v-if="loading" class="loading">Loading...</div>
         <div v-else-if="error" class="error">Post not found.</div>
         <div v-else class="post">
-          <h1 v-html="post.title.rendered" class="title" />
-          <div v-html="post.content.rendered" class="content" />
+          <h1 v-html="post?.title?.rendered" class="title" />
+          <div v-html="post?.content?.rendered" class="content" />
+
         </div>
       </div>
       <div class="back-button">
@@ -24,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { useBlogStore } from '@/stores/blog'
 
@@ -45,30 +46,44 @@ const blogStore = useBlogStore()
 const loading = ref(true)
 const error = ref(false)
 
-const post = computed(() => blogStore.posts.find(p => p.slug === slug))
-
-console.log(post)
+interface WPPost {
+  id: number
+  slug: string
+  title: {
+    rendered: string
+  }
+  content: {
+    rendered: string
+  }
+}
+const post = ref<WPPost | null>(null)
 
 onMounted(async () => {
-  if (!blogStore.posts.length) {
-    try {
+  try {
+    if (!blogStore.posts.length) {
       await blogStore.fetchPosts()
-    } catch (err) {
-      console.error(err)
-      error.value = true
     }
-  }
 
-  if (!post.value) {
+    post.value = blogStore.posts.find(p => p.slug === slug)
+
+    if (!post.value) {
+      const res = await fetch(`/.netlify/functions/post-by-slug?slug=${slug}`)
+      if (!res.ok) throw new Error('Post fetch failed')
+      post.value = await res.json()
+    }
+
+    if (!post.value) error.value = true
+  } catch (err) {
+    console.error(err)
     error.value = true
+  } finally {
+    loading.value = false
+    await nextTick()
+    Prism.highlightAll()
   }
-
-  loading.value = false
-
-  // Ensure DOM is updated before highlighting
-  await nextTick()
-  Prism.highlightAll()
 })
+
+
 </script>
 
 
