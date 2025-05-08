@@ -4,7 +4,10 @@
     <v-container max-width="1200px" fluid class="container">
 
       <div class="back-button">
-        <router-link to="/blog" class="v-btn v-btn--outlined"><v-icon>mdi-arrow-left-thin</v-icon>Back to Blog</router-link>
+        <v-btn @click="goBack" class="v-btn--outlined">
+          <v-icon>mdi-arrow-left-thin</v-icon>
+          Back
+        </v-btn>
       </div>
       <div class="blog-post-view">
         <div v-if="loading" class="loading">Loading...</div>
@@ -16,7 +19,10 @@
         </div>
       </div>
       <div class="back-button">
-        <router-link to="/blog" class="v-btn v-btn--outlined"><v-icon>mdi-arrow-left-thin</v-icon> Back to Blog</router-link>
+        <v-btn @click="goBack" class="v-btn--outlined">
+          <v-icon>mdi-arrow-left-thin</v-icon>
+          Back
+        </v-btn>
       </div>
     </v-container>
   </section>
@@ -26,7 +32,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useBlogStore } from '@/stores/blog'
 
 import Prism from 'prismjs/prism.js';
@@ -40,11 +46,16 @@ onMounted(() => {
 });
 
 const route = useRoute()
-const slug = route.params.slug as string
-
+const router = useRouter()
 const blogStore = useBlogStore()
+const slug = route.params.slug as string
+const post = ref<WPPost | null>(null)
 const loading = ref(true)
 const error = ref(false)
+
+const goBack = () => {
+  router.back()
+}
 
 interface WPPost {
   id: number
@@ -56,7 +67,6 @@ interface WPPost {
     rendered: string
   }
 }
-const post = ref<WPPost | null>(null)
 
 onMounted(async () => {
   try {

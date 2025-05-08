@@ -1,5 +1,11 @@
 import { defineStore } from 'pinia'
 
+// Helper function to capitalize first letter
+const capitalize = (str: string) => {
+  if (!str) return ''
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 interface BlogPost {
   id: number
   slug: string
@@ -7,6 +13,7 @@ interface BlogPost {
   excerpt: { rendered: string }
   class_list?: string[]
   category: string
+  displayCategory: string
 }
 
 export const useBlogStore = defineStore('blog', {
@@ -19,7 +26,18 @@ export const useBlogStore = defineStore('blog', {
     allCategories: (state) => {
       const categories = new Set<string>(['All'])
       state.posts.forEach(post => {
-        categories.add(post.category)
+        if (post.category && post.category !== 'uncategorized') {
+          categories.add(post.category)
+        }
+      })
+      return Array.from(categories).sort()
+    },
+    allDisplayCategories: (state) => {
+      const categories = new Set<string>(['All'])
+      state.posts.forEach(post => {
+        if (post.displayCategory && post.displayCategory !== 'Uncategorized') {
+          categories.add(post.displayCategory)
+        }
       })
       return Array.from(categories).sort()
     }
@@ -45,13 +63,23 @@ export const useBlogStore = defineStore('blog', {
         const data = await res.json()
         const total = res.headers.get('X-WP-Total') || '0'
         
-        // Process posts to add category field
-        const processedPosts = data.map(post => ({
-          ...post,
-          category: post.class_list?.find(c => c.startsWith('category-'))
-            ? post.class_list.find(c => c.startsWith('category-'))!.split('-')[1]
-            : 'uncategorized'
-        }))
+        // Process posts to add category and displayCategory fields
+        const processedPosts = data.map(post => {
+          const categoryClass = post.class_list?.find(c => c.startsWith('category-'))
+          if (!categoryClass) {
+            return {
+              ...post,
+              category: '',
+              displayCategory: ''
+            }
+          }
+          const baseCategory = categoryClass.split('-')[1]
+          return {
+            ...post,
+            category: baseCategory,
+            displayCategory: capitalize(baseCategory)
+          }
+        })
 
         this.posts = processedPosts
         this.totalPages = Math.ceil(Number(total) / perPage)

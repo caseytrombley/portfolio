@@ -11,11 +11,17 @@
       </div>
     </v-card-title>
 
-    <v-card-subtitle class="pt-4" v-if="showCategory && category">
+    <v-card-subtitle class="pt-4" v-if="showCategory">
       <v-chip color="primary">
-        {{ category }}
+        {{ post.displayCategory || 'Uncategorized' }}
       </v-chip>
     </v-card-subtitle>
+
+    <template v-if="!post.displayCategory">
+      <v-chip color="primary" class="ml-2">
+        Uncategorized
+      </v-chip>
+    </template>
 
     <v-card-text v-if="showExcerpt">
       <div v-html="post.excerpt.rendered" />
@@ -38,6 +44,8 @@ interface Post {
   title: { rendered: string }
   excerpt: { rendered: string }
   class_list?: string[]
+  category: string
+  displayCategory: string
 }
 
 interface Props {
@@ -55,14 +63,6 @@ const props = withDefaults(defineProps<Props>(), {
   elevation: 0,
 })
 
-const category = computed(() => {
-  return props.post.category ? capitalize(props.post.category) : 'Uncategorized'
-})
-
-// Helper function to capitalize first letter
-const capitalize = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
 </script>
 
 <style lang="scss" scoped>

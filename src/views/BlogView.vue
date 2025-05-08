@@ -89,13 +89,14 @@ const sortOptions = [
 
 // Extract unique categories from posts
 const categories = computed(() => {
-  return blog.allCategories.map(capitalize)
+  const uniqueCategories = new Set(['All'])
+  blog.posts.forEach(post => {
+    if (post.displayCategory && post.displayCategory !== 'Uncategorized') {
+      uniqueCategories.add(post.displayCategory)
+    }
+  })
+  return Array.from(uniqueCategories)
 })
-
-// Helper function to capitalize first letter
-const capitalize = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
 
 const fetchPage = (page: number, category: string = '', sort: 'newest' | 'oldest' = 'newest') => {
   blog.fetchPosts(page, perPage, category, sort)
