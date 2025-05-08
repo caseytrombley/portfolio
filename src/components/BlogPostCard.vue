@@ -56,10 +56,13 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const category = computed(() => {
-  if (!props.post.class_list) return ''
-  const categoryClass = props.post.class_list.find((c: string) => c.startsWith('category-'))
-  return categoryClass ? categoryClass.split('-')[1] : 'Uncategorized'
+  return props.post.category ? capitalize(props.post.category) : 'Uncategorized'
 })
+
+// Helper function to capitalize first letter
+const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
 </script>
 
 <style lang="scss" scoped>
