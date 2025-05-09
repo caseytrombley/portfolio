@@ -8,7 +8,7 @@
 <!--      />-->
 
       <TerminalWindow>
-        <ul class="project-links">
+        <ul class="project-links" ref="listRef">
           <li>
             <a
               href="https://www.keyandchord.com"
@@ -21,7 +21,7 @@
               </div>
             </a>
             <div class="description">
-              An interactive piano chord dictionary built with Vue for the front end and Firebase for the backend API. It features dynamic chord diagrams, a virtual piano, and Firestore integration for real-time access to chords and inversions across all keys.
+              An interactive piano chord dictionary with dynamic chord diagrams and inversions for all musical keys.
             </div>
           </li>
 
@@ -69,11 +69,59 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { onMounted, onBeforeUnmount, ref, nextTick, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import ProjectModal from '../components/ProjectModal.vue';
 import TerminalWindow from "./TerminalWindow.vue";
 import AppHeading from "@/components/AppHeading.vue";
+
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const listRef = ref<HTMLElement | null>(null);
+
+onMounted(async () => {
+  await nextTick();
+
+  const items = listRef.value?.querySelectorAll('li');
+  if (!items || items.length === 0) return;
+
+  items.forEach((item, i) => {
+    gsap.fromTo(
+      item,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 90%',
+          toggleActions: 'play none none reverse',
+          onEnter: () => {
+            const baseDelay = i * 150;
+            const randomOffset = Math.random() * 300;
+            setTimeout(() => {
+              item.classList.add('glitch');
+            }, baseDelay + randomOffset);
+          },
+          onLeaveBack: () => {
+            item.classList.remove('glitch');
+          },
+        },
+      }
+    );
+  });
+
+  requestAnimationFrame(() => ScrollTrigger.refresh());
+});
+
+onBeforeUnmount(() => {
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+});
 
 const currentProjectID = ref<string | null>(null);
 const isModalOpen = ref(false);
@@ -81,7 +129,6 @@ const isModalOpen = ref(false);
 const route = useRoute();
 const router = useRouter();
 
-// Watch the route for projectID
 watch(
   () => route.params.projectID,
   (projectID) => {
@@ -96,15 +143,17 @@ watch(
   { immediate: true }
 );
 
-// Watch the modal's state and handle URL changes
 watch(isModalOpen, (isOpen) => {
   if (!isOpen) {
-    router.push({ name: 'home' }); // Reset URL when modal is closed
+    router.push({ name: 'home' });
   }
 });
 </script>
 
+
 <style lang="scss" scoped>
+
+$blue: #25e0cb;
 
 section {
   position: relative;
@@ -129,6 +178,14 @@ section {
     + li {
       margin-top: 1rem;
     }
+
+    &.glitch {
+      .link {
+        &::before {
+          animation: glitchFlicker 3s infinite;
+        }
+      }
+    }
   }
 }
 
@@ -138,18 +195,42 @@ section {
   height: 130px;
   color: #0e6e66;
   text-decoration: none;
-  border: 6px solid #25e0cb;
-  border-radius: 3px;
+  //border: 6px solid #25e0cb;
+  border-radius: 5px;
   background-color: transparent;
   transition: all 0.3s ease;
+  overflow: visible;
 
   &:hover {
     border-color: #0e6e66;
   }
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: #25e0cb;
+    box-shadow: rgba(37, 224, 203, 0.12) 0 1px 3px, rgba(37, 224, 203, 0.24) 0px 1px 2px;
+    border-top: 3px solid #0e6e66;
+    border-right: 2px solid #0c4b44;
+    border-left: 4px solid #0e6e66;
+    border-bottom: 3px solid #1eb4a3;
+    border-radius: 5px;
+    pointer-events: none;
+    z-index: 2;
+    //opacity: 0;
+    transform: translate(0, 0);
+    opacity: .5;
+  }
+
+
   img {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
   }
 
   .overlay {
@@ -177,12 +258,13 @@ section {
 }
 
 .description {
-  font-family: "Syne Mono", serif, monospace;
-  font-weight: 800;
-  font-size: 1.125rem;
+  //font-family: "Syne Mono", serif, monospace;
+  //font-weight: 800;
+  font-size: 1rem;
   line-height: 1.1;
-  color: #25e0cb;
+  color: #a0a0a0;
 }
+
 
 @media (min-width: 600px) {
 
@@ -198,7 +280,7 @@ section {
   }
 
   .description {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     line-height: 1;
   }
 }
