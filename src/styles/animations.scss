@@ -1,4 +1,3 @@
-
 @keyframes sway {
   0% {
     transform: translateX(0) rotate(0);
@@ -34,18 +33,18 @@
 @keyframes drop {
   0% {
     opacity: 0;
-    transform: translateY(-100px) translateX(0) ;
+    transform: translateY(-100px) translateX(0);
   }
   50% {
     opacity: 1;
-    transform: translateY(10px) translateX(0) ;
+    transform: translateY(10px) translateX(0);
   }
   70% {
-    transform: translateY(-5px) translateX(0) ;
+    transform: translateY(-5px) translateX(0);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) translateX(0) ;
+    transform: translateY(0) translateX(0);
   }
 }
 
@@ -108,6 +107,38 @@
   }
 }
 
+@keyframes glitchFlicker {
+  0% {
+    text-shadow: none;
+    transform: none;
+    opacity: 1;
+  }
+  5% {
+    text-shadow: 1px 0 red;
+    transform: translate(0.5px, -0.5px);
+    opacity: 0.9;
+  }
+  10% {
+    text-shadow: -1px 0 blue;
+    transform: translate(-0.5px, 0.5px);
+    opacity: 1;
+  }
+  15% {
+    text-shadow: none;
+    transform: none;
+  }
+  25% {
+    text-shadow: 1px 0 lime;
+    transform: translate(0.5px, 0);
+    opacity: 0.95;
+  }
+  30%,
+  100% {
+    text-shadow: none;
+    transform: none;
+    opacity: 1;
+  }
+}
 
 @keyframes randomJitter {
   0% {
@@ -168,8 +199,6 @@
   }
 }
 
-
-
 @keyframes flyIn {
   0% {
     transform: scale(1.5) translateX(-5px);
@@ -177,7 +206,7 @@
   }
   33% {
     transform: scale(1.1) translateX(0);
-    opacity: .8;
+    opacity: 0.8;
   }
   58% {
     transform: scale(1) translateX(0);
@@ -196,7 +225,7 @@
   }
   33% {
     transform: scale(1.1) translateX(0);
-    opacity: .8;
+    opacity: 0.8;
   }
   58% {
     transform: scale(1) translateX(0);
@@ -255,7 +284,6 @@
   }
 }
 
-
 @keyframes dropStatic2 {
   0% {
     opacity: 0;
@@ -298,7 +326,7 @@
     transform: translateX(0px);
   }
   100% {
-    opacity: .4;
+    opacity: 0.4;
     transform: translateX(2px);
   }
 }

@@ -3,34 +3,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
-const staticBackground = ref<HTMLElement | null>(null);
+const staticBackground = ref<HTMLElement | null>(null)
 
 const startStaticAnimation = () => {
   const animateStatic = () => {
     if (staticBackground.value) {
-      staticBackground.value.classList.add("active");
-      setTimeout(() => {
-        staticBackground.value?.classList.remove("active");
-      }, 500 + Math.random() * 1000);
+      staticBackground.value.classList.add('active')
+      setTimeout(
+        () => {
+          staticBackground.value?.classList.remove('active')
+        },
+        500 + Math.random() * 1000,
+      )
     }
 
-    const delay = 3000 + Math.random() * 4000;
-    setTimeout(animateStatic, delay);
-  };
+    const delay = 3000 + Math.random() * 4000
+    setTimeout(animateStatic, delay)
+  }
 
-  animateStatic();
-};
-
+  animateStatic()
+}
 
 onMounted(() => {
-  startStaticAnimation();
-});
+  startStaticAnimation()
+})
 </script>
 
 <style lang="scss" scoped>
-
 .static-background {
   position: absolute;
   top: 0;
@@ -42,29 +43,34 @@ onMounted(() => {
 
 .static-background.active::before,
 .static-background.active::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: repeating-linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1) 0,
-      rgba(255, 255, 255, 0.1) 2px,
-      rgba(0, 0, 0, 0.1) 4px
+    to bottom,
+    rgba(255, 255, 255, 0.06) 0,
+    rgba(255, 255, 255, 0.06) 2px,
+    rgba(0, 0, 0, 0.1) 4px
   );
-  animation: flicker 0.3s infinite, noise 0.2s infinite;
+  animation:
+    flicker 0.3s infinite,
+    noise 0.2s infinite;
 }
 
 .static-background.active::after {
   background: rgba(255, 255, 255, 0.02);
   mix-blend-mode: overlay;
-  animation: flicker 0.15s infinite, noise 0.1s infinite;
+  animation:
+    flicker 0.15s infinite,
+    noise 0.1s infinite;
 }
 
 @keyframes flicker {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.6;
   }
   50% {
@@ -92,12 +98,12 @@ onMounted(() => {
 
 @keyframes move-lines {
   0% {
-    opacity: .06;
+    opacity: 0.06;
     height: 14px;
     transform: translateY(0px);
   }
   25% {
-    opacity: .06;
+    opacity: 0.06;
     height: 14px;
     transform: translateY(-7px);
   }
@@ -107,15 +113,14 @@ onMounted(() => {
     transform: translateY(-7px);
   }
   75% {
-    opacity: .02;
+    opacity: 0.02;
     transform: translateY(3px);
     height: 14px;
   }
   100% {
-    opacity: .06;
+    opacity: 0.06;
     transform: translateY(0px);
     height: 1px;
   }
 }
-
 </style>

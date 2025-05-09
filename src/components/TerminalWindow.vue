@@ -11,7 +11,14 @@
       <!--    <p class="line3">&nbsp;&nbsp;“Let's work together!”&nbsp;]<span class="cursor3">_</span></p>-->
       <!--    <p class="line4">&gt;<span class="cursor4">_</span></p>-->
 
-      <p class="line1">Current Projects<span class="cursor1">_</span></p>
+      <p
+        ref="line1Ref"
+        :class="animationClass"
+        @animationend="handleAnimationEnd"
+        @click="restartAnimations"
+      >
+        Current Projects<span class="cursor1">_</span>
+      </p>
 
       <div class="content">
         <slot />
@@ -23,8 +30,25 @@
 </template>
 
 <script setup lang="ts">
-import StaticEffect from "./StaticEffect.vue";
+import StaticEffect from './StaticEffect.vue'
+import { ref } from 'vue'
 
+const line1Ref = ref<HTMLElement | null>(null)
+const animationClass = ref('line1') // first animation class
+
+function handleAnimationEnd(event: AnimationEvent) {
+  if (animationClass.value === 'line1') {
+    animationClass.value = 'line1-second' // switch to second animation
+  }
+}
+
+function restartAnimations() {
+  animationClass.value = '' // clear class
+  // Force DOM update to allow re-adding the first class
+  requestAnimationFrame(() => {
+    animationClass.value = 'line1'
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -84,9 +108,9 @@ import StaticEffect from "./StaticEffect.vue";
 
 p {
   position: relative;
-  font-family: "Syne Mono", serif, monospace;
+  font-family: 'Syne Mono', serif, monospace;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 1;
   display: flex;
   align-self: flex-start;
@@ -104,7 +128,12 @@ span {
 }
 
 .line1 {
-  animation: type .5s 1s steps(20, end) forwards;
+  animation: type 0.7s 1s steps(20, end) forwards;
+}
+
+.line1-second {
+  width: 17em;
+  animation: glitchFlicker 2s infinite;
 }
 
 .cursor1 {
@@ -112,11 +141,11 @@ span {
 }
 
 .line2 {
-  color: #CDEE69;
-  -webkit-animation: type .5s 4.25s steps(20, end) forwards;
-  -moz-animation: type .5s 4.25s steps(20, end) forwards;
-  -o-animation: type .5s 4.25s steps(20, end) forwards;
-  animation: type .5s 4.25s steps(20, end) forwards;
+  color: #cdee69;
+  -webkit-animation: type 0.5s 4.25s steps(20, end) forwards;
+  -moz-animation: type 0.5s 4.25s steps(20, end) forwards;
+  -o-animation: type 0.5s 4.25s steps(20, end) forwards;
+  animation: type 0.5s 4.25s steps(20, end) forwards;
 }
 
 .cursor2 {
@@ -127,11 +156,11 @@ span {
 }
 
 .line3 {
-  color: #E09690;
-  -webkit-animation: type .5s 7.5s steps(20, end) forwards;
-  -moz-animation: type .5s 7.5s steps(20, end) forwards;
-  -o-animation: type .5s 7.5s steps(20, end) forwards;
-  animation: type .5s 7.5s steps(20, end) forwards;
+  color: #e09690;
+  -webkit-animation: type 0.5s 7.5s steps(20, end) forwards;
+  -moz-animation: type 0.5s 7.5s steps(20, end) forwards;
+  -o-animation: type 0.5s 7.5s steps(20, end) forwards;
+  animation: type 0.5s 7.5s steps(20, end) forwards;
 }
 
 .cursor3 {
@@ -143,10 +172,10 @@ span {
 
 .line4 {
   color: #fff;
-  -webkit-animation: type .5s 10.75s steps(20, end) forwards;
-  -moz-animation: type .5s 10.75s steps(20, end) forwards;
-  -o-animation: type .5s 10.75s steps(20, end) forwards;
-  animation: type .5s 10.75s steps(20, end) forwards;
+  -webkit-animation: type 0.5s 10.75s steps(20, end) forwards;
+  -moz-animation: type 0.5s 10.75s steps(20, end) forwards;
+  -o-animation: type 0.5s 10.75s steps(20, end) forwards;
+  animation: type 0.5s 10.75s steps(20, end) forwards;
 }
 
 .cursor4 {
