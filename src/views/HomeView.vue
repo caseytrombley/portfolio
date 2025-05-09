@@ -2,9 +2,18 @@
   <div class="home-view">
 
     <SectionIntro />
-    <SectionResume />
+
 
     <!-- Lazy-load these sections -->
+    <Suspense>
+      <template #default>
+        <SectionProjects />
+      </template>
+      <template #fallback>
+        <SectionSkeleton name="Current Projects" />
+      </template>
+    </Suspense>
+
     <Suspense>
       <template #default>
         <SectionCaseStudies />
@@ -14,14 +23,18 @@
       </template>
     </Suspense>
 
+
     <Suspense>
       <template #default>
-        <SectionProjects />
+        <SectionResume />
       </template>
       <template #fallback>
-        <SectionSkeleton name="Current Projects" />
+        <SectionSkeleton name="Work Experience" />
       </template>
     </Suspense>
+
+
+
 
     <Suspense>
       <template #default>

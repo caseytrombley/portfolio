@@ -1,11 +1,11 @@
 <template>
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
-      <AppHeading
-        color="light"
-        title="Current Projects"
-        subtitle="Let’s just say these projects are under construction... and always will be."
-      />
+<!--      <AppHeading-->
+<!--        color="light"-->
+<!--        title="Current Projects"-->
+<!--        subtitle="Let’s just say these projects are under construction... and always will be."-->
+<!--      />-->
 
       <TerminalWindow>
         <ul class="project-links">
@@ -109,7 +109,8 @@ watch(isModalOpen, (isOpen) => {
 section {
   position: relative;
   overflow: hidden;
-  background-color: #272727;
+  background-color: rgba(255, 0, 255, 0.1);
+  //background-color: #272727;
 }
 
 .heading {

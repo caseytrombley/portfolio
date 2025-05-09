@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
       <AppHeading title="Work Experience" />
 

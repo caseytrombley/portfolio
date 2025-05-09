@@ -4,7 +4,6 @@
       <div class="blog">
         <AppHeading
           title="My Recent Posts"
-          subtitle="Prepare for insightful ramblings and some questionable decisions. You’re welcome."
         />
 
         <v-row v-if="blog.loading" class="mt-4">
