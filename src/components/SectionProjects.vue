@@ -173,6 +173,7 @@ section {
 
   li {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
 
     + li {
@@ -191,8 +192,8 @@ section {
 
 .link {
   position: relative;
-  min-width: 130px;
-  height: 130px;
+  //min-width: 130px;
+  //height: 130px;
   color: #0e6e66;
   text-decoration: none;
   //border: 6px solid #25e0cb;
@@ -265,18 +266,24 @@ section {
   color: #a0a0a0;
 }
 
+@media (min-width: 480px) {
+  .project-links {
+    li {
+      flex-direction: row;
+    }
+  }
+  .link {
+    min-width: 130px;
+    height: 130px;
+  }
+}
 
 @media (min-width: 600px) {
 
   .link {
-    position: relative;
     min-width: 160px;
     height: 160px;
 
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   .description {
