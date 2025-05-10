@@ -20,7 +20,7 @@ defineProps<Props>()
   text-align: center;
 }
 .heading {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   &.light {
     color: #ffffff;
@@ -30,5 +30,11 @@ defineProps<Props>()
   font-size: 1.25rem;
   color: #666;
   padding: 1rem 0 2rem;
+}
+
+@media (min-width: 480px) {
+  .heading {
+    font-size: 2rem;
+  }
 }
 </style>
