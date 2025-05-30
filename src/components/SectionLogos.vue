@@ -2,7 +2,7 @@
   <section class="spaced">
     <v-container max-width="1200px" fluid class="container">
       <AppHeading
-        title="Logo Design & Illustration"
+        title="Logos & Illustration"
         subtitle="A collection of branding work."
       />
 
@@ -17,20 +17,15 @@
         </div>
       </div>
 
-      <v-dialog v-model="isModalOpen" max-width="600px">
-        <v-card>
-          <v-img
-            :src="currentLogo.image"
-            :alt="currentLogo.id"
-            contain
-            height="400"
-          ></v-img>
-          <v-card-actions class="justify-between">
-            <v-btn @click="prevLogo" :disabled="currentIndex === 0">Previous</v-btn>
-            <v-btn @click="nextLogo" :disabled="currentIndex === logos.length - 1">Next</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      <LogoModal
+        v-model="isModalOpen"
+        :logo="currentLogo.image"
+        :index="currentIndex"
+        :total="logos.length"
+        @next="nextLogo"
+        @prev="prevLogo"
+      />
+
     </v-container>
   </section>
 </template>
@@ -38,6 +33,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import AppHeading from '@/components/AppHeading.vue';
+import LogoModal from "@/components/LogoModal.vue";
 
 const logos = [
   { id: 'afs1-01', image: '/logos/afs1-01.png' },
