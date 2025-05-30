@@ -25,7 +25,7 @@
       </ul>
 
       <div class="actions">
-        <a href="/Trombley_Res_2025.pdf" download class="btn">
+        <a href="/Trombley_Casey_UI_Dev.pdf" download class="btn">
           <v-icon>mdi-download</v-icon> Download resume
         </a>
       </div>

@@ -16,6 +16,26 @@
 
     <Suspense>
       <template #default>
+        <SectionLogos />
+      </template>
+      <template #fallback>
+        <SectionSkeleton name="Logo Design & Illustration" />
+      </template>
+    </Suspense>
+
+    <Suspense>
+      <template #default>
+        <SectionDesigns />
+      </template>
+      <template #fallback>
+        <SectionSkeleton name="Past Projects" />
+      </template>
+    </Suspense>
+
+
+
+    <Suspense>
+      <template #default>
         <SectionCaseStudies />
       </template>
       <template #fallback>
@@ -34,16 +54,6 @@
     </Suspense>
 
 
-
-
-    <Suspense>
-      <template #default>
-        <SectionDesigns />
-      </template>
-      <template #fallback>
-        <SectionSkeleton name="Past Projects" />
-      </template>
-    </Suspense>
 
     <Suspense>
       <template #default>
@@ -81,6 +91,7 @@ import SectionSkeleton from "@/components/SectionSkeleton.vue";
 const SectionCaseStudies = defineAsyncComponent(() => import('../components/SectionCaseStudies.vue'));
 const SectionProjects = defineAsyncComponent(() => import('../components/SectionProjects.vue'));
 const SectionDesigns = defineAsyncComponent(() => import('@/components/SectionDesigns.vue'));
+const SectionLogos = defineAsyncComponent(() => import('@/components/SectionLogos.vue'));
 const SectionTimeline = defineAsyncComponent(() => import('../components/SectionTimeline.vue'));
 const SectionBlog = defineAsyncComponent(() => import('../components/SectionBlog.vue'));
 </script>
