@@ -33,10 +33,10 @@
       </div>
     </v-container>
 
-    <div class="background-layer">
-      <div class="overlay"></div>
-      <VideoBackground />
-    </div>
+<!--    <div class="background-layer">-->
+<!--      <div class="overlay"></div>-->
+<!--      <VideoBackground />-->
+<!--    </div>-->
   </section>
 </template>
 
@@ -46,7 +46,7 @@ import { useBlogStore } from '@/stores/blog'
 import BlogPostCard from "@/components/BlogPostCard.vue";
 import AppHeading from "@/components/AppHeading.vue";
 import { useRouter } from 'vue-router'
-import VideoBackground from "@/components/VideoBackground.vue";
+//import VideoBackground from "@/components/VideoBackground.vue";
 
 const router = useRouter()
 const blog = useBlogStore()

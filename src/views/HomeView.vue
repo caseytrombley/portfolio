@@ -56,14 +56,14 @@
 
 
 
-    <!--    <Suspense>-->
-<!--      <template #default>-->
-<!--        <SectionTimeline />-->
-<!--      </template>-->
-<!--      <template #fallback>-->
-<!--        <div>Loading Timeline...</div>-->
-<!--      </template>-->
-<!--    </Suspense>-->
+        <Suspense>
+      <template #default>
+        <SectionTimeline />
+      </template>
+      <template #fallback>
+        <div>Loading Timeline...</div>
+      </template>
+    </Suspense>
 
 
 
