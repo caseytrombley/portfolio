@@ -20,7 +20,7 @@ defineProps<Props>()
   text-align: center;
 }
 .heading {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
   &.light {
     color: #ffffff;
