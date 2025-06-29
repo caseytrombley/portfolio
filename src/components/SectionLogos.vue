@@ -50,6 +50,7 @@ const logos = [
   { id: 'dialog5-01', image: '/logos/dialog5-01.png' },
   { id: 'dialog6-01', image: '/logos/dialog6-01.png' },
   { id: 'dialog7-01', image: '/logos/dialog7-01.png' },
+  { id: 'greenhill-01', image: '/logos/greenhill-01.png' },
   { id: 'grm1-01', image: '/logos/grm1-01.png' },
   { id: 'grm2-01', image: '/logos/grm2-01.png' },
   { id: 'grm3-01', image: '/logos/grm3-01.png' },
