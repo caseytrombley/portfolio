@@ -42,6 +42,7 @@ const logos = [
   { id: 'ar1-01', image: '/logos/ar1-01.png' },
   { id: 'ar2-01', image: '/logos/ar2-01.png' },
   { id: 'brewcraft-01', image: '/logos/brewcraft-01.png' },
+  { id: 'dereva-01', image: '/logos/dereva-01.png' },
   { id: 'dialog1-01', image: '/logos/dialog1-01.png' },
   { id: 'dialog2-01', image: '/logos/dialog2-01.png' },
   { id: 'dialog3-01', image: '/logos/dialog3-01.png' },
@@ -62,8 +63,22 @@ const logos = [
   { id: 'lux3-01', image: '/logos/lux3-01.png' },
   { id: 'lux4-01', image: '/logos/lux4-01.png' },
   { id: 'lux5-01', image: '/logos/lux5-01.png' },
+  { id: 'mpishi-01', image: '/logos/mpishi-01.png' },
+  { id: 'picha-01', image: '/logos/picha-01.png' },
+
+  { id: 'thomeimagesstudy-01', image: '/logos/thomeimagesstudy-01.png' },
+  { id: 'thomeimages-01', image: '/logos/thomeimages-01.png' },
   { id: 'team360-01', image: '/logos/team360-01.png' },
-  { id: 'zeroturbulence-01', image: '/logos/zeroturbulence-01.png' }
+  { id: 'captain3-01', image: '/logos/captain3-01.png' },
+  { id: 'zeroturbulence-01', image: '/logos/zeroturbulence-01.png' },
+  { id: 'm2s-01', image: '/logos/m2s-01.png' },
+  { id: 'm2s2-01', image: '/logos/m2s2-01.png' },
+  { id: 'captain2-01', image: '/logos/captain2-01.png' },
+  { id: 'captain1-01', image: '/logos/captain1-01.png' },
+  { id: 'captainposter-01', image: '/logos/captainposter-01.png' },
+  { id: 'guidedbywires-01', image: '/logos/guidedbywires-01.png' },
+  { id: 'philreddyjr-01', image: '/logos/philreddyjr-01.png' },
+  { id: 'philreddyjr2-01', image: '/logos/philreddyjr2-01.png' },
 ];
 
 const isModalOpen = ref(false);
