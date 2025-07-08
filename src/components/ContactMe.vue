@@ -1,7 +1,7 @@
 <template>
   <div class="contact-me">
     <h3 class="lead">
-      Need a great developer?
+      Ready to bring ideas alive?
     </h3>
     <div class="subtext">
       Let's talk!
