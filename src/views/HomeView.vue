@@ -66,14 +66,14 @@
 
 
 
-        <Suspense>
-      <template #default>
-        <SectionTimeline />
-      </template>
-      <template #fallback>
-        <div>Loading Timeline...</div>
-      </template>
-    </Suspense>
+<!--        <Suspense>-->
+<!--      <template #default>-->
+<!--        <SectionTimeline />-->
+<!--      </template>-->
+<!--      <template #fallback>-->
+<!--        <div>Loading Timeline...</div>-->
+<!--      </template>-->
+<!--    </Suspense>-->
 
 
 
@@ -92,7 +92,7 @@ const SectionCaseStudies = defineAsyncComponent(() => import('../components/Sect
 const SectionProjects = defineAsyncComponent(() => import('../components/SectionProjects.vue'));
 const SectionDesigns = defineAsyncComponent(() => import('@/components/SectionDesigns.vue'));
 const SectionLogos = defineAsyncComponent(() => import('@/components/SectionLogos.vue'));
-const SectionTimeline = defineAsyncComponent(() => import('../components/SectionTimeline.vue'));
+//const SectionTimeline = defineAsyncComponent(() => import('../components/SectionTimeline.vue'));
 const SectionBlog = defineAsyncComponent(() => import('../components/SectionBlog.vue'));
 </script>
 
