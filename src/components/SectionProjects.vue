@@ -27,17 +27,17 @@
 
           <li>
             <a
-              href="https://caseys-app-design-hadithi.netlify.app"
+              href="https://wifilocator.netlify.app/"
               target="_blank"
               class="link"
             >
-              <img src="/project-image-hadithi.jpg" alt="Hadithi">
+              <img src="/project-image-wifilocator.jpg" alt="WiFi Locator">
               <div class="overlay">
                 <v-icon>mdi-open-in-new</v-icon>
               </div>
             </a>
             <div class="description">
-              Website design for an Arts and Culture publication. This is the front end development site only. I have designed everything and built it with javascript, Vue, and CSS.
+              WiFi Locator is an interactive map-based app that helps you find free public Wi-Fi hotspots in cities across the U.S. Just search for a city, and instantly explore nearby hotspots using real-time OpenStreetMap data — perfect for remote workers, travelers, and anyone in need of a reliable internet connection on the go.
             </div>
           </li>
 
@@ -56,6 +56,24 @@
               Information site for cryptocurrencies. This is an ongoing side project in development. It leverages some open source API's for the data along with Chart.js for the visualizations.
             </div>
           </li>
+
+          <li>
+            <a
+              href="https://caseys-app-design-hadithi.netlify.app"
+              target="_blank"
+              class="link"
+            >
+              <img src="/project-image-hadithi.jpg" alt="Hadithi">
+              <div class="overlay">
+                <v-icon>mdi-open-in-new</v-icon>
+              </div>
+            </a>
+            <div class="description">
+              Website design for an Arts and Culture publication. This is the front end development site only. I have designed everything and built it with javascript, Vue, and CSS.
+            </div>
+          </li>
+
+
 
         </ul>
       </TerminalWindow>
