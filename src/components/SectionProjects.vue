@@ -27,6 +27,22 @@
 
           <li>
             <a
+              href="https://jokesterapp.netlify.app/"
+              target="_blank"
+              class="link"
+            >
+              <img src="/project-image-jokester.jpg" alt="Jokester">
+              <div class="overlay">
+                <v-icon>mdi-open-in-new</v-icon>
+              </div>
+            </a>
+            <div class="description">
+              Jokester is a fun, interactive app for browsing, rating, and adding jokes across categories like programming, general, and knock-knock. With features like custom joke creation, star ratings, and punchline reveals, it's built to bring laughs and a playful UI to your day — perfect for developers, friends, or anyone who needs a quick chuckle.
+            </div>
+          </li>
+
+          <li>
+            <a
               href="https://wifilocator.netlify.app/"
               target="_blank"
               class="link"
