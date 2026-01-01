@@ -1,4 +1,4 @@
-const introText = `I'm a creative artist with a passion for bringing ideas to life—whether through thoughtful design or interactive web experiences. With a love for drawing, JavaScript, and CSS, I blend visual storytelling with functional code.`;
+const introText = `I'm a creative artist with a passion for bringing ideas to life through thoughtful design and interactive web experiences. With a love for drawing, JavaScript, and CSS, I blend visual storytelling with functional code.`;
 
 const introText2 = `From concept to launch, I enjoy turning visions into polished, responsive experiences that connect with people. Take a look at some of my work, and feel free to reach out if you're interested in collaborating or chatting further!`;
 
