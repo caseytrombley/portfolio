@@ -9,6 +9,32 @@
 
       <TerminalWindow>
         <ul class="project-links" ref="listRef">
+
+          <li>
+            <a href="https://www.keyandchord.com" target="_blank" class="link">
+              <img src="/project-image-key-and-chord.jpg" alt="Key and Chord" />
+              <div class="overlay">
+                <v-icon>mdi-open-in-new</v-icon>
+              </div>
+            </a>
+            <div class="description">
+              An interactive piano chord dictionary with dynamic chord diagrams and inversions for
+              all musical keys. A fun way to learn and visualize piano chords.
+            </div>
+          </li>
+
+          <li>
+            <a href="https://www.nuviewit.com" target="_blank" class="link">
+              <img src="/project-image-nuview.jpg" alt="NuView IT" />
+              <div class="overlay">
+                <v-icon>mdi-open-in-new</v-icon>
+              </div>
+            </a>
+            <div class="description">
+              Managed IT services, cybersecurity, and compliance support company website. Built with React/Next.js and a highly customized Sanity CMS.
+            </div>
+          </li>
+
           <li>
             <a href="https://nexum-site.netlify.app/" target="_blank" class="link">
               <img src="/project-image-nexum.jpg" alt="Nexum" />
@@ -36,18 +62,7 @@
             </div>
           </li>
 
-          <li>
-            <a href="https://www.keyandchord.com" target="_blank" class="link">
-              <img src="/project-image-key-and-chord.jpg" alt="Key and Chord" />
-              <div class="overlay">
-                <v-icon>mdi-open-in-new</v-icon>
-              </div>
-            </a>
-            <div class="description">
-              An interactive piano chord dictionary with dynamic chord diagrams and inversions for
-              all musical keys.
-            </div>
-          </li>
+
 
           <li>
             <a href="https://jokesterapp.netlify.app/" target="_blank" class="link">

@@ -17,7 +17,7 @@
         @animationend="handleAnimationEnd"
         @click="restartAnimations"
       >
-        Current Projects<span class="cursor1">_</span>
+        Recent Projects<span class="cursor1">_</span>
       </p>
 
       <div class="content">
