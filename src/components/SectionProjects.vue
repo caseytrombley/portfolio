@@ -35,32 +35,32 @@
 <!--            </div>-->
 <!--          </li>-->
 
-          <li>
-            <a href="https://nexum-site.netlify.app/" target="_blank" class="link">
-              <img src="/project-image-nexum.jpg" alt="Nexum" />
-              <div class="overlay">
-                <v-icon>mdi-open-in-new</v-icon>
-              </div>
-            </a>
-            <div class="description">
-              Leading both the Figma design and front-end development for Nexum’s new website,
-              creating refined, custom UI components that reflect the company’s authority in
-              cybersecurity and network defense.
-            </div>
-          </li>
+<!--          <li>-->
+<!--            <a href="https://nexum-site.netlify.app/" target="_blank" class="link">-->
+<!--              <img src="/project-image-nexum.jpg" alt="Nexum" />-->
+<!--              <div class="overlay">-->
+<!--                <v-icon>mdi-open-in-new</v-icon>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--            <div class="description">-->
+<!--              Leading both the Figma design and front-end development for Nexum’s new website,-->
+<!--              creating refined, custom UI components that reflect the company’s authority in-->
+<!--              cybersecurity and network defense.-->
+<!--            </div>-->
+<!--          </li>-->
 
-          <li>
-            <a href="https://unlocked-home.netlify.app/" target="_blank" class="link">
-              <img src="/project-image-unlocked.jpg" alt="Unlocked Real Estate" />
-              <div class="overlay">
-                <v-icon>mdi-open-in-new</v-icon>
-              </div>
-            </a>
-            <div class="description">
-              Developed a fully custom, responsive website for Unlocked Real Estate, translating
-              detailed Figma designs into polished, high-performance UI components.
-            </div>
-          </li>
+<!--          <li>-->
+<!--            <a href="https://unlocked-home.netlify.app/" target="_blank" class="link">-->
+<!--              <img src="/project-image-unlocked.jpg" alt="Unlocked Real Estate" />-->
+<!--              <div class="overlay">-->
+<!--                <v-icon>mdi-open-in-new</v-icon>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--            <div class="description">-->
+<!--              Developed a fully custom, responsive website for Unlocked Real Estate, translating-->
+<!--              detailed Figma designs into polished, high-performance UI components.-->
+<!--            </div>-->
+<!--          </li>-->
 
 
 
