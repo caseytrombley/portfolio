@@ -23,17 +23,17 @@
             </div>
           </li>
 
-          <li>
-            <a href="https://www.nuviewit.com" target="_blank" class="link">
-              <img src="/project-image-nuview.jpg" alt="NuView IT" />
-              <div class="overlay">
-                <v-icon>mdi-open-in-new</v-icon>
-              </div>
-            </a>
-            <div class="description">
-              Managed IT services, cybersecurity, and compliance support company website. Built with React/Next.js and a highly customized Sanity CMS.
-            </div>
-          </li>
+<!--          <li>-->
+<!--            <a href="https://www.nuviewit.com" target="_blank" class="link">-->
+<!--              <img src="/project-image-nuview.jpg" alt="NuView IT" />-->
+<!--              <div class="overlay">-->
+<!--                <v-icon>mdi-open-in-new</v-icon>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--            <div class="description">-->
+<!--              Managed IT services, cybersecurity, and compliance support company website. Built with React/Next.js and a highly customized Sanity CMS.-->
+<!--            </div>-->
+<!--          </li>-->
 
           <li>
             <a href="https://nexum-site.netlify.app/" target="_blank" class="link">
