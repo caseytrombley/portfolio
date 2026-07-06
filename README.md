@@ -37,3 +37,5 @@ npm run build
 ```sh
 npm run lint
 ```
+
+<!-- trivial change to test git push via GUI -->
